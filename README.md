@@ -21,6 +21,7 @@ This add-on currently includes comprehensive support for:
 * iCloud key-value storage [Foundation Integration Guide](Sources/GodotFoundation/FoundationGuide.md)
 * ARKit [ARKit Integration Guide](Sources/GodotARKit/ARKitGuide.md)
 * CoreMotion [CoreMotion Integration Guide](Sources/GodotCoreMotion/CoreMotionGuide.md)
+* Keychain [Keychain Integration Guide](Sources/GodotKeychain/KeychainGuide.md)
 
 Notice that this package has multiple split libraries, if you are not
 using them, you can save space (and a roundtrip answering Apple's

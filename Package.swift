@@ -122,6 +122,10 @@ let arKitDocResources = [
     "ARWorldTrackingConfiguration",
 ].map(docResource)
 
+let keychainDocResources = [
+    "Keychain",
+].map(docResource)
+
 let coreMotionDocResources = [
     "CMAbsoluteAltitudeData",
     "CMAccelerometerData",
@@ -198,6 +202,11 @@ let package = Package(
             type: .dynamic,
             targets: ["GodotApplePluginsCoreMotion"]
         ),
+        .library(
+            name: "GodotApplePluginsKeychain",
+            type: .dynamic,
+            targets: ["GodotApplePluginsKeychain"]
+        ),
         .executable(
             name: "GodotApplePluginsStubGenerator",
             targets: ["GodotApplePluginsStubGenerator"]
@@ -220,6 +229,7 @@ let package = Package(
                 "GodotApplePluginsAuthenticationServices",
                 "GodotApplePluginsARKit",
                 "GodotApplePluginsCoreMotion",
+                "GodotApplePluginsKeychain",
             ],
             path: "Sources/GodotApplePlugins",
             swiftSettings: swiftSettings,
@@ -268,6 +278,12 @@ let package = Package(
             path: "Sources/GodotCoreMotion",
             exclude: ["CoreMotionGuide.md"],
             resources: coreMotionDocResources
+        ),
+        pluginTarget(
+            name: "GodotApplePluginsKeychain",
+            path: "Sources/GodotKeychain",
+            exclude: ["KeychainGuide.md"],
+            resources: keychainDocResources
         ),
         .executableTarget(
             name: "GodotApplePluginsStubGenerator"
