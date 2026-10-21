@@ -19,6 +19,7 @@ XCODEBUILD_SETTINGS ?=
 XCODEBUILD_LOG_ON_ERROR ?=
 XCODEBUILD_LOG_DIR ?=
 XCODEBUILD_HEARTBEAT_SECONDS ?= 60
+FRAMEWORK_SYMBOLS = python3 "$(CURDIR)/scripts/framework_symbols.py"
 CC ?= cc
 GODOT ?= ~/cvs/master-godot/editor/bin/godot.macos.editor.dev.arm64
 
@@ -131,6 +132,7 @@ build build2:
 				-configuration '$(CONFIG)' \
 				-destination "$$dest" \
 				-derivedDataPath "$(DERIVED_DATA)$$suffix" \
+				GCC_GENERATE_DEBUGGING_SYMBOLS=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym \
 				$(XCODEBUILD_SETTINGS) \
 				build; \
 			echo "Built $$framework for $$dest"; \
@@ -145,6 +147,12 @@ build build2:
 			else \
 				echo "Skipping SwiftSyntax relink for $$framework on $$dest (unsupported platform)"; \
 			fi; \
+			products_config="$(CONFIG)"; \
+			case "$$platform_lc" in \
+				ios) products_config="$(CONFIG)-iphoneos" ;; \
+				iossimulator) products_config="$(CONFIG)-iphonesimulator" ;; \
+			esac; \
+			$(FRAMEWORK_SYMBOLS) generate "$(DERIVED_DATA)$$suffix/Build/Products/$$products_config/PackageFrameworks/$$framework.framework"; \
 	    done;  \
 	done; \
 
@@ -246,15 +254,18 @@ split-dist:
 		echo "  $$runtime_ios_sim" >&2; \
 		exit 1; \
 	fi; \
-	$(XCODEBUILD) -create-xcframework \
-		-framework "$$runtime_ios_device" \
-		-framework "$$runtime_ios_sim" \
-		-output $(CURDIR)/addons/GodotApplePluginsRuntime/bin/$(SPLIT_RUNTIME_FRAMEWORK).xcframework; \
+	$(FRAMEWORK_SYMBOLS) xcframework \
+		"$(CURDIR)/addons/GodotApplePluginsRuntime/bin/$(SPLIT_RUNTIME_FRAMEWORK).xcframework" \
+		"$$runtime_ios_device" "$$runtime_ios_sim" --xcodebuild "$(XCODEBUILD)" \
+		--allow-missing-symbols --search-root "$(DERIVED_DATA)" --search-root "$(DERIVED_DATA)simulator" --search-root "$(CURDIR)/.build/artifacts"; \
 	if [ ! -d "$(DERIVED_DATA)x86_64/Build/Products/$(CONFIG)/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework" ]; then \
 		echo "Missing $(SPLIT_RUNTIME_FRAMEWORK) macOS x86_64 build product. Run split-build for platform=macOS,arch=x86_64 before split-dist." >&2; \
 		exit 1; \
 	fi; \
 	rsync -a $(DERIVED_DATA)x86_64/Build/Products/$(CONFIG)/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework/ $(CURDIR)/addons/GodotApplePluginsRuntime/bin/$(SPLIT_RUNTIME_FRAMEWORK)_x64.framework; \
+	$(FRAMEWORK_SYMBOLS) copy "$(DERIVED_DATA)x86_64/Build/Products/$(CONFIG)/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework" \
+		"$(CURDIR)/addons/GodotApplePluginsRuntime/bin/$(SPLIT_RUNTIME_FRAMEWORK)_x64.framework.dSYM" \
+		--allow-missing-symbols --search-root "$(DERIVED_DATA)x86_64" --search-root "$(CURDIR)/.build/artifacts"; \
 	runtime_x64_binary="$(CURDIR)/addons/GodotApplePluginsRuntime/bin/$(SPLIT_RUNTIME_FRAMEWORK)_x64.framework/Versions/A/$(SPLIT_RUNTIME_FRAMEWORK)"; \
 	if [ ! -f "$$runtime_x64_binary" ]; then \
 		echo "Missing $(SPLIT_RUNTIME_FRAMEWORK) macOS x86_64 runtime binary: $$runtime_x64_binary" >&2; \
@@ -270,6 +281,9 @@ split-dist:
 		exit 1; \
 	fi; \
 	rsync -a $(DERIVED_DATA)arm64/Build/Products/$(CONFIG)/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework/ $(CURDIR)/addons/GodotApplePluginsRuntime/bin/$(SPLIT_RUNTIME_FRAMEWORK).framework; \
+	$(FRAMEWORK_SYMBOLS) copy "$(DERIVED_DATA)arm64/Build/Products/$(CONFIG)/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework" \
+		"$(CURDIR)/addons/GodotApplePluginsRuntime/bin/$(SPLIT_RUNTIME_FRAMEWORK).framework.dSYM" \
+		--allow-missing-symbols --search-root "$(DERIVED_DATA)arm64" --search-root "$(CURDIR)/.build/artifacts"; \
 	has_rpath() { \
 		binary="$$1"; \
 		rpath="$$2"; \
@@ -422,17 +436,21 @@ dist:
 		rm -rf $(CURDIR)/addons/$$framework/bin/$$framework.xcframework; \
 		rm -rf $(CURDIR)/addons/$$framework/bin/$$framework*.framework; \
 		if [ -d "$(DERIVED_DATA)/Build/Products/$(CONFIG)-iphoneos/PackageFrameworks/$$framework.framework" ] && [ -d "$(DERIVED_DATA)simulator/Build/Products/$(CONFIG)-iphonesimulator/PackageFrameworks/$$framework.framework" ]; then \
-			$(XCODEBUILD) -create-xcframework \
-				-framework $(DERIVED_DATA)/Build/Products/$(CONFIG)-iphoneos/PackageFrameworks/$$framework.framework \
-				-framework $(DERIVED_DATA)simulator/Build/Products/$(CONFIG)-iphonesimulator/PackageFrameworks/$$framework.framework \
-				-output $(CURDIR)/addons/$$framework/bin/$${framework}.xcframework; \
+			$(FRAMEWORK_SYMBOLS) xcframework "$(CURDIR)/addons/$$framework/bin/$${framework}.xcframework" \
+				"$(DERIVED_DATA)/Build/Products/$(CONFIG)-iphoneos/PackageFrameworks/$$framework.framework" \
+				"$(DERIVED_DATA)simulator/Build/Products/$(CONFIG)-iphonesimulator/PackageFrameworks/$$framework.framework" \
+				--xcodebuild "$(XCODEBUILD)"; \
 		fi; \
 		if [ -d "$(DERIVED_DATA)x86_64/Build/Products/$(CONFIG)/PackageFrameworks/$${framework}.framework" ]; then \
 			rsync -a $(DERIVED_DATA)x86_64/Build/Products/$(CONFIG)/PackageFrameworks/$${framework}.framework/ $(CURDIR)/addons/$$framework/bin/$${framework}_x64.framework; \
+			$(FRAMEWORK_SYMBOLS) copy "$(DERIVED_DATA)x86_64/Build/Products/$(CONFIG)/PackageFrameworks/$${framework}.framework" \
+				"$(CURDIR)/addons/$$framework/bin/$${framework}_x64.framework.dSYM"; \
 			copy_framework_docs "$$framework" "$(CURDIR)/addons/$$framework/bin/$${framework}_x64.framework/Resources/doc_classes"; \
 		fi; \
 		if [ -d "$(DERIVED_DATA)arm64/Build/Products/$(CONFIG)/PackageFrameworks/$${framework}.framework" ]; then \
 			rsync -a $(DERIVED_DATA)arm64/Build/Products/$(CONFIG)/PackageFrameworks/$${framework}.framework/ $(CURDIR)/addons/$$framework/bin/$${framework}.framework; \
+			$(FRAMEWORK_SYMBOLS) copy "$(DERIVED_DATA)arm64/Build/Products/$(CONFIG)/PackageFrameworks/$${framework}.framework" \
+				"$(CURDIR)/addons/$$framework/bin/$${framework}.framework.dSYM"; \
 			copy_framework_docs "$$framework" "$(CURDIR)/addons/$$framework/bin/$${framework}.framework/Resources/doc_classes"; \
 		fi; \
 	done
@@ -499,16 +517,17 @@ o-runtime:
 	runtime_ios_device="$(DERIVED_DATA)/Build/Products/$(QUICK_CONFIG)-iphoneos/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework"; \
 	runtime_ios_sim="$(DERIVED_DATA)simulator/Build/Products/$(QUICK_CONFIG)-iphonesimulator/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework"; \
 	if [ -d "$$runtime_ios_device" ] && [ -d "$$runtime_ios_sim" ]; then \
-		$(XCODEBUILD) -create-xcframework \
-			-framework "$$runtime_ios_device" \
-			-framework "$$runtime_ios_sim" \
-			-output "$$runtime_bin/$(SPLIT_RUNTIME_FRAMEWORK).xcframework"; \
+		$(FRAMEWORK_SYMBOLS) xcframework "$$runtime_bin/$(SPLIT_RUNTIME_FRAMEWORK).xcframework" \
+			"$$runtime_ios_device" "$$runtime_ios_sim" --xcodebuild "$(XCODEBUILD)" \
+			--allow-missing-symbols --search-root "$(DERIVED_DATA)" --search-root "$(DERIVED_DATA)simulator" --search-root "$(CURDIR)/.build/artifacts"; \
 	else \
 		echo "Skipping runtime xcframework; missing iOS device or simulator runtime product."; \
 	fi; \
 	runtime_macos="$(DERIVED_DATA)$(HOST_ARCH)/Build/Products/$(QUICK_CONFIG)/PackageFrameworks/$(SPLIT_RUNTIME_FRAMEWORK).framework"; \
 	if [ -d "$$runtime_macos" ]; then \
 		rsync -a "$$runtime_macos/" "$$runtime_bin/$(SPLIT_RUNTIME_FRAMEWORK).framework"; \
+		$(FRAMEWORK_SYMBOLS) copy "$$runtime_macos" "$$runtime_bin/$(SPLIT_RUNTIME_FRAMEWORK).framework.dSYM" \
+			--allow-missing-symbols --search-root "$(DERIVED_DATA)$(HOST_ARCH)" --search-root "$(CURDIR)/.build/artifacts"; \
 	else \
 		echo "Missing host macOS runtime product: $$runtime_macos" >&2; \
 		exit 1; \
