@@ -1903,6 +1903,7 @@ def render_markdown_as_rst(doc: TopicDoc, slug_by_path: Dict[str, str]) -> str:
         lines = f.read().splitlines()
 
     in_code_block = False
+    has_title = False
 
     for line in lines:
         stripped = line.strip()
@@ -1930,6 +1931,11 @@ def render_markdown_as_rst(doc: TopicDoc, slug_by_path: Dict[str, str]) -> str:
             if anchor:
                 out.append(f".. _{doc.slug}__{anchor}:")
                 out.append("")
+            # An overlined document title stays above the guides' top-level
+            # sections, so Sphinx does not list every section as its own page.
+            if not has_title:
+                out.append(HEADING_MARKERS[level - 1] * max(len(title), 1))
+                has_title = True
             out.append(title)
             out.append(HEADING_MARKERS[level - 1] * max(len(title), 1))
             out.append("")
@@ -2023,7 +2029,7 @@ def make_rst_index(grouped_classes: Dict[str, List[str]], topic_docs: List[Topic
                 f.write(f"    :name: toc-class-ref-{group_name}s\n")
                 f.write("\n")
 
-                if group_name in CLASS_GROUPS_BASE:
+                if group_name in CLASS_GROUPS_BASE and CLASS_GROUPS_BASE[group_name] in grouped_classes[group_name]:
                     f.write(f"    class_{sanitize_class_name(CLASS_GROUPS_BASE[group_name], True)}\n")
 
                 for class_name in grouped_classes[group_name]:
