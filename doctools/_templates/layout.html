@@ -1,0 +1,63 @@
+{% extends "!layout.html" %}
+
+{% block header %}
+<a class="skip-link" href="#main-content">Skip navigation</a>
+<header class="site-header">
+  <a class="site-brand" href="{{ pathto(root_doc) }}">Godot Apple Plugins</a>
+  <a href="https://github.com/xibbon/GodotApplePlugins">GitHub <span aria-hidden="true">↗</span></a>
+</header>
+<div class="documentation-header">
+  <svg class="documentation-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M7 3v14M4 6h1M4 9h1"/></svg>
+  <button class="navigation-toggle" aria-controls="symbol-navigation" aria-expanded="false" aria-label="Show navigation">
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M7 3v14M4 6h1M4 9h1"/></svg>
+  </button>
+  <a class="documentation-title" href="{{ pathto(root_doc) }}">Documentation</a>
+  <a class="documentation-search" href="{{ pathto('search') }}">Search</a>
+</div>
+{% endblock %}
+
+{% block relbar1 %}{% endblock %}
+{% block relbar2 %}{% endblock %}
+
+{% block content %}
+<aside class="symbol-sidebar" id="symbol-navigation" aria-label="Documentation navigation">
+  <a class="navigator-root{% if pagename == root_doc %} selected{% endif %}" href="{{ pathto(root_doc) }}" {% if pagename == root_doc %}aria-current="page"{% endif %}>Godot Apple Plugins</a>
+  <nav class="symbol-tree" aria-label="Guides and API reference">
+    {{ toctree(includehidden=True, collapse=False, maxdepth=1, titles_only=True) }}
+  </nav>
+  <p class="filter-empty" hidden>No matching symbols.</p>
+  <form class="symbol-filter" action="{{ pathto('search') }}" method="get" role="search">
+    <label class="visually-hidden" for="symbol-filter">Filter documentation</label>
+    <input id="symbol-filter" name="q" type="search" placeholder="Filter" autocomplete="off" aria-keyshortcuts="/">
+    <kbd aria-hidden="true">/</kbd>
+  </form>
+</aside>
+<main class="documentation-content{% if pagename == root_doc %} overview-page{% endif %}" id="main-content">
+  {% if pagename == root_doc %}
+  <div class="framework-introduction">
+    <div class="introduction-content">
+      <p class="eyebrow">Framework collection</p>
+      <h1>Godot Apple Plugins</h1>
+      <p class="introduction-summary">Bring native Apple experiences to your Godot games.</p>
+      <p class="platforms">macOS <span>·</span> iOS <span>·</span> visionOS <span>·</span> Godot 4</p>
+    </div>
+  </div>
+  {% else %}
+  <div class="page-context">
+    <a href="{{ pathto(root_doc) }}">Godot Apple Plugins</a><span aria-hidden="true"> › </span>
+    <span>{% if pagename.startswith('class_') %}Class{% elif pagename == 'search' %}Search{% elif pagename == 'genindex' %}Index{% else %}Guide{% endif %}</span>
+  </div>
+  {% endif %}
+  <article class="body">
+    {% block body %}{% endblock %}
+  </article>
+  <footer class="documentation-footer">
+    <span>Godot Apple Plugins</span>
+    <div class="appearance-control">
+      <label for="appearance">Appearance</label>
+      <select id="appearance"><option value="auto">Auto</option><option value="light">Light</option><option value="dark">Dark</option></select>
+    </div>
+  </footer>
+</main>
+{% endblock %}
+{% block footer %}{% endblock %}

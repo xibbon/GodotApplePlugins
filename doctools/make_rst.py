@@ -1992,55 +1992,64 @@ def make_rst_index(grouped_classes: Dict[str, List[str]], topic_docs: List[Topic
         f.write(".. Generated automatically from Godot engine sources.\n")
         f.write(f".. Generator: {generator_github_url}.\n\n")
 
-        guide_docs = [doc for doc in topic_docs if doc.top_level]
-        supporting_docs = [doc for doc in topic_docs if not doc.top_level]
-        if guide_docs:
-            f.write(make_heading("Guides", "="))
-            f.write(".. toctree::\n")
-            f.write("    :maxdepth: 1\n")
-            f.write("    :name: toc-guides\n")
-            f.write("\n")
-
-            for doc in guide_docs:
-                f.write(f"    {doc.slug}\n")
-
-            f.write("\n")
-
-        if supporting_docs:
-            f.write(".. toctree::\n")
-            f.write("    :hidden:\n")
-            f.write("\n")
-
-            for doc in supporting_docs:
-                f.write(f"    {doc.slug}\n")
-
-            f.write("\n")
-
+        f.write(make_heading("Godot Apple Plugins", "="))
+        f.write(make_heading("Overview", "-"))
+        f.write(
+            "Integrate Apple frameworks into your Godot games with GDScript. "
+            "Add Game Center achievements and multiplayer, manage in-app purchases "
+            "with StoreKit, build augmented reality experiences with ARKit, and "
+            "connect to native authentication, motion, audio, and storage APIs.\n\n"
+        )
+        f.write("Start with an integration guide, then explore the classes in each framework.\n\n")
         f.write(".. _doc_class_reference:\n\n")
+        f.write(make_heading("Topics", "-"))
 
-        f.write(make_heading("All classes", "="))
+        def write_topics(caption: str, entries: List[str], hidden: bool = False) -> None:
+            if not entries:
+                return
+            f.write(".. toctree::\n    :maxdepth: 1\n")
+            if hidden:
+                f.write("    :hidden:\n")
+            else:
+                f.write(f"    :caption: {caption}\n")
+            f.write("\n")
+            for entry in entries:
+                f.write(f"    {entry}\n")
+            f.write("\n")
 
-        for group_name in CLASS_GROUPS:
-            if group_name in grouped_classes:
-                f.write(make_heading(CLASS_GROUPS[group_name], "="))
+        labels = {
+            "GameCenter": "Game Center",
+            "CoreMotion": "Core Motion",
+            "AuthenticationServices": "Authentication Services",
+        }
+        guide_entries = []
+        for doc in topic_docs:
+            if doc.top_level:
+                module = os.path.relpath(doc.source_path, topic_docs_root()).split(os.sep)[0].removeprefix("Godot")
+                label = labels.get(module, module)
+                guide_entries.append(f"{label} integration <{doc.slug}>")
+        write_topics("Essentials", guide_entries)
 
-                f.write(".. toctree::\n")
-                f.write("    :maxdepth: 1\n")
-                f.write(f"    :name: toc-class-ref-{group_name}s\n")
-                f.write("\n")
-
-                if group_name in CLASS_GROUPS_BASE and CLASS_GROUPS_BASE[group_name] in grouped_classes[group_name]:
-                    f.write(f"    class_{sanitize_class_name(CLASS_GROUPS_BASE[group_name], True)}\n")
-
-                for class_name in grouped_classes[group_name]:
-                    if group_name in CLASS_GROUPS_BASE and sanitize_class_name(
-                        CLASS_GROUPS_BASE[group_name], True
-                    ) == sanitize_class_name(class_name, True):
-                        continue
-
-                    f.write(f"    class_{sanitize_class_name(class_name, True)}\n")
-
-                f.write("\n")
+        # Group symbols by their Swift module, including types declared in
+        # shared source files rather than assuming one class per filename.
+        documented_classes = {name for names in grouped_classes.values() for name in names}
+        remaining = set(documented_classes)
+        for module in sorted(os.listdir(topic_docs_root())):
+            module_path = os.path.join(topic_docs_root(), module)
+            if not module.startswith("Godot") or not os.path.isdir(module_path):
+                continue
+            names = set()
+            for directory, _, filenames in os.walk(module_path):
+                for filename in sorted(filenames):
+                    if filename.endswith(".swift"):
+                        with open(os.path.join(directory, filename), encoding="utf-8") as source:
+                            names.update(re.findall(r"\b(?:class|struct|enum)\s+([A-Za-z_]\w*)", source.read()))
+            names &= remaining
+            remaining -= names
+            label = module.removeprefix("Godot")
+            write_topics(labels.get(label, label), [f"class_{sanitize_class_name(name, True)}" for name in sorted(names)])
+        write_topics("Shared types", [f"class_{sanitize_class_name(name, True)}" for name in sorted(remaining)])
+        write_topics("Supporting guides", [doc.slug for doc in topic_docs if not doc.top_level], hidden=True)
 
 
 # Formatting helpers.

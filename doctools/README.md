@@ -20,9 +20,10 @@ PATH="/tmp/godotappleplugins-docs-venv/bin:$PATH" make -C doctools html \
 ```
 
 The build resolves built-in class links through the official Godot documentation,
-so a clean build needs network access. `conf.py` explicitly selects the Classic
-theme and enables code tabs; `_static/custom.css` handles narrow screens and
-long API signatures. The output includes `.nojekyll` so GitHub Pages preserves
+so a clean build needs network access. The DocC-style layout in `_templates/`
+uses Sphinx's built-in base theme and code tabs. `_static/custom.css` provides
+the responsive layout and light/dark appearance; `navigation.js` handles symbol
+filtering and the mobile navigator. The output includes `.nojekyll` so GitHub Pages preserves
 Sphinx's `_static` assets.
 
 The root `make deploy-docs` target also regenerates XML using the local Godot
