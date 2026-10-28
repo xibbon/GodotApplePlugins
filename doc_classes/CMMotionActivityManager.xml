@@ -31,7 +31,7 @@
 			<param index="1" name="toUnixTime" type="float" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
-				Returns historical activities recorded between two Unix-time stamps. [param callback] is invoked on the main thread with [code]callback(activities: Array, error: String)[/code]; [param activities] is an array of [CMMotionActivity].
+				Returns historical activities recorded between two Unix-time stamps. [param callback] is invoked on the main thread with [code]callback(activities: Array, error: String)[/code]; [code]activities[/code] is an array of [CMMotionActivity].
 			</description>
 		</method>
 		<method name="start_activity_updates">

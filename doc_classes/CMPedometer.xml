@@ -55,14 +55,14 @@
 			<param index="1" name="toUnixTime" type="float" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
-				Queries pedometer data recorded between two Unix-time stamps. [param callback] is invoked on the main thread with [code]callback(data: CMPedometerData, error: String)[/code]; [param data] is [code]null[/code] when [param error] is set.
+				Queries pedometer data recorded between two Unix-time stamps. [param callback] is invoked on the main thread with [code]callback(data: CMPedometerData, error: String)[/code]; [code]data[/code] is [code]null[/code] when [code]error[/code] is set.
 			</description>
 		</method>
 		<method name="start_updates">
 			<return type="void" />
 			<param index="0" name="fromUnixTime" type="float" />
 			<description>
-				Begins live pedometer updates accumulating from [param fromUnixTime] (Unix seconds). Subsequent samples arrive via [signal pedometer_updated]. Use [code]Time.get_unix_time_from_system()[/code] for "now".
+				Begins live pedometer updates accumulating from [param fromUnixTime] (Unix seconds). Subsequent samples arrive via [signal pedometer_updated]. Use [method Time.get_unix_time_from_system] for "now".
 			</description>
 		</method>
 		<method name="stop_updates">

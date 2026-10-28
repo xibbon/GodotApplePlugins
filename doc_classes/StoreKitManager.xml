@@ -84,7 +84,7 @@
 	</methods>
 	<signals>
 		<signal name="current_entitlements_fetch_completed">
-			<param index="0" name="entitlements" type="Array[StoreTransaction]" />
+			<param index="0" name="entitlements" type="StoreTransaction[]" />
 			<description>
 				Emitted once after each call to [method fetch_current_entitlements], including when the result is empty. [param entitlements] contains the verified current entitlements from that call. The manager emits the related [signal transaction_updated] and [signal unverified_transaction_updated] signals before this signal. Unverified transactions are not included in [param entitlements].
 			</description>
