@@ -4,7 +4,7 @@ Godot Plugins for deep Apple platform integration across macOS, iOS, and visionO
 
 <p align="center">
 <strong>
-	<a href="https://migueldeicaza.github.io/GodotApplePlugins/index.html">API Documentation</a> | Download: <a href="https://godotengine.org/asset-library/asset/4552">Godot Asset Library</a> | Download: <a href="https://github.com/migueldeicaza/GodotApplePlugins/releases">GitHub Releases</a> | Discord <a href="https://discord.gg/bHAsTYaCZM">#godot-apple-plugins</a>
+	<a href="https://xibbon.github.io/GodotApplePlugins/index.html">API Documentation</a> | Download: <a href="https://godotengine.org/asset-library/asset/4552">Godot Asset Library</a> | Download: <a href="https://github.com/xibbon/GodotApplePlugins/releases">GitHub Releases</a> | Discord <a href="https://discord.gg/bHAsTYaCZM">#godot-apple-plugins</a>
 </strong>
 </p>
 
