@@ -5,32 +5,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using Apple’s CoreMotion APIs with Godot &#8212; GodotApplePlugins  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <title>Using Apple’s CoreMotion APIs with Godot &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/coremotion_coremotionguide.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using Apple’s GameKit APIs with Godot" href="gamecenter_gamecenterguide.html" />
-    <link rel="prev" title="Using Apple’s AuthenticationServices APIs with Godot" href="authenticationservices_authenticationservicesguide.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-
-  
-  
-
+    <link rel="next" title="Use iCloud key-value storage with Godot" href="foundation_foundationguide.html" />
+    <link rel="prev" title="Using Apple’s AuthenticationServices APIs with Godot" href="authenticationservices_authenticationservicesguide.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="foundation_foundationguide.html" title="Use iCloud key-value storage with Godot"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="authenticationservices_authenticationservicesguide.html" title="Using Apple’s AuthenticationServices APIs with Godot"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using Apple’s CoreMotion APIs with Godot</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <section id="using-apple-s-coremotion-apis-with-godot">
@@ -42,9 +51,8 @@ CoreMotion Documentation](<a class="reference external" href="https://developer.
 class names that Apple uses for their own data types to simplify
 looking things up and finding resources online. Method names follow
 the Godot naming scheme (snake_case instead of camelCase).</p>
-</section>
 <section id="table-of-contents">
-<span id="coremotion-coremotionguide-table-of-contents"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
+<span id="coremotion-coremotionguide-table-of-contents"></span><h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#coremotion_coremotionguide__available-types">Available Types</a></p></li>
 <li><p><a class="reference external" href="#coremotion_coremotionguide__infoplist-and-permissions">Info.plist and Permissions</a></p></li>
@@ -54,11 +62,11 @@ the Godot naming scheme (snake_case instead of camelCase).</p>
 </ul>
 </section>
 <section id="available-types">
-<span id="coremotion-coremotionguide-available-types"></span><h1>Available Types<a class="headerlink" href="#available-types" title="Link to this heading">¶</a></h1>
+<span id="coremotion-coremotionguide-available-types"></span><h2>Available Types<a class="headerlink" href="#available-types" title="Link to this heading">¶</a></h2>
 <p>The CoreMotion binding is documented in <code class="docutils literal notranslate"><span class="pre">doc_classes/</span></code> and in the
 published API reference. The surface includes:</p>
 <section id="motion-handheld-device">
-<span id="coremotion-coremotionguide-motion-handheld-device"></span><h2>Motion (handheld device)<a class="headerlink" href="#motion-handheld-device" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-motion-handheld-device"></span><h3>Motion (handheld device)<a class="headerlink" href="#motion-handheld-device" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CMMotionManager</span></code> — entry point for accelerometer, gyroscope, magnetometer, and fused device motion</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CMAccelerometerData</span></code> — a raw accelerometer sample</p></li>
@@ -68,20 +76,20 @@ published API reference. The surface includes:</p>
 </ul>
 </section>
 <section id="headphone-motion">
-<span id="coremotion-coremotionguide-headphone-motion"></span><h2>Headphone Motion<a class="headerlink" href="#headphone-motion" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-headphone-motion"></span><h3>Headphone Motion<a class="headerlink" href="#headphone-motion" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CMHeadphoneMotionManager</span></code> — head motion from AirPods and other compatible headphones (re-uses <code class="docutils literal notranslate"><span class="pre">CMDeviceMotion</span></code>)</p></li>
 </ul>
 </section>
 <section id="pedometer">
-<span id="coremotion-coremotionguide-pedometer"></span><h2>Pedometer<a class="headerlink" href="#pedometer" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-pedometer"></span><h3>Pedometer<a class="headerlink" href="#pedometer" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CMPedometer</span></code> — step, distance, floor, pace, and cadence counts</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CMPedometerData</span></code> — a single pedometer reading covering a time window</p></li>
 </ul>
 </section>
 <section id="altimeter">
-<span id="coremotion-coremotionguide-altimeter"></span><h2>Altimeter<a class="headerlink" href="#altimeter" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-altimeter"></span><h3>Altimeter<a class="headerlink" href="#altimeter" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CMAltimeter</span></code> — barometric pressure-based altitude</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CMAltitudeData</span></code> — a relative altitude / pressure sample</p></li>
@@ -89,7 +97,7 @@ published API reference. The surface includes:</p>
 </ul>
 </section>
 <section id="activity-classification">
-<span id="coremotion-coremotionguide-activity-classification"></span><h2>Activity Classification<a class="headerlink" href="#activity-classification" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-activity-classification"></span><h3>Activity Classification<a class="headerlink" href="#activity-classification" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CMMotionActivityManager</span></code> — classifies the user’s current activity</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CMMotionActivity</span></code> — one classification (walking, running, automotive, cycling, stationary, unknown) with a confidence level</p></li>
@@ -97,7 +105,7 @@ published API reference. The surface includes:</p>
 </section>
 </section>
 <section id="info-plist-and-permissions">
-<span id="coremotion-coremotionguide-info-plist-and-permissions"></span><h1>Info.plist and Permissions<a class="headerlink" href="#info-plist-and-permissions" title="Link to this heading">¶</a></h1>
+<span id="coremotion-coremotionguide-info-plist-and-permissions"></span><h2>Info.plist and Permissions<a class="headerlink" href="#info-plist-and-permissions" title="Link to this heading">¶</a></h2>
 <p>Most CoreMotion APIs are permission-gated. You need at least:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;key&gt;</span>NSMotionUsageDescription<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;string&gt;</span>This<span class="w"> </span>game<span class="w"> </span>uses<span class="w"> </span>motion<span class="w"> </span>data<span class="w"> </span>to<span class="w"> </span>...<span class="nt">&lt;/string&gt;</span>
@@ -106,7 +114,7 @@ published API reference. The surface includes:</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">NSMotionUsageDescription</span></code> key covers <code class="docutils literal notranslate"><span class="pre">CMMotionManager</span></code> (accelerometer/gyroscope/magnetometer/device motion), <code class="docutils literal notranslate"><span class="pre">CMPedometer</span></code>, <code class="docutils literal notranslate"><span class="pre">CMAltimeter</span></code>, <code class="docutils literal notranslate"><span class="pre">CMMotionActivityManager</span></code>, and <code class="docutils literal notranslate"><span class="pre">CMHeadphoneMotionManager</span></code>. The first time your project starts updates on any of these, iOS prompts the user; the user’s decision is reported via the <code class="docutils literal notranslate"><span class="pre">authorization_status()</span></code> static methods (where applicable).</p>
 </section>
 <section id="choosing-between-raw-sensors-and-device-motion">
-<span id="coremotion-coremotionguide-choosing-between-raw-sensors-and-device-motion"></span><h1>Choosing Between Raw Sensors and Device Motion<a class="headerlink" href="#choosing-between-raw-sensors-and-device-motion" title="Link to this heading">¶</a></h1>
+<span id="coremotion-coremotionguide-choosing-between-raw-sensors-and-device-motion"></span><h2>Choosing Between Raw Sensors and Device Motion<a class="headerlink" href="#choosing-between-raw-sensors-and-device-motion" title="Link to this heading">¶</a></h2>
 <p>The raw <code class="docutils literal notranslate"><span class="pre">start_accelerometer_updates()</span></code> / <code class="docutils literal notranslate"><span class="pre">start_gyro_updates()</span></code> / <code class="docutils literal notranslate"><span class="pre">start_magnetometer_updates()</span></code> deliver the device’s unprocessed sensor readings — accelerometer values include gravity, gyroscope values include drift bias, and magnetometer values include local magnetic interference.</p>
 <p><code class="docutils literal notranslate"><span class="pre">start_device_motion_updates()</span></code> runs Apple’s sensor fusion pipeline and gives you:</p>
 <ul class="simple">
@@ -118,7 +126,7 @@ published API reference. The surface includes:</p>
 <p>For almost all gameplay use cases (head/device tilt, shake detection, motion-controlled cameras), <code class="docutils literal notranslate"><span class="pre">CMDeviceMotion</span></code> is what you want. Reach for the raw streams only when you need very high sample rates or you’re doing custom sensor fusion.</p>
 </section>
 <section id="platform-notes">
-<span id="coremotion-coremotionguide-platform-notes"></span><h1>Platform Notes<a class="headerlink" href="#platform-notes" title="Link to this heading">¶</a></h1>
+<span id="coremotion-coremotionguide-platform-notes"></span><h2>Platform Notes<a class="headerlink" href="#platform-notes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>iOS</strong> — Full support for every type in this binding.</p></li>
 <li><p><strong>macOS</strong> — <code class="docutils literal notranslate"><span class="pre">CMHeadphoneMotionManager</span></code> works on macOS 14+ (returns motion from connected AirPods). The other managers are surfaced but their <code class="docutils literal notranslate"><span class="pre">is_*_available</span></code> static methods return <code class="docutils literal notranslate"><span class="pre">false</span></code> and starting updates emits a <code class="docutils literal notranslate"><span class="pre">*_failed</span></code> signal with a “not available” message — this matches Apple’s own coverage, since CoreMotion sensors require an iPhone or Apple Watch.</p></li>
@@ -127,9 +135,9 @@ published API reference. The surface includes:</p>
 </ul>
 </section>
 <section id="examples">
-<span id="coremotion-coremotionguide-examples"></span><h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h1>
+<span id="coremotion-coremotionguide-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
 <section id="tilt-controlled-camera-with-device-motion">
-<span id="coremotion-coremotionguide-tilt-controlled-camera-with-device-motion"></span><h2>Tilt-controlled camera with device motion<a class="headerlink" href="#tilt-controlled-camera-with-device-motion" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-tilt-controlled-camera-with-device-motion"></span><h3>Tilt-controlled camera with device motion<a class="headerlink" href="#tilt-controlled-camera-with-device-motion" title="Link to this heading">¶</a></h3>
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">motion</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">CMMotionManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
@@ -147,7 +155,7 @@ published API reference. The surface includes:</p>
 </div>
 </section>
 <section id="step-counter">
-<span id="coremotion-coremotionguide-step-counter"></span><h2>Step counter<a class="headerlink" href="#step-counter" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-step-counter"></span><h3>Step counter<a class="headerlink" href="#step-counter" title="Link to this heading">¶</a></h3>
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">pedometer</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">CMPedometer</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
@@ -158,12 +166,12 @@ published API reference. The surface includes:</p>
 <span class="w">    </span><span class="n">pedometer</span><span class="o">.</span><span class="n">start_updates</span><span class="p">(</span><span class="n">Time</span><span class="o">.</span><span class="n">get_unix_time_from_system</span><span class="p">())</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_pedometer_updated</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">CMPedometerData</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Steps since start: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">.</span><span class="n">number_of_steps</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Steps since start: "</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">.</span><span class="n">number_of_steps</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="querying-historical-activity">
-<span id="coremotion-coremotionguide-querying-historical-activity"></span><h2>Querying historical activity<a class="headerlink" href="#querying-historical-activity" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-querying-historical-activity"></span><h3>Querying historical activity<a class="headerlink" href="#querying-historical-activity" title="Link to this heading">¶</a></h3>
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">activity</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">CMMotionActivityManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">dump_last_hour</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
@@ -175,19 +183,19 @@ published API reference. The surface includes:</p>
 <span class="w">            </span><span class="n">push_warning</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">activities</span><span class="p">:</span>
-<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; walking=&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="o">.</span><span class="n">walking</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; automotive=&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="o">.</span><span class="n">automotive</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="s2">" walking="</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="o">.</span><span class="n">walking</span><span class="p">,</span><span class="w"> </span><span class="s2">" automotive="</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="o">.</span><span class="n">automotive</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="head-tracked-audio-with-airpods">
-<span id="coremotion-coremotionguide-head-tracked-audio-with-airpods"></span><h2>Head-tracked audio with AirPods<a class="headerlink" href="#head-tracked-audio-with-airpods" title="Link to this heading">¶</a></h2>
+<span id="coremotion-coremotionguide-head-tracked-audio-with-airpods"></span><h3>Head-tracked audio with AirPods<a class="headerlink" href="#head-tracked-audio-with-airpods" title="Link to this heading">¶</a></h3>
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">headphones</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">CMHeadphoneMotionManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 <span class="w">    </span><span class="n">headphones</span><span class="o">.</span><span class="n">device_motion_updated</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_head_motion</span><span class="p">)</span>
-<span class="w">    </span><span class="n">headphones</span><span class="o">.</span><span class="n">connected</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">():</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AirPods connected&quot;</span><span class="p">))</span>
-<span class="w">    </span><span class="n">headphones</span><span class="o">.</span><span class="n">disconnected</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">():</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AirPods disconnected&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">headphones</span><span class="o">.</span><span class="n">connected</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">():</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="s2">"AirPods connected"</span><span class="p">))</span>
+<span class="w">    </span><span class="n">headphones</span><span class="o">.</span><span class="n">disconnected</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">():</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="s2">"AirPods disconnected"</span><span class="p">))</span>
 <span class="w">    </span><span class="n">headphones</span><span class="o">.</span><span class="n">update_failed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span><span class="w"> </span><span class="n">push_warning</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 <span class="w">    </span><span class="n">headphones</span><span class="o">.</span><span class="n">start_device_motion_updates</span><span class="p">()</span>
 
@@ -197,187 +205,84 @@ published API reference. The surface includes:</p>
 </div>
 </section>
 </section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">GodotApplePlugins</a></h1>
-
-
-
-
-
-
-
-
-
 <search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </search>
-<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html">Using Apple’s ARKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html">Using Apple’s AuthenticationServices APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#entitlements">Entitlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#quick-start">Quick Start</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Apple’s CoreMotion APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#info-plist-and-permissions">Info.plist and Permissions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#choosing-between-raw-sensors-and-device-motion">Choosing Between Raw Sensors and Device Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html">Using Apple’s GameKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#authentication">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#players">Players</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#saved-games">Saved Games</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#achievements">Achievements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#realtime-matchmaking">Realtime Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#turn-based-matchmaking">Turn-Based Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#challenges">Challenges</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#leaderboards">Leaderboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html">Using Apple’s StoreKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#start-storekit">Start StoreKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-transactions">Handle transactions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#redeem-offer-codes">Redeem offer codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-external-offer-code-redemptions">Handle external offer-code redemptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#test-offer-codes">Test offer codes</a></li>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Using Apple’s CoreMotion APIs with Godot</a><ul>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li><a class="reference internal" href="#available-types">Available Types</a><ul>
+<li><a class="reference internal" href="#motion-handheld-device">Motion (handheld device)</a></li>
+<li><a class="reference internal" href="#headphone-motion">Headphone Motion</a></li>
+<li><a class="reference internal" href="#pedometer">Pedometer</a></li>
+<li><a class="reference internal" href="#altimeter">Altimeter</a></li>
+<li><a class="reference internal" href="#activity-classification">Activity Classification</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_entitlements.html">Adding the Entitlement to the Godot Mac Editor.</a></li>
+</li>
+<li><a class="reference internal" href="#info-plist-and-permissions">Info.plist and Permissions</a></li>
+<li><a class="reference internal" href="#choosing-between-raw-sensors-and-device-motion">Choosing Between Raw Sensors and Device Motion</a></li>
+<li><a class="reference internal" href="#platform-notes">Platform Notes</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#tilt-controlled-camera-with-device-motion">Tilt-controlled camera with device motion</a></li>
+<li><a class="reference internal" href="#step-counter">Step counter</a></li>
+<li><a class="reference internal" href="#querying-historical-activity">Querying historical activity</a></li>
+<li><a class="reference internal" href="#head-tracked-audio-with-airpods">Head-tracked audio with AirPods</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="class_applefilepicker.html">AppleFilePicker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_appleurl.html">AppleURL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aranchor.html">ARAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyanchor.html">ARBodyAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyskeleton.html">ARBodySkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodytrackingconfiguration.html">ARBodyTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcamera.html">ARCamera</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcoachingoverlay.html">ARCoachingOverlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcollaborationdata.html">ARCollaborationData</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arenvironmentprobeanchor.html">AREnvironmentProbeAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arfaceanchor.html">ARFaceAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arframe.html">ARFrame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeoanchor.html">ARGeoAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeotrackingconfiguration.html">ARGeoTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandanchor.html">ARHandAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandskeleton.html">ARHandSkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arimageanchor.html">ARImageAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arlightestimate.html">ARLightEstimate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_armeshanchor.html">ARMeshAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arplaneanchor.html">ARPlaneAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arpointcloud.html">ARPointCloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastquery.html">ARRaycastQuery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastresult.html">ARRaycastResult</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arsession.html">ARSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_artrackedraycast.html">ARTrackedRaycast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldmap.html">ARWorldMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldtrackingconfiguration.html">ARWorldTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aswebauthenticationsession.html">ASWebAuthenticationSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_foundation.html">Foundation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkaccesspoint.html">GKAccessPoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementchallenge.html">GKAchievementChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementdescription.html">GKAchievementDescription</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallenge.html">GKChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallengedefinition.html">GKChallengeDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkerror.html">GKError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivity.html">GKGameActivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivitydefinition.html">GKGameActivityDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgamecenterviewcontroller.html">GKGameCenterViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkinvite.html">GKInvite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboard.html">GKLeaderboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardentry.html">GKLeaderboardEntry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardscore.html">GKLeaderboardScore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardset.html">GKLeaderboardSet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gklocalplayer.html">GKLocalPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatch.html">GKMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmaker.html">GKMatchmaker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmakerviewcontroller.html">GKMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchrequest.html">GKMatchRequest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gknotificationbanner.html">GKNotificationBanner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkplayer.html">GKPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gksavedgame.html">GKSavedGame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkscorechallenge.html">GKScoreChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchange.html">GKTurnBasedExchange</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchangereply.html">GKTurnBasedExchangeReply</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatch.html">GKTurnBasedMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatchmakerviewcontroller.html">GKTurnBasedMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedparticipant.html">GKTurnBasedParticipant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkvoicechat.html">GKVoiceChat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_productview.html">ProductView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_signalproxy.html">SignalProxy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storekitmanager.html">StoreKitManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproduct.html">StoreProduct</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpaymentmode.html">StoreProductPaymentMode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpurchaseoption.html">StoreProductPurchaseOption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionoffer.html">StoreProductSubscriptionOffer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionperiod.html">StoreProductSubscriptionPeriod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfo.html">StoreSubscriptionInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninforenewalinfo.html">StoreSubscriptionInfoRenewalInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfostatus.html">StoreSubscriptionInfoStatus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storetransaction.html">StoreTransaction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeview.html">StoreView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionofferview.html">SubscriptionOfferView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionstoreview.html">SubscriptionStoreView</a></li>
+</li>
+</ul>
+</li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="authenticationservices_authenticationservicesguide.html" title="previous chapter">Using Apple’s AuthenticationServices APIs with Godot</a></li>
-      <li>Next: <a href="gamecenter_gamecenterguide.html" title="next chapter">Using Apple’s GameKit APIs with Godot</a></li>
-  </ul></li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="authenticationservices_authenticationservicesguide.html"
+                          title="previous chapter">Using Apple’s AuthenticationServices APIs with Godot</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="foundation_foundationguide.html"
+                          title="next chapter">Use iCloud key-value storage with Godot</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &#169;.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
-      
-      |
-      <a href="_sources/coremotion_coremotionguide.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="foundation_foundationguide.html" title="Use iCloud key-value storage with Godot"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="authenticationservices_authenticationservicesguide.html" title="Using Apple’s AuthenticationServices APIs with Godot"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using Apple’s CoreMotion APIs with Godot</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+    </div>
   </body>
 </html>

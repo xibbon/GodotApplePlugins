@@ -17,6 +17,7 @@ developer.apple.com and navigate to "Certificates, Identifiers & Profiles".
 
 .. _gamecenter_entitlements__adding-the-entitlement-to-the-godot-mac-editor:
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Adding the Entitlement to the Godot Mac Editor.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

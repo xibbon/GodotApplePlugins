@@ -15,6 +15,7 @@ Guides
     arkit_arkitguide
     authenticationservices_authenticationservicesguide
     coremotion_coremotionguide
+    foundation_foundationguide
     gamecenter_gamecenterguide
     storekit_storekitguide
 
@@ -35,7 +36,6 @@ Other objects
     :maxdepth: 1
     :name: toc-class-ref-objects
 
-    class_object
     class_applefilepicker
     class_appleurl
     class_aranchor
@@ -68,6 +68,19 @@ Other objects
     class_aspasswordcredential
     class_aswebauthenticationsession
     class_avaudiosession
+    class_cmabsolutealtitudedata
+    class_cmaccelerometerdata
+    class_cmaltimeter
+    class_cmaltitudedata
+    class_cmdevicemotion
+    class_cmgyrodata
+    class_cmheadphonemotionmanager
+    class_cmmagnetometerdata
+    class_cmmotionactivity
+    class_cmmotionactivitymanager
+    class_cmmotionmanager
+    class_cmpedometer
+    class_cmpedometerdata
     class_foundation
     class_gamecentermanager
     class_gkaccesspoint
@@ -100,6 +113,7 @@ Other objects
     class_gkturnbasedmatchmakerviewcontroller
     class_gkturnbasedparticipant
     class_gkvoicechat
+    class_nsubiquitouskeyvaluestore
     class_productview
     class_signalproxy
     class_storekitmanager

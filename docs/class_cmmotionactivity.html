@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMMotionActivity &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmmotionactivity.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMMotionActivityManager" href="class_cmmotionactivitymanager.html" />
+    <link rel="prev" title="CMMagnetometerData" href="class_cmmagnetometerdata.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_cmmotionactivitymanager.html" title="CMMotionActivityManager"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmagnetometerdata.html" title="CMMagnetometerData"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMotionActivity</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmmotionactivity">
+<span id="class-cmmotionactivity"></span><h1>CMMotionActivity<a class="headerlink" href="#cmmotionactivity" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>A user-activity classification (walking, running, automotive, etc.) from the system motion coprocessor.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMMotionActivity</span></code>. More than one activity flag may be set simultaneously (e.g. <a class="reference internal" href="#class-cmmotionactivity-property-walking"><span class="std std-ref">walking</span></a> and <a class="reference internal" href="#class-cmmotionactivity-property-automotive"><span class="std std-ref">automotive</span></a> when the user is moving inside a vehicle). The system uses <a class="reference internal" href="#class-cmmotionactivity-property-confidence"><span class="std std-ref">confidence</span></a> to indicate how certain the classification is.</p>
+<p>See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmmotionactivity">CMMotionActivity reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-automotive"><span class="std std-ref">automotive</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">Confidence</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-confidence"><span class="std std-ref">confidence</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-cycling"><span class="std std-ref">cycling</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-running"><span class="std std-ref">running</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-start-date"><span class="std std-ref">start_date</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-stationary"><span class="std std-ref">stationary</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-unknown"><span class="std std-ref">unknown</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivity-property-walking"><span class="std std-ref">walking</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading">¶</a></h2>
+<p class="classref-enumeration" id="enum-cmmotionactivity-confidence">enum <strong>Confidence</strong>: <a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-cmmotionactivity-constant-low"><a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">Confidence</span></a> <strong>LOW</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Low confidence in the classification.</p>
+<p class="classref-enumeration-constant" id="class-cmmotionactivity-constant-medium"><a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">Confidence</span></a> <strong>MEDIUM</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Medium confidence in the classification.</p>
+<p class="classref-enumeration-constant" id="class-cmmotionactivity-constant-high"><a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">Confidence</span></a> <strong>HIGH</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>High confidence in the classification.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-cmmotionactivity-property-automotive"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>automotive</strong> <a class="reference internal" href="#class-cmmotionactivity-property-automotive"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_automotive</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_automotive</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the user appears to be in a vehicle.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionactivity-property-confidence"><a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">Confidence</span></a> <strong>confidence</strong> <a class="reference internal" href="#class-cmmotionactivity-property-confidence"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_confidence</strong>(value: <a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">Confidence</span></a>)</p></li>
+<li><p><a class="reference internal" href="#enum-cmmotionactivity-confidence"><span class="std std-ref">Confidence</span></a> <strong>get_confidence</strong>()</p></li>
+</ul>
+<p>How confident the system is in this classification.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionactivity-property-cycling"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>cycling</strong> <a class="reference internal" href="#class-cmmotionactivity-property-cycling"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_cycling</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_cycling</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the user appears to be cycling.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionactivity-property-running"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>running</strong> <a class="reference internal" href="#class-cmmotionactivity-property-running"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_running</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_running</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the user appears to be running.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionactivity-property-start-date"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>start_date</strong> <a class="reference internal" href="#class-cmmotionactivity-property-start-date"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_start_date</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_start_date</strong>()</p></li>
+</ul>
+<p>Unix-time start of the period for which this activity applies, in seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionactivity-property-stationary"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>stationary</strong> <a class="reference internal" href="#class-cmmotionactivity-property-stationary"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_stationary</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_stationary</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the user appears to be stationary.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionactivity-property-unknown"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>unknown</strong> <a class="reference internal" href="#class-cmmotionactivity-property-unknown"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_unknown</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_unknown</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the system cannot classify the user’s activity.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionactivity-property-walking"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>walking</strong> <a class="reference internal" href="#class-cmmotionactivity-property-walking"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_walking</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_walking</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the user appears to be walking.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMMotionActivity</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmmagnetometerdata.html"
+                          title="previous chapter">CMMagnetometerData</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_cmmotionactivitymanager.html"
+                          title="next chapter">CMMotionActivityManager</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_cmmotionactivitymanager.html" title="CMMotionActivityManager"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmagnetometerdata.html" title="CMMagnetometerData"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMotionActivity</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

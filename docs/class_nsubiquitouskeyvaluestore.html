@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>NSUbiquitousKeyValueStore &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_nsubiquitouskeyvaluestore.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ProductView" href="class_productview.html" />
+    <link rel="prev" title="GKVoiceChat" href="class_gkvoicechat.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_productview.html" title="ProductView"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_gkvoicechat.html" title="GKVoiceChat"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">NSUbiquitousKeyValueStore</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="nsubiquitouskeyvaluestore">
+<span id="class-nsubiquitouskeyvaluestore"></span><h1>NSUbiquitousKeyValueStore<a class="headerlink" href="#nsubiquitouskeyvaluestore" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>Shares small preferences between a user’s Apple devices through iCloud.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Uses Apple’s shared default key-value store. Keep this wrapper while you need its signals. Connect <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a> before you call <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-synchronize"><span class="std std-ref">synchronize()</span></a> at launch. Each wrapper registers a native</p>
+<p>observer and removes it when released. Keep a local copy of preferences so the app works without iCloud. The</p>
+<p>exported app needs the com.apple.developer.ubiquity-kvstore-identifier entitlement. Use the same store</p>
+<p>identifier on all app targets that must share values.</p>
+<p>Values can be bool, int, float, String, PackedByteArray, Array, or Dictionary. Dictionary keys must be</p>
+<p>strings. Nested containers can have at most 64 levels. Null entries and other Godot types are rejected.</p>
+<p>Setters return false for invalid input. A true result only confirms that the binding passed the write to</p>
+<p>Apple. It does not confirm cloud delivery or quota acceptance.</p>
+<p>Apple permits 1,024 keys and 1 MB of values in total. A single value can be at most 1 MB. Each key can have</p>
+<p>at most 128 UTF-16 code units. Use this store for preferences that change infrequently. Keep sensitive data</p>
+<p>in Keychain. Windows and Linux stubs do not store or synchronize values.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/xibbon/GodotApplePlugins/blob/main/Sources/GodotFoundation/FoundationGuide.md">Foundation Integration Guide</a></p></li>
+<li><p><a class="reference external" href="https://developer.apple.com/documentation/foundation/synchronizing-app-preferences-with-icloud">Apple: Synchronizing App Preferences with iCloud</a></p></li>
+<li><p><a class="reference external" href="https://developer.apple.com/documentation/foundation/nsubiquitouskeyvaluestore">Apple: NSUbiquitousKeyValueStore</a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-property-dictionary-representation"><span class="std std-ref">dictionary_representation</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-array-for-key"><span class="std std-ref">array_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-bool-for-key"><span class="std std-ref">bool_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-data-for-key"><span class="std std-ref">data_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore"><span class="std std-ref">NSUbiquitousKeyValueStore</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-default-store"><span class="std std-ref">default_store</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-dictionary-for-key"><span class="std std-ref">dictionary_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-double-for-key"><span class="std std-ref">double_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-long-long-for-key"><span class="std std-ref">long_long_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-remove-object-for-key"><span class="std std-ref">remove_object_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-array"><span class="std std-ref">set_array</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-bool"><span class="std std-ref">set_bool</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-data"><span class="std std-ref">set_data</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-dictionary"><span class="std std-ref">set_dictionary</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-double"><span class="std std-ref">set_double</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-long-long"><span class="std std-ref">set_long_long</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-object"><span class="std std-ref">set_object</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-string"><span class="std std-ref">set_string</span></a>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-string-for-key"><span class="std std-ref">string_for_key</span></a>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-synchronize"><span class="std std-ref">synchronize</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
+<p class="classref-signal" id="class-nsubiquitouskeyvaluestore-signal-did-change-externally"><strong>did_change_externally</strong>(reason: <a class="reference internal" href="#enum-nsubiquitouskeyvaluestore-changereason"><span class="std std-ref">ChangeReason</span></a>, changed_keys: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedstringarray.html#class-packedstringarray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedStringArray</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">🔗</span></a></p>
+<p>Reports Apple’s external change notification on the main thread when this signal has a connection. The</p>
+<p>reason is a <a class="reference internal" href="#enum-nsubiquitouskeyvaluestore-changereason"><span class="std std-ref">ChangeReason</span></a> value. Read the changed keys from the store to get their current values;</p>
+<p>keys can have been removed. The key list is empty when Apple omits it. Handle account and quota reasons</p>
+<p>even when the list is empty. Local writes do not emit this signal.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading">¶</a></h2>
+<p class="classref-enumeration" id="enum-nsubiquitouskeyvaluestore-changereason">enum <strong>ChangeReason</strong>: <a class="reference internal" href="#enum-nsubiquitouskeyvaluestore-changereason"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-nsubiquitouskeyvaluestore-constant-server-change"><a class="reference internal" href="#enum-nsubiquitouskeyvaluestore-changereason"><span class="std std-ref">ChangeReason</span></a> <strong>SERVER_CHANGE</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>Values changed in iCloud. Read the changed keys and update local preferences.</p>
+<p class="classref-enumeration-constant" id="class-nsubiquitouskeyvaluestore-constant-initial-sync-change"><a class="reference internal" href="#enum-nsubiquitouskeyvaluestore-changereason"><span class="std std-ref">ChangeReason</span></a> <strong>INITIAL_SYNC_CHANGE</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Values were downloaded during initial synchronization. Read them before you upload defaults.</p>
+<p class="classref-enumeration-constant" id="class-nsubiquitouskeyvaluestore-constant-quota-violation-change"><a class="reference internal" href="#enum-nsubiquitouskeyvaluestore-changereason"><span class="std std-ref">ChangeReason</span></a> <strong>QUOTA_VIOLATION_CHANGE</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>The store exceeded its quota. Reduce stored data and keep local preferences available.</p>
+<p class="classref-enumeration-constant" id="class-nsubiquitouskeyvaluestore-constant-account-change"><a class="reference internal" href="#enum-nsubiquitouskeyvaluestore-changereason"><span class="std std-ref">ChangeReason</span></a> <strong>ACCOUNT_CHANGE</strong> = <code class="docutils literal notranslate"><span class="pre">3</span></code></p>
+<p>The user changed the Apple account. Apply the app’s account policy. Do not upload the previous account’s</p>
+<p>preferences automatically.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-nsubiquitouskeyvaluestore-property-dictionary-representation"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a> <strong>dictionary_representation</strong> <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-property-dictionary-representation"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a> <strong>get_dictionary_representation</strong>()</p></li>
+</ul>
+<p>A snapshot of all stored keys and values. Data becomes PackedByteArray. Native Date values become float</p>
+<p>Unix seconds.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-array-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a> <strong>array_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-array-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the Array value for the key. Returns an empty array if the key is absent. Use <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key()</span></a> to check whether a key exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-bool-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>bool_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-bool-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the bool value for the key. Returns false if the key is absent. Use <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key()</span></a> to</p>
+<p>check whether a key exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-data-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a> <strong>data_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-data-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the PackedByteArray value for the key. Returns an empty byte array if the key is absent. Use</p>
+<p><a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key()</span></a> to check whether a key exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-default-store"><a class="reference internal" href="#class-nsubiquitouskeyvaluestore"><span class="std std-ref">NSUbiquitousKeyValueStore</span></a> <strong>default_store</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-default-store"><span class="std std-ref">🔗</span></a></p>
+<p>Returns a new Godot wrapper for Apple’s shared default store. Construction with new() uses the same native</p>
+<p>store. Keep one wrapper to receive its signal. On Windows and Linux, the stub returns null.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-dictionary-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a> <strong>dictionary_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-dictionary-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the Dictionary value for the key. Returns an empty dictionary if the key is absent. Use <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key()</span></a> to check whether a key exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-double-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>double_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-double-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the float value for the key. Returns 0.0 if the key is absent. Use <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key()</span></a> to</p>
+<p>check whether a key exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-long-long-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>long_long_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-long-long-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the int value for the key. Returns 0 if the key is absent. Use <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key()</span></a> to check</p>
+<p>whether a key exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-object-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a> <strong>object_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the value, or null if the key is absent. Data becomes PackedByteArray. Nested arrays and</p>
+<p>dictionaries are converted recursively. Native Date values become float Unix seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-remove-object-for-key"><abbr title="No return value.">void</abbr> <strong>remove_object_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-remove-object-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Removes the key and its value. Local removal does not emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-array"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_array</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-array"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value for the key. Returns false for invalid input. A true result confirms that the binding</p>
+<p>passed the write to Apple. It does not confirm quota acceptance or cloud delivery. Local writes do not</p>
+<p>emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>. All dictionary keys must be String. Containers can contain only</p>
+<p>supported property list values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-bool"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_bool</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-bool"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value for the key. Returns false for invalid input. A true result confirms that the binding</p>
+<p>passed the write to Apple. It does not confirm quota acceptance or cloud delivery. Local writes do not</p>
+<p>emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-data"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_data</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-data"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value for the key. Returns false for invalid input. A true result confirms that the binding</p>
+<p>passed the write to Apple. It does not confirm quota acceptance or cloud delivery. Local writes do not</p>
+<p>emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-dictionary"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_dictionary</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-dictionary"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value for the key. Returns false for invalid input. A true result confirms that the binding</p>
+<p>passed the write to Apple. It does not confirm quota acceptance or cloud delivery. Local writes do not</p>
+<p>emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>. All dictionary keys must be String. Containers can contain only</p>
+<p>supported property list values.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-double"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_double</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-double"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value for the key. Returns false for invalid input. A true result confirms that the binding</p>
+<p>passed the write to Apple. It does not confirm quota acceptance or cloud delivery. Local writes do not</p>
+<p>emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-long-long"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_long_long</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-long-long"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value for the key. Returns false for invalid input. A true result confirms that the binding</p>
+<p>passed the write to Apple. It does not confirm quota acceptance or cloud delivery. Local writes do not</p>
+<p>emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-object"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_object</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-object"><span class="std std-ref">🔗</span></a></p>
+<p>Sets a supported property list value. A top-level null removes the key. Unsupported types, null entries in</p>
+<p>containers, non-string dictionary keys, and containers deeper than 64 levels cause the entire write to</p>
+<p>fail. Returns false for invalid input. A true result does not confirm quota acceptance or cloud delivery.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-set-string"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>set_string</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-set-string"><span class="std std-ref">🔗</span></a></p>
+<p>Sets the value for the key. Returns false for invalid input. A true result confirms that the binding</p>
+<p>passed the write to Apple. It does not confirm quota acceptance or cloud delivery. Local writes do not</p>
+<p>emit <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-string-for-key"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a> <strong>string_for_key</strong>(key: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-string-for-key"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the String value for the key. Returns an empty string if the key is absent. Use <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-object-for-key"><span class="std std-ref">object_for_key()</span></a> to check whether a key exists.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-nsubiquitouskeyvaluestore-method-synchronize"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>synchronize</strong>() <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-method-synchronize"><span class="std std-ref">🔗</span></a></p>
+<p>Returns Apple’s synchronization result. Connect <a class="reference internal" href="#class-nsubiquitouskeyvaluestore-signal-did-change-externally"><span class="std std-ref">did_change_externally</span></a> first. Call this at launch</p>
+<p>or when the app returns to the foreground. This does not force an immediate upload or confirm delivery to</p>
+<p>other devices. A false result can indicate missing app entitlements.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">NSUbiquitousKeyValueStore</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_gkvoicechat.html"
+                          title="previous chapter">GKVoiceChat</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_productview.html"
+                          title="next chapter">ProductView</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_productview.html" title="ProductView"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_gkvoicechat.html" title="GKVoiceChat"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">NSUbiquitousKeyValueStore</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

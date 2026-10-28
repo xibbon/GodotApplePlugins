@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Use iCloud key-value storage with Godot &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/foundation_foundationguide.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Apple’s GameKit APIs with Godot" href="gamecenter_gamecenterguide.html" />
+    <link rel="prev" title="Using Apple’s CoreMotion APIs with Godot" href="coremotion_coremotionguide.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gamecenter_gamecenterguide.html" title="Using Apple’s GameKit APIs with Godot"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="coremotion_coremotionguide.html" title="Using Apple’s CoreMotion APIs with Godot"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Use iCloud key-value storage with Godot</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="use-icloud-key-value-storage-with-godot">
+<span id="foundation-foundationguide-use-icloud-key-value-storage-with-godot"></span><h1>Use iCloud key-value storage with Godot<a class="headerlink" href="#use-icloud-key-value-storage-with-godot" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">NSUbiquitousKeyValueStore</span></code> shares small preferences between a user’s Apple
+devices. Use it for settings that change infrequently. Keep a local copy with
+<code class="docutils literal notranslate"><span class="pre">ConfigFile</span></code> or another local storage system. Your game must work when iCloud is
+not available.</p>
+<p>See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/foundation/nsubiquitouskeyvaluestore">class reference</a>
+and <a class="reference external" href="https://developer.apple.com/documentation/foundation/synchronizing-app-preferences-with-icloud">preference synchronization sample</a>.</p>
+<section id="configure-the-exported-app">
+<span id="foundation-foundationguide-configure-the-exported-app"></span><h2>Configure the exported app<a class="headerlink" href="#configure-the-exported-app" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Include <code class="docutils literal notranslate"><span class="pre">GodotApplePluginsFoundation</span></code> and <code class="docutils literal notranslate"><span class="pre">GodotApplePluginsRuntime</span></code> in the project.</p></li>
+<li><p>In Xcode, select the exported app target. Add the <strong>iCloud</strong> capability.</p></li>
+<li><p>Select the <strong>Key-value storage</strong> service.</p></li>
+<li><p>Check the app’s signed entitlements. The app needs
+<code class="docutils literal notranslate"><span class="pre">com.apple.developer.ubiquity-kvstore-identifier</span></code>.</p></li>
+<li><p>Use the same store identifier in the iOS, macOS, and visionOS app targets
+that must share preferences. Sign them with provisioning profiles that
+include this entitlement.</p></li>
+<li><p>For a device test, enable iCloud Drive and sign in with the same Apple
+account on two devices.</p></li>
+</ol>
+<p>An entitlement file can contain this entry. Replace the example identifier
+with your store identifier:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;key&gt;</span>com.apple.developer.ubiquity-kvstore-identifier<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;string&gt;</span>$(TeamIdentifierPrefix)com.example.game<span class="nt">&lt;/string&gt;</span>
+</pre></div>
+</div>
+<p>Set this entitlement on the app target. The plugin cannot add it at runtime.
+An unsigned Godot editor is not a substitute for a signed app test.
+See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.ubiquity-kvstore-identifier">entitlement reference</a>.</p>
+</section>
+<section id="read-and-write-a-preference">
+<span id="foundation-foundationguide-read-and-write-a-preference"></span><h2>Read and write a preference<a class="headerlink" href="#read-and-write-a-preference" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">default_store()</span></code> returns a Godot wrapper for Apple’s shared default store.
+<code class="docutils literal notranslate"><span class="pre">NSUbiquitousKeyValueStore.new()</span></code> uses the same native store. Each wrapper has
+its own signal. Keep one wrapper in an Autoload or another long-lived object.</p>
+<p>Connect <code class="docutils literal notranslate"><span class="pre">did_change_externally</span></code> before you call <code class="docutils literal notranslate"><span class="pre">synchronize()</span></code> at launch.
+The wrapper registers the native observer at creation. It emits the signal
+on the main thread only when the signal has a connection. It removes the
+observer when the wrapper is released. It does not call <code class="docutils literal notranslate"><span class="pre">synchronize()</span></code> for you.</p>
+<p>This example keeps the background choice in <code class="docutils literal notranslate"><span class="pre">ConfigFile</span></code>. It reads the local
+choice first. It applies a cloud value only when the key exists. It does not
+upload a default value at launch, which could replace a value from another device.</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">Node</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">COLOR_KEY</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s2">"background_color"</span>
+<span class="k">const</span><span class="w"> </span><span class="n">LOCAL_PATH</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s2">"user://preferences.cfg"</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">cloud</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">NSUbiquitousKeyValueStore</span><span class="o">.</span><span class="n">default_store</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">preferences</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">ConfigFile</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">background_color</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="n">preferences</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">LOCAL_PATH</span><span class="p">)</span>
+<span class="w">    </span><span class="n">background_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">"appearance"</span><span class="p">,</span><span class="w"> </span><span class="n">COLOR_KEY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">cloud</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">        </span><span class="n">_apply_color</span><span class="p">()</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="n">cloud</span><span class="o">.</span><span class="n">did_change_externally</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_cloud_changed</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">cloud</span><span class="o">.</span><span class="n">synchronize</span><span class="p">():</span>
+<span class="w">        </span><span class="n">push_warning</span><span class="p">(</span><span class="s2">"iCloud synchronization could not start. Check the app entitlements."</span><span class="p">)</span>
+<span class="w">    </span><span class="n">_read_cloud_color</span><span class="p">()</span>
+<span class="w">    </span><span class="n">_apply_color</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">choose_background_color</span><span class="p">(</span><span class="n">index</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="n">background_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">index</span>
+<span class="w">    </span><span class="n">_save_local_color</span><span class="p">()</span>
+<span class="w">    </span><span class="n">_apply_color</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">cloud</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">        </span><span class="n">cloud</span><span class="o">.</span><span class="n">set_long_long</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">COLOR_KEY</span><span class="p">)</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_cloud_changed</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">changed_keys</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">PackedStringArray</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">reason</span><span class="p">:</span>
+<span class="w">        </span><span class="n">NSUbiquitousKeyValueStore</span><span class="o">.</span><span class="n">QUOTA_VIOLATION_CHANGE</span><span class="p">:</span>
+<span class="w">            </span><span class="n">push_warning</span><span class="p">(</span><span class="s2">"The iCloud preference store is full."</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="n">NSUbiquitousKeyValueStore</span><span class="o">.</span><span class="n">ACCOUNT_CHANGE</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># Apply your game's account policy. Keep the local choice here.</span>
+<span class="w">            </span><span class="c1"># Do not upload the previous account's preferences automatically.</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="n">NSUbiquitousKeyValueStore</span><span class="o">.</span><span class="n">SERVER_CHANGE</span><span class="p">,</span><span class="w"> </span><span class="n">NSUbiquitousKeyValueStore</span><span class="o">.</span><span class="n">INITIAL_SYNC_CHANGE</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">changed_keys</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="n">COLOR_KEY</span><span class="p">):</span>
+<span class="w">                </span><span class="n">_read_cloud_color</span><span class="p">()</span>
+<span class="w">                </span><span class="n">_apply_color</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_read_cloud_color</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cloud</span><span class="o">.</span><span class="n">object_for_key</span><span class="p">(</span><span class="n">COLOR_KEY</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">typeof</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TYPE_INT</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">        </span><span class="n">background_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
+<span class="w">        </span><span class="n">_save_local_color</span><span class="p">()</span>
+<span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># This example keeps the local choice when the cloud key is absent.</span>
+<span class="w">        </span><span class="c1"># Use your game's deletion policy here.</span>
+<span class="w">        </span><span class="k">pass</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_save_local_color</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="n">preferences</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">"appearance"</span><span class="p">,</span><span class="w"> </span><span class="n">COLOR_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">background_color</span><span class="p">)</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">preferences</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">LOCAL_PATH</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OK</span><span class="p">:</span>
+<span class="w">        </span><span class="n">push_warning</span><span class="p">(</span><span class="s2">"Could not save local preferences: </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">error_string</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_apply_color</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Update the game's background from background_color.</span>
+<span class="w">    </span><span class="k">pass</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_exit_tree</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">cloud</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">cloud</span><span class="o">.</span><span class="n">did_change_externally</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="n">_on_cloud_changed</span><span class="p">):</span>
+<span class="w">        </span><span class="n">cloud</span><span class="o">.</span><span class="n">did_change_externally</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="n">_on_cloud_changed</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Local writes do not emit <code class="docutils literal notranslate"><span class="pre">did_change_externally</span></code>. Update your local preferences
+and game state when you write. A notification reports keys, not values. Read
+each changed key from the store. A key can have been removed.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">synchronize()</span></code> sparingly, usually at launch or when the app returns to
+the foreground. It returns Apple’s result. A <code class="docutils literal notranslate"><span class="pre">true</span></code> result does not confirm
+that other devices received your changes. iCloud controls upload times and can
+delay frequent writes. See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/foundation/nsubiquitouskeyvaluestore/synchronize(">synchronize reference</a>).</p>
+</section>
+<section id="handle-each-change-reason">
+<span id="foundation-foundationguide-handle-each-change-reason"></span><h2>Handle each change reason<a class="headerlink" href="#handle-each-change-reason" title="Link to this heading">¶</a></h2>
+<p>The signal arguments are <code class="docutils literal notranslate"><span class="pre">reason:</span> <span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">changed_keys:</span> <span class="pre">PackedStringArray</span></code>.
+The constants are members of <code class="docutils literal notranslate"><span class="pre">NSUbiquitousKeyValueStore.ChangeReason</span></code>.</p>
+<div class="line-block">
+<div class="line">Constant | Value | Action |</div>
+<div class="line">— | — | — |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SERVER_CHANGE</span></code> | 0 | Read the changed keys and update local preferences. |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INITIAL_SYNC_CHANGE</span></code> | 1 | Read the downloaded keys before you upload defaults. |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">QUOTA_VIOLATION_CHANGE</span></code> | 2 | Reduce stored data. Keep local preferences available. |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ACCOUNT_CHANGE</span></code> | 3 | Apply your game’s policy for the new account. |</div>
+</div>
+<p>The key list is empty when Apple omits it. This can occur for account or quota
+notifications. Handle the reason even if the key list is empty.
+See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/foundation/nsubiquitouskeyvaluestore/didchangeexternallynotification">notification reference</a>.</p>
+</section>
+<section id="supported-values">
+<span id="foundation-foundationguide-supported-values"></span><h2>Supported values<a class="headerlink" href="#supported-values" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">Godot type | Apple type | Methods |</div>
+<div class="line">— | — | — |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">bool</span></code> | <code class="docutils literal notranslate"><span class="pre">Bool</span></code> | <code class="docutils literal notranslate"><span class="pre">set_bool</span></code>, <code class="docutils literal notranslate"><span class="pre">bool_for_key</span></code> |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">int</span></code> | <code class="docutils literal notranslate"><span class="pre">Int64</span></code> | <code class="docutils literal notranslate"><span class="pre">set_long_long</span></code>, <code class="docutils literal notranslate"><span class="pre">long_long_for_key</span></code> |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">float</span></code> | <code class="docutils literal notranslate"><span class="pre">Double</span></code> | <code class="docutils literal notranslate"><span class="pre">set_double</span></code>, <code class="docutils literal notranslate"><span class="pre">double_for_key</span></code> |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">String</span></code> | <code class="docutils literal notranslate"><span class="pre">String</span></code> | <code class="docutils literal notranslate"><span class="pre">set_string</span></code>, <code class="docutils literal notranslate"><span class="pre">string_for_key</span></code> |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">PackedByteArray</span></code> | <code class="docutils literal notranslate"><span class="pre">Data</span></code> | <code class="docutils literal notranslate"><span class="pre">set_data</span></code>, <code class="docutils literal notranslate"><span class="pre">data_for_key</span></code> |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Array</span></code> | Property list array | <code class="docutils literal notranslate"><span class="pre">set_array</span></code>, <code class="docutils literal notranslate"><span class="pre">array_for_key</span></code> |</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Dictionary</span></code> | Property list dictionary | <code class="docutils literal notranslate"><span class="pre">set_dictionary</span></code>, <code class="docutils literal notranslate"><span class="pre">dictionary_for_key</span></code> |</div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">set_object(value,</span> <span class="pre">key)</span></code> and <code class="docutils literal notranslate"><span class="pre">object_for_key(key)</span></code> for a supported value of
+any type. Arrays and dictionaries can contain these types, including nested
+containers. All dictionary keys must be <code class="docutils literal notranslate"><span class="pre">String</span></code>. Containers must have at most
+64 levels. Null values inside containers and other Godot types are rejected.
+The entire write is rejected if one entry is invalid.</p>
+<p>Each setter returns <code class="docutils literal notranslate"><span class="pre">false</span></code> for an invalid key or unsupported value. A <code class="docutils literal notranslate"><span class="pre">true</span></code>
+result means that the binding passed the value to Apple. It does not confirm
+cloud delivery or quota acceptance. The binding reports invalid input as a
+Godot error.</p>
+<p><code class="docutils literal notranslate"><span class="pre">object_for_key()</span></code> returns <code class="docutils literal notranslate"><span class="pre">null</span></code> for a missing key. Typed getters return
+<code class="docutils literal notranslate"><span class="pre">false</span></code>, zero, or an empty value when the key is absent. Use <code class="docutils literal notranslate"><span class="pre">object_for_key()</span></code>
+to distinguish a missing key from a stored zero or empty value.
+Apple <code class="docutils literal notranslate"><span class="pre">Date</span></code> values written by native code are returned as Unix seconds in a
+Godot <code class="docutils literal notranslate"><span class="pre">float</span></code>. To preserve this meaning across devices, store dates as Unix
+seconds on all clients.</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="n">cloud</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="nb nb-Type">PackedByteArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]),</span><span class="w"> </span><span class="s2">"small_blob"</span><span class="p">)</span>
+<span class="n">cloud</span><span class="o">.</span><span class="n">set_dictionary</span><span class="p">({</span><span class="s2">"music"</span><span class="p">:</span><span class="w"> </span><span class="bp">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">},</span><span class="w"> </span><span class="s2">"audio"</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">audio</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cloud</span><span class="o">.</span><span class="n">dictionary_for_key</span><span class="p">(</span><span class="s2">"audio"</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">all_preferences</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cloud</span><span class="o">.</span><span class="n">dictionary_representation</span>
+<span class="n">cloud</span><span class="o">.</span><span class="n">remove_object_for_key</span><span class="p">(</span><span class="s2">"small_blob"</span><span class="p">)</span>
+<span class="c1"># A top-level null also removes the key.</span>
+<span class="n">cloud</span><span class="o">.</span><span class="n">set_object</span><span class="p">(</span><span class="nb nb-Type">null</span><span class="p">,</span><span class="w"> </span><span class="s2">"audio"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="storage-limits-and-device-checks">
+<span id="foundation-foundationguide-storage-limits-and-device-checks"></span><h2>Storage limits and device checks<a class="headerlink" href="#storage-limits-and-device-checks" title="Link to this heading">¶</a></h2>
+<p>Apple permits up to 1,024 keys and 1 MB of values in total. A single value
+can be at most 1 MB. Each key can contain at most 128 UTF-16 code units.
+The binding rejects longer keys before Apple can raise an exception.
+Use files or another storage system for large save data. Store sensitive data
+in Keychain. Apple stores key-value data on disk without encryption.
+See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/foundation/nsubiquitouskeyvaluestore">storage limits</a>.</p>
+<p>Test a signed app on two devices. Change a preference on the first device.
+Check that the second device receives <code class="docutils literal notranslate"><span class="pre">SERVER_CHANGE</span></code> and reads the new value.
+Repeat with a removed key. Check the initial download on a new installation.
+Also check offline use and your account-change policy.</p>
+<p>The Windows and Linux stubs expose the class so shared scripts can load.
+They do not store preferences or synchronize with iCloud. Their
+<code class="docutils literal notranslate"><span class="pre">default_store()</span></code> method returns <code class="docutils literal notranslate"><span class="pre">null</span></code>. Keep local storage available on these
+platforms, as the example does.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Use iCloud key-value storage with Godot</a><ul>
+<li><a class="reference internal" href="#configure-the-exported-app">Configure the exported app</a></li>
+<li><a class="reference internal" href="#read-and-write-a-preference">Read and write a preference</a></li>
+<li><a class="reference internal" href="#handle-each-change-reason">Handle each change reason</a></li>
+<li><a class="reference internal" href="#supported-values">Supported values</a></li>
+<li><a class="reference internal" href="#storage-limits-and-device-checks">Storage limits and device checks</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="coremotion_coremotionguide.html"
+                          title="previous chapter">Using Apple’s CoreMotion APIs with Godot</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="gamecenter_gamecenterguide.html"
+                          title="next chapter">Using Apple’s GameKit APIs with Godot</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gamecenter_gamecenterguide.html" title="Using Apple’s GameKit APIs with Godot"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="coremotion_coremotionguide.html" title="Using Apple’s CoreMotion APIs with Godot"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Use iCloud key-value storage with Godot</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

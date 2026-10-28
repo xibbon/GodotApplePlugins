@@ -5,109 +5,120 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>GKMatch &#8212; GodotApplePlugins  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <title>GKMatch &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/tabs.js?v=3030b3cb"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_gkmatch.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="GKMatchmaker" href="class_gkmatchmaker.html" />
-    <link rel="prev" title="GKLocalPlayer" href="class_gklocalplayer.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-
-  
-  
-
+    <link rel="prev" title="GKLocalPlayer" href="class_gklocalplayer.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_gkmatchmaker.html" title="GKMatchmaker"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_gklocalplayer.html" title="GKLocalPlayer"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GKMatch</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <section id="gkmatch">
 <span id="class-gkmatch"></span><h1>GKMatch<a class="headerlink" href="#gkmatch" title="Link to this heading">¶</a></h1>
-<p><strong>Inherits:</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
 <p>Represents an active real-time Game Center match.</p>
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GKMatch</span></code> wraps Apple’s realtime networking object. After starting matchmaking with <code class="docutils literal notranslate"><span class="pre">GKMatchmakerViewController</span></code> (see the “Realtime Matchmaking” section of <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code>) you will receive a <code class="docutils literal notranslate"><span class="pre">GKMatch</span></code> instance and can send data, monitor players, and respond to disconnections via Godot signals. For platform specifics see <a class="reference external" href="https://developer.apple.com/documentation/gamekit/gkmatch">Apple’s GKMatch reference</a>.</p>
 <p>Guide sample showing matchmaking and signal hookups:</p>
-<div class="docutils container">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">GKMatchRequest</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-R0RTY3JpcHQ=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tab" tabindex="0">GDScript</button></div><div aria-labelledby="tab-0-R0RTY3JpcHQ=" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tabpanel" tabindex="0"><div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">GKMatchRequest</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 <span class="n">request</span><span class="o">.</span><span class="n">max_players</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
 <span class="n">request</span><span class="o">.</span><span class="n">min_players</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">request</span><span class="o">.</span><span class="n">invite_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Join me in a quest to fun&quot;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">invite_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Join me in a quest to fun"</span>
 
 <span class="n">GKMatchmakerViewController</span><span class="o">.</span><span class="n">request_match</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="k">func</span><span class="p">(</span><span class="n">game_match</span><span class="p">:</span><span class="w"> </span><span class="n">GKMatch</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not request a match </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Could not request a match </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got a match!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Got a match!"</span><span class="p">)</span>
 <span class="w">    </span><span class="n">game_match</span><span class="o">.</span><span class="n">data_received</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">PackedByteArray</span><span class="p">,</span><span class="w"> </span><span class="n">from_player</span><span class="p">:</span><span class="w"> </span><span class="n">GKPlayer</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received data from </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">from_player</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Received data from </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">from_player</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="w">    </span><span class="n">game_match</span><span class="o">.</span><span class="n">data_received_for_recipient_from_player</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">PackedByteArray</span><span class="p">,</span><span class="w"> </span><span class="n">for_recipient</span><span class="p">:</span><span class="w"> </span><span class="n">GKPlayer</span><span class="p">,</span><span class="w"> </span><span class="n">from_remote_player</span><span class="p">:</span><span class="w"> </span><span class="n">GKPlayer</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Forwarded data for </span><span class="si">%s</span><span class="s2"> from </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">for_recipient</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span><span class="w"> </span><span class="n">from_remote_player</span><span class="o">.</span><span class="n">display_name</span><span class="p">])</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Forwarded data for </span><span class="si">%s</span><span class="s2"> from </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">for_recipient</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span><span class="w"> </span><span class="n">from_remote_player</span><span class="o">.</span><span class="n">display_name</span><span class="p">])</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="w">    </span><span class="n">game_match</span><span class="o">.</span><span class="n">did_fail_with_error</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">match_error</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Match failed with </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">match_error</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Match failed with </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">match_error</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="w">    </span><span class="n">game_match</span><span class="o">.</span><span class="n">should_reinvite_disconnected_player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">func</span><span class="p">(</span><span class="n">player</span><span class="p">:</span><span class="w"> </span><span class="n">GKPlayer</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">true</span>
 <span class="w">    </span><span class="n">game_match</span><span class="o">.</span><span class="n">player_changed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">player</span><span class="p">:</span><span class="w"> </span><span class="n">GKPlayer</span><span class="p">,</span><span class="w"> </span><span class="n">connected</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player </span><span class="si">%s</span><span class="s2"> changed to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">player</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span><span class="w"> </span><span class="n">connected</span><span class="p">])</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Player </span><span class="si">%s</span><span class="s2"> changed to </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span><span class="n">player</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span><span class="w"> </span><span class="n">connected</span><span class="p">])</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
+</div></div>
 <p>Broadcast helper from the guide (assuming you keep the reference as <code class="docutils literal notranslate"><span class="pre">game_match</span></code>):</p>
-<div class="docutils container">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;How do you do fellow kids&quot;</span><span class="o">.</span><span class="n">to_utf8_buffer</span><span class="p">()</span>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-R0RTY3JpcHQ=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tab" tabindex="0">GDScript</button></div><div aria-labelledby="tab-1-R0RTY3JpcHQ=" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tabpanel" tabindex="0"><div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s2">"How do you do fellow kids"</span><span class="o">.</span><span class="n">to_utf8_buffer</span><span class="p">()</span>
 <span class="n">game_match</span><span class="o">.</span><span class="n">send_data_to_all_players</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">GKMatch</span><span class="o">.</span><span class="n">SendDataMode</span><span class="o">.</span><span class="n">reliable</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+</div></div>
 <p>Send to a subset of players (still using the <code class="docutils literal notranslate"><span class="pre">game_match</span></code> variable):</p>
-<div class="docutils container">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">PackedByteArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-R0RTY3JpcHQ=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tab" tabindex="0">GDScript</button></div><div aria-labelledby="tab-2-R0RTY3JpcHQ=" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tabpanel" tabindex="0"><div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">PackedByteArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span>
 <span class="k">var</span><span class="w"> </span><span class="n">recipients</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">first_player</span><span class="p">,</span><span class="w"> </span><span class="n">second_player</span><span class="p">]</span>
 <span class="n">game_match</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">recipients</span><span class="p">,</span><span class="w"> </span><span class="n">GKMatch</span><span class="o">.</span><span class="n">SendDataMode</span><span class="o">.</span><span class="n">reliable</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+</div></div>
 </section>
 <section class="classref-reftable-group" id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><span class="xref std std-ref">int</span></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkmatch-property-expected-player-count"><span class="std std-ref">expected_player_count</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">Dictionary</span></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkmatch-property-player-properties"><span class="std std-ref">player_properties</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">Array</span></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkmatch-property-players"><span class="std std-ref">players</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">Dictionary</span></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkmatch-property-properties"><span class="std std-ref">properties</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">Variant</span></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkmatch-property-should-reinvite-disconnected-player"><span class="std std-ref">should_reinvite_disconnected_player</span></a></p></td>
 <td></td>
 </tr>
@@ -119,22 +130,22 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gkmatch-method-choose-best-hosting-player"><span class="std std-ref">choose_best_hosting_player</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gkmatch-method-choose-best-hosting-player"><span class="std std-ref">choose_best_hosting_player</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-gkmatch-method-disconnect"><span class="std std-ref">disconnect</span></a>()</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gkmatch-method-rematch"><span class="std std-ref">rematch</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gkmatch-method-rematch"><span class="std std-ref">rematch</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">int</span></p></td>
-<td><p><a class="reference internal" href="#class-gkmatch-method-send"><span class="std std-ref">send</span></a>(data: <span class="xref std std-ref">PackedByteArray</span>, toPlayers: <span class="xref std std-ref">Array</span>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>)</p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gkmatch-method-send"><span class="std std-ref">send</span></a>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, toPlayers: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">int</span></p></td>
-<td><p><a class="reference internal" href="#class-gkmatch-method-send-data-to-all-players"><span class="std std-ref">send_data_to_all_players</span></a>(data: <span class="xref std std-ref">PackedByteArray</span>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>)</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-gkmatch-method-send-data-to-all-players"><span class="std std-ref">send_data_to_all_players</span></a>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="class_gkvoicechat.html#class-gkvoicechat"><span class="std std-ref">GKVoiceChat</span></a></p></td>
-<td><p><a class="reference internal" href="#class-gkmatch-method-voice-chat"><span class="std std-ref">voice_chat</span></a>(channel: <span class="xref std std-ref">String</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gkmatch-method-voice-chat"><span class="std std-ref">voice_chat</span></a>(channel: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -142,16 +153,16 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="signals">
 <h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
-<p class="classref-signal" id="class-gkmatch-signal-data-received"><strong>data_received</strong>(data: <span class="xref std std-ref">PackedByteArray</span>, player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>) <a class="reference internal" href="#class-gkmatch-signal-data-received"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gkmatch-signal-data-received"><strong>data_received</strong>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>) <a class="reference internal" href="#class-gkmatch-signal-data-received"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when another player sends data to the local device. Provides the raw bytes and the sender.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gkmatch-signal-data-received-for-recipient-from-player"><strong>data_received_for_recipient_from_player</strong>(data: <span class="xref std std-ref">PackedByteArray</span>, recipient: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, from_remote_player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>) <a class="reference internal" href="#class-gkmatch-signal-data-received-for-recipient-from-player"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gkmatch-signal-data-received-for-recipient-from-player"><strong>data_received_for_recipient_from_player</strong>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, recipient: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, from_remote_player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>) <a class="reference internal" href="#class-gkmatch-signal-data-received-for-recipient-from-player"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when the local player receives data that was addressed to a specific recipient. Arguments provide the payload, the intended recipient, and the sender.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gkmatch-signal-did-fail-with-error"><strong>did_fail_with_error</strong>(message: <span class="xref std std-ref">String</span>) <a class="reference internal" href="#class-gkmatch-signal-did-fail-with-error"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gkmatch-signal-did-fail-with-error"><strong>did_fail_with_error</strong>(message: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-gkmatch-signal-did-fail-with-error"><span class="std std-ref">🔗</span></a></p>
 <p>Fires when Apple reports a networking error. The <code class="docutils literal notranslate"><span class="pre">String</span></code> argument contains the localized description.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gkmatch-signal-player-changed"><strong>player_changed</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, connected: <span class="xref std std-ref">bool</span>) <a class="reference internal" href="#class-gkmatch-signal-player-changed"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gkmatch-signal-player-changed"><strong>player_changed</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, connected: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>) <a class="reference internal" href="#class-gkmatch-signal-player-changed"><span class="std std-ref">🔗</span></a></p>
 <p>Notifies you when a player connects or disconnects. The boolean is <code class="docutils literal notranslate"><span class="pre">true</span></code> for connected players and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </section>
 <hr class="classref-section-separator docutils" />
@@ -166,240 +177,124 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="property-descriptions">
 <h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
-<p class="classref-property" id="class-gkmatch-property-expected-player-count"><span class="xref std std-ref">int</span> <strong>expected_player_count</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-gkmatch-property-expected-player-count"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkmatch-property-expected-player-count"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>expected_player_count</strong> = <code class="docutils literal notranslate"><span class="pre">0</span></code> <a class="reference internal" href="#class-gkmatch-property-expected-player-count"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">int</span> <strong>get_expected_player_count</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>get_expected_player_count</strong>()</p></li>
 </ul>
 <p>The number of additional players that GameKit is recruiting before the match can begin.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkmatch-property-player-properties"><span class="xref std std-ref">Dictionary</span> <strong>player_properties</strong> = <code class="docutils literal notranslate"><span class="pre">{}</span></code> <a class="reference internal" href="#class-gkmatch-property-player-properties"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkmatch-property-player-properties"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a> <strong>player_properties</strong> = <code class="docutils literal notranslate"><span class="pre">{}</span></code> <a class="reference internal" href="#class-gkmatch-property-player-properties"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">Dictionary</span> <strong>get_player_properties</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a> <strong>get_player_properties</strong>()</p></li>
 </ul>
 <p>Player-specific properties reported by GameKit for this match.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkmatch-property-players"><span class="xref std std-ref">Array</span> <strong>players</strong> = <code class="docutils literal notranslate"><span class="pre">[]</span></code> <a class="reference internal" href="#class-gkmatch-property-players"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkmatch-property-players"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a> <strong>players</strong> = <code class="docutils literal notranslate"><span class="pre">[]</span></code> <a class="reference internal" href="#class-gkmatch-property-players"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">Array</span> <strong>get_players</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a> <strong>get_players</strong>()</p></li>
 </ul>
 <p>Array of <code class="docutils literal notranslate"><span class="pre">GKPlayer</span></code> instances that are currently connected.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkmatch-property-properties"><span class="xref std std-ref">Dictionary</span> <strong>properties</strong> = <code class="docutils literal notranslate"><span class="pre">{}</span></code> <a class="reference internal" href="#class-gkmatch-property-properties"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkmatch-property-properties"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a> <strong>properties</strong> = <code class="docutils literal notranslate"><span class="pre">{}</span></code> <a class="reference internal" href="#class-gkmatch-property-properties"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">Dictionary</span> <strong>get_properties</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_dictionary.html#class-dictionary" title="(in Godot Engine vstable)"><span class="xref std std-ref">Dictionary</span></a> <strong>get_properties</strong>()</p></li>
 </ul>
 <p>Match-level custom properties provided by GameKit.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkmatch-property-should-reinvite-disconnected-player"><span class="xref std std-ref">Variant</span> <strong>should_reinvite_disconnected_player</strong> <a class="reference internal" href="#class-gkmatch-property-should-reinvite-disconnected-player"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkmatch-property-should-reinvite-disconnected-player"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a> <strong>should_reinvite_disconnected_player</strong> <a class="reference internal" href="#class-gkmatch-property-should-reinvite-disconnected-player"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><abbr title="No return value.">void</abbr> <strong>set_should_reinvite_disconnected_player</strong>(value: <span class="xref std std-ref">Variant</span>)</p></li>
-<li><p><span class="xref std std-ref">Variant</span> <strong>get_should_reinvite_disconnected_player</strong>()</p></li>
+<li><p><abbr title="No return value.">void</abbr> <strong>set_should_reinvite_disconnected_player</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_variant.html#class-variant" title="(in Godot Engine vstable)"><span class="xref std std-ref">Variant</span></a> <strong>get_should_reinvite_disconnected_player</strong>()</p></li>
 </ul>
 <p>Optional <code class="docutils literal notranslate"><span class="pre">Callable</span></code> that receives a <code class="docutils literal notranslate"><span class="pre">GKPlayer</span></code> and returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the player should be reinvited after disconnecting (see the sample in <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code>).</p>
 </section>
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="method-descriptions">
 <h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
-<p class="classref-method" id="class-gkmatch-method-choose-best-hosting-player"><abbr title="No return value.">void</abbr> <strong>choose_best_hosting_player</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gkmatch-method-choose-best-hosting-player"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gkmatch-method-choose-best-hosting-player"><abbr title="No return value.">void</abbr> <strong>choose_best_hosting_player</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gkmatch-method-choose-best-hosting-player"><span class="std std-ref">🔗</span></a></p>
 <p>Asks GameKit to choose the best host candidate for this peer-to-peer match. The callback receives <code class="docutils literal notranslate"><span class="pre">(GKPlayer</span> <span class="pre">player,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>, where both values can be <code class="docutils literal notranslate"><span class="pre">null</span></code> if no candidate is available.</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-gkmatch-method-disconnect"><abbr title="No return value.">void</abbr> <strong>disconnect</strong>() <a class="reference internal" href="#class-gkmatch-method-disconnect"><span class="std std-ref">🔗</span></a></p>
 <p>Calls <code class="docutils literal notranslate"><span class="pre">GKMatch.disconnect()</span></code> to leave the match immediately.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gkmatch-method-rematch"><abbr title="No return value.">void</abbr> <strong>rematch</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gkmatch-method-rematch"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gkmatch-method-rematch"><abbr title="No return value.">void</abbr> <strong>rematch</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gkmatch-method-rematch"><span class="std std-ref">🔗</span></a></p>
 <p>Requests a rematch with the same players. The callback receives <code class="docutils literal notranslate"><span class="pre">(GKMatch</span> <span class="pre">match,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gkmatch-method-send"><span class="xref std std-ref">int</span> <strong>send</strong>(data: <span class="xref std std-ref">PackedByteArray</span>, toPlayers: <span class="xref std std-ref">Array</span>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>) <a class="reference internal" href="#class-gkmatch-method-send"><span class="std std-ref">🔗</span></a></p>
-<p>Sends a payload to the specified <code class="docutils literal notranslate"><span class="pre">Array[GKPlayer]</span></code>. Returns a <span class="xref std std-ref">Error</span> value (<code class="docutils literal notranslate"><span class="pre">OK</span></code> on success, <code class="docutils literal notranslate"><span class="pre">FAILED</span></code> when the payload could not be converted or Apple reported an error). Choose a <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a> constant for <code class="docutils literal notranslate"><span class="pre">dataMode</span></code>.</p>
+<p class="classref-method" id="class-gkmatch-method-send"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>send</strong>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, toPlayers: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>) <a class="reference internal" href="#class-gkmatch-method-send"><span class="std std-ref">🔗</span></a></p>
+<p>Sends a payload to the specified <code class="docutils literal notranslate"><span class="pre">Array[GKPlayer]</span></code>. Returns a <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_%40globalscope.html#enum-globalscope-error" title="(in Godot Engine vstable)"><span class="xref std std-ref">Error</span></a> value (<code class="docutils literal notranslate"><span class="pre">OK</span></code> on success, <code class="docutils literal notranslate"><span class="pre">FAILED</span></code> when the payload could not be converted or Apple reported an error). Choose a <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a> constant for <code class="docutils literal notranslate"><span class="pre">dataMode</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gkmatch-method-send-data-to-all-players"><span class="xref std std-ref">int</span> <strong>send_data_to_all_players</strong>(data: <span class="xref std std-ref">PackedByteArray</span>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>) <a class="reference internal" href="#class-gkmatch-method-send-data-to-all-players"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gkmatch-method-send-data-to-all-players"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>send_data_to_all_players</strong>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, dataMode: <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a>) <a class="reference internal" href="#class-gkmatch-method-send-data-to-all-players"><span class="std std-ref">🔗</span></a></p>
 <p>Broadcasts the packed bytes to everyone in the match. Return value matches <a class="reference internal" href="#class-gkmatch-method-send"><span class="std std-ref">send()</span></a>. Use the <a class="reference internal" href="#enum-gkmatch-senddatamode"><span class="std std-ref">SendDataMode</span></a> constants.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gkmatch-method-voice-chat"><a class="reference internal" href="class_gkvoicechat.html#class-gkvoicechat"><span class="std std-ref">GKVoiceChat</span></a> <strong>voice_chat</strong>(channel: <span class="xref std std-ref">String</span>) <a class="reference internal" href="#class-gkmatch-method-voice-chat"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gkmatch-method-voice-chat"><a class="reference internal" href="class_gkvoicechat.html#class-gkvoicechat"><span class="std std-ref">GKVoiceChat</span></a> <strong>voice_chat</strong>(channel: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-gkmatch-method-voice-chat"><span class="std std-ref">🔗</span></a></p>
 <p>Returns a <code class="docutils literal notranslate"><span class="pre">GKVoiceChat</span></code> object for the named <code class="docutils literal notranslate"><span class="pre">channel</span></code>, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if voice chat is unavailable.</p>
 </section>
 </section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">GodotApplePlugins</a></h1>
-
-
-
-
-
-
-
-
-
 <search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </search>
-<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html">Using Apple’s ARKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html">Using Apple’s AuthenticationServices APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#entitlements">Entitlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#quick-start">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html">Using Apple’s CoreMotion APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#info-plist-and-permissions">Info.plist and Permissions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#choosing-between-raw-sensors-and-device-motion">Choosing Between Raw Sensors and Device Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#examples">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html">Using Apple’s GameKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#authentication">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#players">Players</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#saved-games">Saved Games</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#achievements">Achievements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#realtime-matchmaking">Realtime Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#turn-based-matchmaking">Turn-Based Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#challenges">Challenges</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#leaderboards">Leaderboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html">Using Apple’s StoreKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#start-storekit">Start StoreKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-transactions">Handle transactions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#redeem-offer-codes">Redeem offer codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-external-offer-code-redemptions">Handle external offer-code redemptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#test-offer-codes">Test offer codes</a></li>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">GKMatch</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_entitlements.html">Adding the Entitlement to the Godot Mac Editor.</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="class_applefilepicker.html">AppleFilePicker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_appleurl.html">AppleURL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aranchor.html">ARAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyanchor.html">ARBodyAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyskeleton.html">ARBodySkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodytrackingconfiguration.html">ARBodyTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcamera.html">ARCamera</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcoachingoverlay.html">ARCoachingOverlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcollaborationdata.html">ARCollaborationData</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arenvironmentprobeanchor.html">AREnvironmentProbeAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arfaceanchor.html">ARFaceAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arframe.html">ARFrame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeoanchor.html">ARGeoAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeotrackingconfiguration.html">ARGeoTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandanchor.html">ARHandAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandskeleton.html">ARHandSkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arimageanchor.html">ARImageAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arlightestimate.html">ARLightEstimate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_armeshanchor.html">ARMeshAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arplaneanchor.html">ARPlaneAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arpointcloud.html">ARPointCloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastquery.html">ARRaycastQuery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastresult.html">ARRaycastResult</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arsession.html">ARSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_artrackedraycast.html">ARTrackedRaycast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldmap.html">ARWorldMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldtrackingconfiguration.html">ARWorldTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aswebauthenticationsession.html">ASWebAuthenticationSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_foundation.html">Foundation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkaccesspoint.html">GKAccessPoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementchallenge.html">GKAchievementChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementdescription.html">GKAchievementDescription</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallenge.html">GKChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallengedefinition.html">GKChallengeDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkerror.html">GKError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivity.html">GKGameActivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivitydefinition.html">GKGameActivityDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgamecenterviewcontroller.html">GKGameCenterViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkinvite.html">GKInvite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboard.html">GKLeaderboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardentry.html">GKLeaderboardEntry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardscore.html">GKLeaderboardScore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardset.html">GKLeaderboardSet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gklocalplayer.html">GKLocalPlayer</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">GKMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmaker.html">GKMatchmaker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmakerviewcontroller.html">GKMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchrequest.html">GKMatchRequest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gknotificationbanner.html">GKNotificationBanner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkplayer.html">GKPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gksavedgame.html">GKSavedGame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkscorechallenge.html">GKScoreChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchange.html">GKTurnBasedExchange</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchangereply.html">GKTurnBasedExchangeReply</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatch.html">GKTurnBasedMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatchmakerviewcontroller.html">GKTurnBasedMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedparticipant.html">GKTurnBasedParticipant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkvoicechat.html">GKVoiceChat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_productview.html">ProductView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_signalproxy.html">SignalProxy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storekitmanager.html">StoreKitManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproduct.html">StoreProduct</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpaymentmode.html">StoreProductPaymentMode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpurchaseoption.html">StoreProductPurchaseOption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionoffer.html">StoreProductSubscriptionOffer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionperiod.html">StoreProductSubscriptionPeriod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfo.html">StoreSubscriptionInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninforenewalinfo.html">StoreSubscriptionInfoRenewalInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfostatus.html">StoreSubscriptionInfoStatus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storetransaction.html">StoreTransaction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeview.html">StoreView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionofferview.html">SubscriptionOfferView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionstoreview.html">SubscriptionStoreView</a></li>
+</li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="class_gklocalplayer.html" title="previous chapter">GKLocalPlayer</a></li>
-      <li>Next: <a href="class_gkmatchmaker.html" title="next chapter">GKMatchmaker</a></li>
-  </ul></li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_gklocalplayer.html"
+                          title="previous chapter">GKLocalPlayer</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_gkmatchmaker.html"
+                          title="next chapter">GKMatchmaker</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &#169;.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
-      
-      |
-      <a href="_sources/class_gkmatch.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_gkmatchmaker.html" title="GKMatchmaker"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_gklocalplayer.html" title="GKLocalPlayer"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GKMatch</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+    </div>
   </body>
 </html>

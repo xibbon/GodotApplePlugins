@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMPedometerData &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmpedometerdata.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Foundation" href="class_foundation.html" />
+    <link rel="prev" title="CMPedometer" href="class_cmpedometer.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_foundation.html" title="Foundation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmpedometer.html" title="CMPedometer"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMPedometerData</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmpedometerdata">
+<span id="class-cmpedometerdata"></span><h1>CMPedometerData<a class="headerlink" href="#cmpedometerdata" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>Aggregated pedometer data covering a time window.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMPedometerData</span></code>. Optional Apple values (distance, floor counts, pace, cadence) report <code class="docutils literal notranslate"><span class="pre">-1</span></code> when the underlying capability is unavailable on the device. See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmpedometerdata">CMPedometerData reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-average-active-pace"><span class="std std-ref">average_active_pace</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-current-cadence"><span class="std std-ref">current_cadence</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-current-pace"><span class="std std-ref">current_pace</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-distance"><span class="std std-ref">distance</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-end-date"><span class="std std-ref">end_date</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-floors-ascended"><span class="std std-ref">floors_ascended</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-floors-descended"><span class="std std-ref">floors_descended</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-number-of-steps"><span class="std std-ref">number_of_steps</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometerdata-property-start-date"><span class="std std-ref">start_date</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-cmpedometerdata-property-average-active-pace"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>average_active_pace</strong> <a class="reference internal" href="#class-cmpedometerdata-property-average-active-pace"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_average_active_pace</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_average_active_pace</strong>()</p></li>
+</ul>
+<p>Average pace across the window in seconds per meter, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> when unavailable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-current-cadence"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>current_cadence</strong> <a class="reference internal" href="#class-cmpedometerdata-property-current-cadence"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_current_cadence</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_current_cadence</strong>()</p></li>
+</ul>
+<p>Instantaneous cadence in steps per second, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> when unavailable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-current-pace"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>current_pace</strong> <a class="reference internal" href="#class-cmpedometerdata-property-current-pace"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_current_pace</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_current_pace</strong>()</p></li>
+</ul>
+<p>Instantaneous pace in seconds per meter, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> when unavailable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-distance"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>distance</strong> <a class="reference internal" href="#class-cmpedometerdata-property-distance"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_distance</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_distance</strong>()</p></li>
+</ul>
+<p>Distance walked or run in meters, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> when distance estimation is unavailable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-end-date"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>end_date</strong> <a class="reference internal" href="#class-cmpedometerdata-property-end-date"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_end_date</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_end_date</strong>()</p></li>
+</ul>
+<p>Unix-time end of the reporting window in seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-floors-ascended"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>floors_ascended</strong> <a class="reference internal" href="#class-cmpedometerdata-property-floors-ascended"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_floors_ascended</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>get_floors_ascended</strong>()</p></li>
+</ul>
+<p>Approximate number of floors ascended, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> when floor counting is unavailable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-floors-descended"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>floors_descended</strong> <a class="reference internal" href="#class-cmpedometerdata-property-floors-descended"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_floors_descended</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>get_floors_descended</strong>()</p></li>
+</ul>
+<p>Approximate number of floors descended, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> when floor counting is unavailable.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-number-of-steps"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>number_of_steps</strong> <a class="reference internal" href="#class-cmpedometerdata-property-number-of-steps"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_number_of_steps</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>get_number_of_steps</strong>()</p></li>
+</ul>
+<p>Step count across the reporting window.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmpedometerdata-property-start-date"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>start_date</strong> <a class="reference internal" href="#class-cmpedometerdata-property-start-date"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_start_date</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_start_date</strong>()</p></li>
+</ul>
+<p>Unix-time start of the reporting window in seconds.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMPedometerData</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmpedometer.html"
+                          title="previous chapter">CMPedometer</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_foundation.html"
+                          title="next chapter">Foundation</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_foundation.html" title="Foundation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmpedometer.html" title="CMPedometer"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMPedometerData</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

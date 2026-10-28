@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMAltimeter &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmaltimeter.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMAltitudeData" href="class_cmaltitudedata.html" />
+    <link rel="prev" title="CMAccelerometerData" href="class_cmaccelerometerdata.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_cmaltitudedata.html" title="CMAltitudeData"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmaccelerometerdata.html" title="CMAccelerometerData"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMAltimeter</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmaltimeter">
+<span id="class-cmaltimeter"></span><h1>CMAltimeter<a class="headerlink" href="#cmaltimeter" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>Reports relative and (iOS 15+) absolute altitude from the device barometer.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMAltimeter</span></code>. Use <a class="reference internal" href="#class-cmaltimeter-method-start-relative-altitude-updates"><span class="std std-ref">start_relative_altitude_updates()</span></a> for change-from-start readings and <a class="reference internal" href="#class-cmaltimeter-method-start-absolute-altitude-updates"><span class="std std-ref">start_absolute_altitude_updates()</span></a> for sea-level-referenced readings (iOS 15+).</p>
+<p><strong>Requires the ``NSMotionUsageDescription`` Info.plist key.</strong></p>
+<p><strong>Platform availability:</strong> Real implementation on <strong>iOS</strong>. On other platforms <code class="docutils literal notranslate"><span class="pre">is_*_available</span></code> returns <code class="docutils literal notranslate"><span class="pre">false</span></code> and calls to start updates emit <a class="reference internal" href="#class-cmaltimeter-signal-altimeter-failed"><span class="std std-ref">altimeter_failed</span></a>.</p>
+<p>See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmaltimeter">CMAltimeter reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmaltimeter-method-authorization-status"><span class="std std-ref">authorization_status</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmaltimeter-method-is-absolute-altitude-available"><span class="std std-ref">is_absolute_altitude_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmaltimeter-method-is-relative-altitude-available"><span class="std std-ref">is_relative_altitude_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmaltimeter-method-start-absolute-altitude-updates"><span class="std std-ref">start_absolute_altitude_updates</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmaltimeter-method-start-relative-altitude-updates"><span class="std std-ref">start_relative_altitude_updates</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmaltimeter-method-stop-absolute-altitude-updates"><span class="std std-ref">stop_absolute_altitude_updates</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmaltimeter-method-stop-relative-altitude-updates"><span class="std std-ref">stop_relative_altitude_updates</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
+<p class="classref-signal" id="class-cmaltimeter-signal-absolute-altitude-updated"><strong>absolute_altitude_updated</strong>(altitude: <a class="reference internal" href="class_cmabsolutealtitudedata.html#class-cmabsolutealtitudedata"><span class="std std-ref">CMAbsoluteAltitudeData</span></a>) <a class="reference internal" href="#class-cmaltimeter-signal-absolute-altitude-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when a new absolute altitude sample is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmaltimeter-signal-altimeter-failed"><strong>altimeter_failed</strong>(message: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-cmaltimeter-signal-altimeter-failed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when CoreMotion reports an error or when the API is unavailable on the current platform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmaltimeter-signal-relative-altitude-updated"><strong>relative_altitude_updated</strong>(altitude: <a class="reference internal" href="class_cmaltitudedata.html#class-cmaltitudedata"><span class="std std-ref">CMAltitudeData</span></a>) <a class="reference internal" href="#class-cmaltimeter-signal-relative-altitude-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when a new relative altitude sample is available.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-cmaltimeter-method-authorization-status"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>authorization_status</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmaltimeter-method-authorization-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns Apple’s <code class="docutils literal notranslate"><span class="pre">CMAuthorizationStatus</span></code> integer for altimeter access (0 = notDetermined, 1 = restricted, 2 = denied, 3 = authorized).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmaltimeter-method-is-absolute-altitude-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_absolute_altitude_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmaltimeter-method-is-absolute-altitude-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device can report absolute (sea-level) altitude. Requires iOS 15 or later.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmaltimeter-method-is-relative-altitude-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_relative_altitude_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmaltimeter-method-is-relative-altitude-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device has a barometer capable of reporting relative altitude.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmaltimeter-method-start-absolute-altitude-updates"><abbr title="No return value.">void</abbr> <strong>start_absolute_altitude_updates</strong>() <a class="reference internal" href="#class-cmaltimeter-method-start-absolute-altitude-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins absolute altitude updates delivered via <a class="reference internal" href="#class-cmaltimeter-signal-absolute-altitude-updated"><span class="std std-ref">absolute_altitude_updated</span></a>. iOS 15+; emits <a class="reference internal" href="#class-cmaltimeter-signal-altimeter-failed"><span class="std std-ref">altimeter_failed</span></a> on earlier iOS versions or other platforms.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmaltimeter-method-start-relative-altitude-updates"><abbr title="No return value.">void</abbr> <strong>start_relative_altitude_updates</strong>() <a class="reference internal" href="#class-cmaltimeter-method-start-relative-altitude-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins relative altitude updates delivered via <a class="reference internal" href="#class-cmaltimeter-signal-relative-altitude-updated"><span class="std std-ref">relative_altitude_updated</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmaltimeter-method-stop-absolute-altitude-updates"><abbr title="No return value.">void</abbr> <strong>stop_absolute_altitude_updates</strong>() <a class="reference internal" href="#class-cmaltimeter-method-stop-absolute-altitude-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops absolute altitude updates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmaltimeter-method-stop-relative-altitude-updates"><abbr title="No return value.">void</abbr> <strong>stop_relative_altitude_updates</strong>() <a class="reference internal" href="#class-cmaltimeter-method-stop-relative-altitude-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops relative altitude updates.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMAltimeter</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmaccelerometerdata.html"
+                          title="previous chapter">CMAccelerometerData</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_cmaltitudedata.html"
+                          title="next chapter">CMAltitudeData</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_cmaltitudedata.html" title="CMAltitudeData"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmaccelerometerdata.html" title="CMAccelerometerData"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMAltimeter</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

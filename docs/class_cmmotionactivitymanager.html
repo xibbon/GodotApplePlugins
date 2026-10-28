@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMMotionActivityManager &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmmotionactivitymanager.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMMotionManager" href="class_cmmotionmanager.html" />
+    <link rel="prev" title="CMMotionActivity" href="class_cmmotionactivity.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_cmmotionmanager.html" title="CMMotionManager"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmotionactivity.html" title="CMMotionActivity"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMotionActivityManager</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmmotionactivitymanager">
+<span id="class-cmmotionactivitymanager"></span><h1>CMMotionActivityManager<a class="headerlink" href="#cmmotionactivitymanager" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>Classifies the user’s current activity (walking, running, automotive, cycling, stationary).</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMMotionActivityManager</span></code>. The system continuously classifies user activity in the background while motion permission is granted, so <a class="reference internal" href="#class-cmmotionactivitymanager-method-query-activity"><span class="std std-ref">query_activity()</span></a> can return historical data even from before your app launched.</p>
+<p><strong>Requires the ``NSMotionUsageDescription`` Info.plist key.</strong></p>
+<p><strong>Platform availability:</strong> Real implementation on <strong>iOS</strong>. On other platforms <a class="reference internal" href="#class-cmmotionactivitymanager-method-is-activity-available"><span class="std std-ref">is_activity_available()</span></a> returns <code class="docutils literal notranslate"><span class="pre">false</span></code> and calls report unavailability via the callback or <a class="reference internal" href="#class-cmmotionactivitymanager-signal-activity-failed"><span class="std std-ref">activity_failed</span></a>.</p>
+<p>See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmmotionactivitymanager">CMMotionActivityManager reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivitymanager-method-authorization-status"><span class="std std-ref">authorization_status</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivitymanager-method-is-activity-available"><span class="std std-ref">is_activity_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivitymanager-method-query-activity"><span class="std std-ref">query_activity</span></a>(fromUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, toUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivitymanager-method-start-activity-updates"><span class="std std-ref">start_activity_updates</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionactivitymanager-method-stop-activity-updates"><span class="std std-ref">stop_activity_updates</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
+<p class="classref-signal" id="class-cmmotionactivitymanager-signal-activity-failed"><strong>activity_failed</strong>(message: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-cmmotionactivitymanager-signal-activity-failed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the API is unavailable on the current platform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmmotionactivitymanager-signal-activity-updated"><strong>activity_updated</strong>(activity: <a class="reference internal" href="class_cmmotionactivity.html#class-cmmotionactivity"><span class="std std-ref">CMMotionActivity</span></a>) <a class="reference internal" href="#class-cmmotionactivitymanager-signal-activity-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when the user’s classified activity changes.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-cmmotionactivitymanager-method-authorization-status"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>authorization_status</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmmotionactivitymanager-method-authorization-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns Apple’s <code class="docutils literal notranslate"><span class="pre">CMAuthorizationStatus</span></code> integer (0 = notDetermined, 1 = restricted, 2 = denied, 3 = authorized).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionactivitymanager-method-is-activity-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_activity_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmmotionactivitymanager-method-is-activity-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device has a motion coprocessor capable of activity classification.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionactivitymanager-method-query-activity"><abbr title="No return value.">void</abbr> <strong>query_activity</strong>(fromUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, toUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-cmmotionactivitymanager-method-query-activity"><span class="std std-ref">🔗</span></a></p>
+<p>Returns historical activities recorded between two Unix-time stamps. <code class="docutils literal notranslate"><span class="pre">callback</span></code> is invoked on the main thread with <code class="docutils literal notranslate"><span class="pre">callback(activities:</span> <span class="pre">Array,</span> <span class="pre">error:</span> <span class="pre">String)</span></code>; <code class="docutils literal notranslate"><span class="pre">activities</span></code> is an array of <a class="reference internal" href="class_cmmotionactivity.html#class-cmmotionactivity"><span class="std std-ref">CMMotionActivity</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionactivitymanager-method-start-activity-updates"><abbr title="No return value.">void</abbr> <strong>start_activity_updates</strong>() <a class="reference internal" href="#class-cmmotionactivitymanager-method-start-activity-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins live activity updates delivered via <a class="reference internal" href="#class-cmmotionactivitymanager-signal-activity-updated"><span class="std std-ref">activity_updated</span></a>. The signal fires whenever the classified activity changes.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionactivitymanager-method-stop-activity-updates"><abbr title="No return value.">void</abbr> <strong>stop_activity_updates</strong>() <a class="reference internal" href="#class-cmmotionactivitymanager-method-stop-activity-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops live activity updates.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMMotionActivityManager</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmmotionactivity.html"
+                          title="previous chapter">CMMotionActivity</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_cmmotionmanager.html"
+                          title="next chapter">CMMotionManager</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_cmmotionmanager.html" title="CMMotionManager"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmotionactivity.html" title="CMMotionActivity"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMotionActivityManager</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

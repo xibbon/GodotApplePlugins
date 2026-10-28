@@ -6,6 +6,7 @@
 
 .. _arkit_arkitguide__using-apple-s-arkit-apis-with-godot:
 
+===================================
 Using Apple's ARKit APIs with Godot
 ===================================
 

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMMotionManager &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmmotionmanager.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMPedometer" href="class_cmpedometer.html" />
+    <link rel="prev" title="CMMotionActivityManager" href="class_cmmotionactivitymanager.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_cmpedometer.html" title="CMPedometer"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmotionactivitymanager.html" title="CMMotionActivityManager"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMotionManager</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmmotionmanager">
+<span id="class-cmmotionmanager"></span><h1>CMMotionManager<a class="headerlink" href="#cmmotionmanager" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>Streams accelerometer, gyroscope, magnetometer, and fused device-motion data from the device.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMMotionManager</span></code>. Configure an update interval, call one of the <code class="docutils literal notranslate"><span class="pre">start_*_updates</span></code> methods, and connect to the matching signal to receive samples.</p>
+<p>Prefer <a class="reference internal" href="#class-cmmotionmanager-signal-device-motion-updated"><span class="std std-ref">device_motion_updated</span></a> over raw <a class="reference internal" href="#class-cmmotionmanager-signal-accelerometer-updated"><span class="std std-ref">accelerometer_updated</span></a> / <a class="reference internal" href="#class-cmmotionmanager-signal-gyro-updated"><span class="std std-ref">gyro_updated</span></a> / <a class="reference internal" href="#class-cmmotionmanager-signal-magnetometer-updated"><span class="std std-ref">magnetometer_updated</span></a> when you need gravity-separated user acceleration, bias-corrected rotation, or device attitude.</p>
+<p><strong>Platform availability:</strong> Real implementation on <strong>iOS</strong>. On other platforms the manager exists but <code class="docutils literal notranslate"><span class="pre">is_*_available</span></code> returns <code class="docutils literal notranslate"><span class="pre">false</span></code> and calling <code class="docutils literal notranslate"><span class="pre">start_*_updates</span></code> emits <a class="reference internal" href="#class-cmmotionmanager-signal-update-failed"><span class="std std-ref">update_failed</span></a>.</p>
+<p>See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmmotionmanager">CMMotionManager reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_cmaccelerometerdata.html#class-cmaccelerometerdata"><span class="std std-ref">CMAccelerometerData</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-accelerometer-data"><span class="std std-ref">accelerometer_data</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-accelerometer-update-interval"><span class="std std-ref">accelerometer_update_interval</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-device-motion"><span class="std std-ref">device_motion</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-device-motion-update-interval"><span class="std std-ref">device_motion_update_interval</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_cmgyrodata.html#class-cmgyrodata"><span class="std std-ref">CMGyroData</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-gyro-data"><span class="std std-ref">gyro_data</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-gyro-update-interval"><span class="std std-ref">gyro_update_interval</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-accelerometer-active"><span class="std std-ref">is_accelerometer_active</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-accelerometer-available"><span class="std std-ref">is_accelerometer_available</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-device-motion-active"><span class="std std-ref">is_device_motion_active</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-device-motion-available"><span class="std std-ref">is_device_motion_available</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-gyro-active"><span class="std std-ref">is_gyro_active</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-gyro-available"><span class="std std-ref">is_gyro_available</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-magnetometer-active"><span class="std std-ref">is_magnetometer_active</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-is-magnetometer-available"><span class="std std-ref">is_magnetometer_available</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_cmmagnetometerdata.html#class-cmmagnetometerdata"><span class="std std-ref">CMMagnetometerData</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-magnetometer-data"><span class="std std-ref">magnetometer_data</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-property-magnetometer-update-interval"><span class="std std-ref">magnetometer_update_interval</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-start-accelerometer-updates"><span class="std std-ref">start_accelerometer_updates</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-start-device-motion-updates"><span class="std std-ref">start_device_motion_updates</span></a>(referenceFrame: <a class="reference internal" href="#enum-cmmotionmanager-attitudereferenceframe"><span class="std std-ref">AttitudeReferenceFrame</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-start-gyro-updates"><span class="std std-ref">start_gyro_updates</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-start-magnetometer-updates"><span class="std std-ref">start_magnetometer_updates</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-stop-accelerometer-updates"><span class="std std-ref">stop_accelerometer_updates</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-stop-device-motion-updates"><span class="std std-ref">stop_device_motion_updates</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-stop-gyro-updates"><span class="std std-ref">stop_gyro_updates</span></a>()</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmmotionmanager-method-stop-magnetometer-updates"><span class="std std-ref">stop_magnetometer_updates</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
+<p class="classref-signal" id="class-cmmotionmanager-signal-accelerometer-updated"><strong>accelerometer_updated</strong>(accelerometer: <a class="reference internal" href="class_cmaccelerometerdata.html#class-cmaccelerometerdata"><span class="std std-ref">CMAccelerometerData</span></a>) <a class="reference internal" href="#class-cmmotionmanager-signal-accelerometer-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when a new accelerometer sample is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmmotionmanager-signal-device-motion-updated"><strong>device_motion_updated</strong>(deviceMotion: <a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a>) <a class="reference internal" href="#class-cmmotionmanager-signal-device-motion-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when a new fused device-motion sample is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmmotionmanager-signal-gyro-updated"><strong>gyro_updated</strong>(gyro: <a class="reference internal" href="class_cmgyrodata.html#class-cmgyrodata"><span class="std std-ref">CMGyroData</span></a>) <a class="reference internal" href="#class-cmmotionmanager-signal-gyro-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when a new gyroscope sample is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmmotionmanager-signal-magnetometer-updated"><strong>magnetometer_updated</strong>(magnetometer: <a class="reference internal" href="class_cmmagnetometerdata.html#class-cmmagnetometerdata"><span class="std std-ref">CMMagnetometerData</span></a>) <a class="reference internal" href="#class-cmmotionmanager-signal-magnetometer-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when a new magnetometer sample is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmmotionmanager-signal-update-failed"><strong>update_failed</strong>(message: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-cmmotionmanager-signal-update-failed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when CoreMotion reports an error or when the API is unavailable on the current platform.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="enumerations">
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Link to this heading">¶</a></h2>
+<p class="classref-enumeration" id="enum-cmmotionmanager-attitudereferenceframe">enum <strong>AttitudeReferenceFrame</strong>: <a class="reference internal" href="#enum-cmmotionmanager-attitudereferenceframe"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-enumeration-constant" id="class-cmmotionmanager-constant-xarbitrary-z-vertical"><a class="reference internal" href="#enum-cmmotionmanager-attitudereferenceframe"><span class="std std-ref">AttitudeReferenceFrame</span></a> <strong>XARBITRARY_Z_VERTICAL</strong> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<p>Z axis vertical, X axis aligned with an arbitrary direction in the horizontal plane.</p>
+<p class="classref-enumeration-constant" id="class-cmmotionmanager-constant-xarbitrary-corrected-z-vertical"><a class="reference internal" href="#enum-cmmotionmanager-attitudereferenceframe"><span class="std std-ref">AttitudeReferenceFrame</span></a> <strong>XARBITRARY_CORRECTED_Z_VERTICAL</strong> = <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>Same as <a class="reference internal" href="#class-cmmotionmanager-constant-xarbitrary-z-vertical"><span class="std std-ref">XARBITRARY_Z_VERTICAL</span></a> but corrected for magnetometer drift.</p>
+<p class="classref-enumeration-constant" id="class-cmmotionmanager-constant-xmagnetic-north-z-vertical"><a class="reference internal" href="#enum-cmmotionmanager-attitudereferenceframe"><span class="std std-ref">AttitudeReferenceFrame</span></a> <strong>XMAGNETIC_NORTH_Z_VERTICAL</strong> = <code class="docutils literal notranslate"><span class="pre">4</span></code></p>
+<p>Z axis vertical, X axis pointing toward magnetic north. Requires the magnetometer.</p>
+<p class="classref-enumeration-constant" id="class-cmmotionmanager-constant-xtrue-north-z-vertical"><a class="reference internal" href="#enum-cmmotionmanager-attitudereferenceframe"><span class="std std-ref">AttitudeReferenceFrame</span></a> <strong>XTRUE_NORTH_Z_VERTICAL</strong> = <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>Z axis vertical, X axis pointing toward true north. Requires the magnetometer and Location Services.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-cmmotionmanager-property-accelerometer-data"><a class="reference internal" href="class_cmaccelerometerdata.html#class-cmaccelerometerdata"><span class="std std-ref">CMAccelerometerData</span></a> <strong>accelerometer_data</strong> <a class="reference internal" href="#class-cmmotionmanager-property-accelerometer-data"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_cmaccelerometerdata.html#class-cmaccelerometerdata"><span class="std std-ref">CMAccelerometerData</span></a> <strong>get_accelerometer_data</strong>()</p></li>
+</ul>
+<p>The most recent accelerometer sample, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if none is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-accelerometer-update-interval"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>accelerometer_update_interval</strong> <a class="reference internal" href="#class-cmmotionmanager-property-accelerometer-update-interval"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_accelerometer_update_interval</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_accelerometer_update_interval</strong>()</p></li>
+</ul>
+<p>Desired interval between accelerometer samples in seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-device-motion"><a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a> <strong>device_motion</strong> <a class="reference internal" href="#class-cmmotionmanager-property-device-motion"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a> <strong>get_device_motion</strong>()</p></li>
+</ul>
+<p>The most recent device-motion sample, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if none is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-device-motion-update-interval"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>device_motion_update_interval</strong> <a class="reference internal" href="#class-cmmotionmanager-property-device-motion-update-interval"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_device_motion_update_interval</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_device_motion_update_interval</strong>()</p></li>
+</ul>
+<p>Desired interval between device-motion samples in seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-gyro-data"><a class="reference internal" href="class_cmgyrodata.html#class-cmgyrodata"><span class="std std-ref">CMGyroData</span></a> <strong>gyro_data</strong> <a class="reference internal" href="#class-cmmotionmanager-property-gyro-data"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_cmgyrodata.html#class-cmgyrodata"><span class="std std-ref">CMGyroData</span></a> <strong>get_gyro_data</strong>()</p></li>
+</ul>
+<p>The most recent gyroscope sample, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if none is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-gyro-update-interval"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>gyro_update_interval</strong> <a class="reference internal" href="#class-cmmotionmanager-property-gyro-update-interval"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_gyro_update_interval</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_gyro_update_interval</strong>()</p></li>
+</ul>
+<p>Desired interval between gyroscope samples in seconds.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-accelerometer-active"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_accelerometer_active</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-accelerometer-active"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_accelerometer_active</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when accelerometer updates are currently being delivered.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-accelerometer-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_accelerometer_available</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-accelerometer-available"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_accelerometer_available</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the device has an accelerometer available to this binding.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-device-motion-active"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_device_motion_active</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-device-motion-active"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_device_motion_active</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when device-motion updates are currently being delivered.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-device-motion-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_device_motion_available</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-device-motion-available"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_device_motion_available</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when fused device-motion is available on this device.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-gyro-active"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_gyro_active</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-gyro-active"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_gyro_active</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when gyroscope updates are currently being delivered.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-gyro-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_gyro_available</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-gyro-available"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_gyro_available</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the device has a gyroscope available to this binding.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-magnetometer-active"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_magnetometer_active</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-magnetometer-active"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_magnetometer_active</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when magnetometer updates are currently being delivered.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-is-magnetometer-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_magnetometer_available</strong> <a class="reference internal" href="#class-cmmotionmanager-property-is-magnetometer-available"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_magnetometer_available</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the device has a magnetometer available to this binding.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-magnetometer-data"><a class="reference internal" href="class_cmmagnetometerdata.html#class-cmmagnetometerdata"><span class="std std-ref">CMMagnetometerData</span></a> <strong>magnetometer_data</strong> <a class="reference internal" href="#class-cmmotionmanager-property-magnetometer-data"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_cmmagnetometerdata.html#class-cmmagnetometerdata"><span class="std std-ref">CMMagnetometerData</span></a> <strong>get_magnetometer_data</strong>()</p></li>
+</ul>
+<p>The most recent magnetometer sample, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if none is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmotionmanager-property-magnetometer-update-interval"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>magnetometer_update_interval</strong> <a class="reference internal" href="#class-cmmotionmanager-property-magnetometer-update-interval"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_magnetometer_update_interval</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_magnetometer_update_interval</strong>()</p></li>
+</ul>
+<p>Desired interval between magnetometer samples in seconds.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-cmmotionmanager-method-start-accelerometer-updates"><abbr title="No return value.">void</abbr> <strong>start_accelerometer_updates</strong>() <a class="reference internal" href="#class-cmmotionmanager-method-start-accelerometer-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins delivering accelerometer samples via <a class="reference internal" href="#class-cmmotionmanager-signal-accelerometer-updated"><span class="std std-ref">accelerometer_updated</span></a>. Sampling cadence is controlled by <a class="reference internal" href="#class-cmmotionmanager-property-accelerometer-update-interval"><span class="std std-ref">accelerometer_update_interval</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionmanager-method-start-device-motion-updates"><abbr title="No return value.">void</abbr> <strong>start_device_motion_updates</strong>(referenceFrame: <a class="reference internal" href="#enum-cmmotionmanager-attitudereferenceframe"><span class="std std-ref">AttitudeReferenceFrame</span></a>) <a class="reference internal" href="#class-cmmotionmanager-method-start-device-motion-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins delivering fused <a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a> samples via <a class="reference internal" href="#class-cmmotionmanager-signal-device-motion-updated"><span class="std std-ref">device_motion_updated</span></a>. <code class="docutils literal notranslate"><span class="pre">referenceFrame</span></code> selects how attitude is referenced. Pass <a class="reference internal" href="#class-cmmotionmanager-constant-xmagnetic-north-z-vertical"><span class="std std-ref">XMAGNETIC_NORTH_Z_VERTICAL</span></a> or <a class="reference internal" href="#class-cmmotionmanager-constant-xtrue-north-z-vertical"><span class="std std-ref">XTRUE_NORTH_Z_VERTICAL</span></a> to align yaw with magnetic or true north (requires the magnetometer).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionmanager-method-start-gyro-updates"><abbr title="No return value.">void</abbr> <strong>start_gyro_updates</strong>() <a class="reference internal" href="#class-cmmotionmanager-method-start-gyro-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins delivering gyroscope samples via <a class="reference internal" href="#class-cmmotionmanager-signal-gyro-updated"><span class="std std-ref">gyro_updated</span></a>. Sampling cadence is controlled by <a class="reference internal" href="#class-cmmotionmanager-property-gyro-update-interval"><span class="std std-ref">gyro_update_interval</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionmanager-method-start-magnetometer-updates"><abbr title="No return value.">void</abbr> <strong>start_magnetometer_updates</strong>() <a class="reference internal" href="#class-cmmotionmanager-method-start-magnetometer-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins delivering magnetometer samples via <a class="reference internal" href="#class-cmmotionmanager-signal-magnetometer-updated"><span class="std std-ref">magnetometer_updated</span></a>. Sampling cadence is controlled by <a class="reference internal" href="#class-cmmotionmanager-property-magnetometer-update-interval"><span class="std std-ref">magnetometer_update_interval</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionmanager-method-stop-accelerometer-updates"><abbr title="No return value.">void</abbr> <strong>stop_accelerometer_updates</strong>() <a class="reference internal" href="#class-cmmotionmanager-method-stop-accelerometer-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops accelerometer updates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionmanager-method-stop-device-motion-updates"><abbr title="No return value.">void</abbr> <strong>stop_device_motion_updates</strong>() <a class="reference internal" href="#class-cmmotionmanager-method-stop-device-motion-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops device-motion updates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionmanager-method-stop-gyro-updates"><abbr title="No return value.">void</abbr> <strong>stop_gyro_updates</strong>() <a class="reference internal" href="#class-cmmotionmanager-method-stop-gyro-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops gyroscope updates.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmmotionmanager-method-stop-magnetometer-updates"><abbr title="No return value.">void</abbr> <strong>stop_magnetometer_updates</strong>() <a class="reference internal" href="#class-cmmotionmanager-method-stop-magnetometer-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops magnetometer updates.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMMotionManager</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmmotionactivitymanager.html"
+                          title="previous chapter">CMMotionActivityManager</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_cmpedometer.html"
+                          title="next chapter">CMPedometer</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_cmpedometer.html" title="CMPedometer"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmotionactivitymanager.html" title="CMMotionActivityManager"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMotionManager</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

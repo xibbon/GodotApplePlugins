@@ -6,6 +6,7 @@
 
 .. _authenticationservices_authenticationservicesguide__using-apple-s-authenticationservices-apis-with-godot:
 
+====================================================
 Using Apple's AuthenticationServices APIs with Godot
 ====================================================
 

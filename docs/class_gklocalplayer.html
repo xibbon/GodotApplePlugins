@@ -5,57 +5,68 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>GKLocalPlayer &#8212; GodotApplePlugins  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <title>GKLocalPlayer &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/tabs.js?v=3030b3cb"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_gklocalplayer.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="GKMatch" href="class_gkmatch.html" />
-    <link rel="prev" title="GKLeaderboardSet" href="class_gkleaderboardset.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-
-  
-  
-
+    <link rel="prev" title="GKLeaderboardSet" href="class_gkleaderboardset.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_gkmatch.html" title="GKMatch"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_gkleaderboardset.html" title="GKLeaderboardSet"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GKLocalPlayer</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <section id="gklocalplayer">
 <span id="class-gklocalplayer"></span><h1>GKLocalPlayer<a class="headerlink" href="#gklocalplayer" title="Link to this heading">¶</a></h1>
-<p><strong>Inherits:</strong> <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a> <strong>&lt;</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
 <p>Represents the signed-in Game Center player and exposes local-only APIs.</p>
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">GKLocalPlayer</span></code> to inspect authentication flags and to fetch the local player’s friends as shown in the “Players” section of <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code>. Every asynchronous call mirrors Apple’s API and invokes your <code class="docutils literal notranslate"><span class="pre">Callable</span></code> with the requested data plus an optional error <code class="docutils literal notranslate"><span class="pre">Variant</span></code> (which contains a <code class="docutils literal notranslate"><span class="pre">GKError</span></code> on failure). Refer to Apple’s documentation at <a class="reference external" href="https://developer.apple.com/documentation/gamekit/gklocalplayer">Apple’s GKLocalPlayer reference</a> for platform-specific behavior.</p>
 <p>Sample from the guide that fetches the local player when your scene loads:</p>
-<div class="docutils container">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">game_center</span><span class="p">:</span><span class="w"> </span><span class="n">GameCenterManager</span>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-R0RTY3JpcHQ=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tab" tabindex="0">GDScript</button></div><div aria-labelledby="tab-0-R0RTY3JpcHQ=" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tabpanel" tabindex="0"><div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">game_center</span><span class="p">:</span><span class="w"> </span><span class="n">GameCenterManager</span>
 <span class="k">var</span><span class="w"> </span><span class="n">local</span><span class="p">:</span><span class="w"> </span><span class="n">GKLocalPlayer</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 <span class="w">    </span><span class="n">game_center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GameCenterManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 <span class="w">    </span><span class="n">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">game_center</span><span class="o">.</span><span class="n">local_player</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ONREADY: local, is auth: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">local</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ONREADY: local, player ID: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">local</span><span class="o">.</span><span class="n">game_player_id</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"ONREADY: local, is auth: </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">local</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"ONREADY: local, player ID: </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">local</span><span class="o">.</span><span class="n">game_player_id</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+</div></div>
 <p>Friends-related helpers mirror the snippets in the guide (assuming you stored the player reference in <code class="docutils literal notranslate"><span class="pre">local</span></code>):</p>
-<div class="docutils container">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loads the local player&#39;s friends list if access is granted.</span>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-R0RTY3JpcHQ=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tab" tabindex="0">GDScript</button></div><div aria-labelledby="tab-1-R0RTY3JpcHQ=" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-R0RTY3JpcHQ=" name="R0RTY3JpcHQ=" role="tabpanel" tabindex="0"><div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loads the local player's friends list if access is granted.</span>
 <span class="n">local</span><span class="o">.</span><span class="n">load_friends</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">friends</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">GKPlayer</span><span class="p">],</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
 <span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
@@ -83,25 +94,25 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
+</div></div>
 </section>
 <section class="classref-reftable-group" id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><span class="xref std std-ref">bool</span></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-property-is-authenticated"><span class="std std-ref">is_authenticated</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">bool</span></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-property-is-multiplayer-gaming-restricted"><span class="std std-ref">is_multiplayer_gaming_restricted</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">bool</span></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-property-is-personalized-communication-restricted"><span class="std std-ref">is_personalized_communication_restricted</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">bool</span></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-property-is-underage"><span class="std std-ref">is_underage</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
@@ -113,43 +124,43 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-delete-saved-games"><span class="std std-ref">delete_saved_games</span></a>(named: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-delete-saved-games"><span class="std std-ref">delete_saved_games</span></a>(named: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><span class="std std-ref">fetch_items_for_identity_verification_signature</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><span class="std std-ref">fetch_items_for_identity_verification_signature</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-fetch-saved-games"><span class="std std-ref">fetch_saved_games</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-fetch-saved-games"><span class="std std-ref">fetch_saved_games</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">load_challengeable_friends</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">load_challengeable_friends</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-default-leaderboard-identifier"><span class="std std-ref">load_default_leaderboard_identifier</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-default-leaderboard-identifier"><span class="std std-ref">load_default_leaderboard_identifier</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-friends"><span class="std std-ref">load_friends</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-friends"><span class="std std-ref">load_friends</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-friends-authorization-status"><span class="std std-ref">load_friends_authorization_status</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-friends-authorization-status"><span class="std std-ref">load_friends_authorization_status</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-friends-with-identifiers"><span class="std std-ref">load_friends_with_identifiers</span></a>(identifiers: <span class="xref std std-ref">PackedStringArray</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-friends-with-identifiers"><span class="std std-ref">load_friends_with_identifiers</span></a>(identifiers: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedstringarray.html#class-packedstringarray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedStringArray</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-recent-friends"><span class="std std-ref">load_recent_friends</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-load-recent-friends"><span class="std std-ref">load_recent_friends</span></a>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-method-register-listener"><span class="std std-ref">register_listener</span></a>()</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-resolve-conflicting-saved-games"><span class="std std-ref">resolve_conflicting_saved_games</span></a>(conflicts: <span class="xref std std-ref">Array</span>, data: <span class="xref std std-ref">PackedByteArray</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-resolve-conflicting-saved-games"><span class="std std-ref">resolve_conflicting_saved_games</span></a>(conflicts: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>, data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-save-game-data"><span class="std std-ref">save_game_data</span></a>(data: <span class="xref std std-ref">PackedByteArray</span>, withName: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-save-game-data"><span class="std std-ref">save_game_data</span></a>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, withName: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gklocalplayer-method-set-default-leaderboard-identifier"><span class="std std-ref">set_default_leaderboard_identifier</span></a>(identifier: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-set-default-leaderboard-identifier"><span class="std std-ref">set_default_leaderboard_identifier</span></a>(identifier: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-method-unregister-listener"><span class="std std-ref">unregister_listener</span></a>()</p></td>
@@ -172,7 +183,7 @@
 <p class="classref-signal" id="class-gklocalplayer-signal-challenge-received"><strong>challenge_received</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, challenge: <a class="reference internal" href="class_gkchallenge.html#class-gkchallenge"><span class="std std-ref">GKChallenge</span></a>) <a class="reference internal" href="#class-gklocalplayer-signal-challenge-received"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when the local player receives a new challenge.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gklocalplayer-signal-conflicting-saved-games"><strong>conflicting_saved_games</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, conflicting_saved_games: <span class="xref std std-ref">Array</span>) <a class="reference internal" href="#class-gklocalplayer-signal-conflicting-saved-games"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gklocalplayer-signal-conflicting-saved-games"><strong>conflicting_saved_games</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, conflicting_saved_games: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>) <a class="reference internal" href="#class-gklocalplayer-signal-conflicting-saved-games"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when there is a conflict between saved games. You should listen to this signal and then call <a class="reference internal" href="#class-gklocalplayer-method-resolve-conflicting-saved-games"><span class="std std-ref">resolve_conflicting_saved_games()</span></a> with the chosen data.</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-signal" id="class-gklocalplayer-signal-exchange-canceled"><strong>exchange_canceled</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, exchange: <a class="reference internal" href="class_gkturnbasedexchange.html#class-gkturnbasedexchange"><span class="std std-ref">GKTurnBasedExchange</span></a>, match: <a class="reference internal" href="class_gkturnbasedmatch.html#class-gkturnbasedmatch"><span class="std std-ref">GKTurnBasedMatch</span></a>) <a class="reference internal" href="#class-gklocalplayer-signal-exchange-canceled"><span class="std std-ref">🔗</span></a></p>
@@ -180,7 +191,7 @@
 <p>There is currently no description for this signal. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gklocalplayer-signal-exchange-completed"><strong>exchange_completed</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, replies: <span class="xref std std-ref">Array</span>, match: <a class="reference internal" href="class_gkturnbasedmatch.html#class-gkturnbasedmatch"><span class="std std-ref">GKTurnBasedMatch</span></a>) <a class="reference internal" href="#class-gklocalplayer-signal-exchange-completed"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gklocalplayer-signal-exchange-completed"><strong>exchange_completed</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, replies: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>, match: <a class="reference internal" href="class_gkturnbasedmatch.html#class-gkturnbasedmatch"><span class="std std-ref">GKTurnBasedMatch</span></a>) <a class="reference internal" href="#class-gklocalplayer-signal-exchange-completed"><span class="std std-ref">🔗</span></a></p>
 <div class="contribute docutils container">
 <p>There is currently no description for this signal. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
@@ -195,7 +206,7 @@
 <p>There is currently no description for this signal. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gklocalplayer-signal-match-requested-with-other-players"><strong>match_requested_with_other_players</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, recipient_players: <span class="xref std std-ref">Array</span>) <a class="reference internal" href="#class-gklocalplayer-signal-match-requested-with-other-players"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gklocalplayer-signal-match-requested-with-other-players"><strong>match_requested_with_other_players</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, recipient_players: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>) <a class="reference internal" href="#class-gklocalplayer-signal-match-requested-with-other-players"><span class="std std-ref">🔗</span></a></p>
 <div class="contribute docutils container">
 <p>There is currently no description for this signal. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
@@ -213,7 +224,7 @@
 <p>There is currently no description for this signal. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gklocalplayer-signal-turn-event-received"><strong>turn_event_received</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, match: <a class="reference internal" href="class_gkturnbasedmatch.html#class-gkturnbasedmatch"><span class="std std-ref">GKTurnBasedMatch</span></a>, did_become_active: <span class="xref std std-ref">bool</span>) <a class="reference internal" href="#class-gklocalplayer-signal-turn-event-received"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gklocalplayer-signal-turn-event-received"><strong>turn_event_received</strong>(player: <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a>, match: <a class="reference internal" href="class_gkturnbasedmatch.html#class-gkturnbasedmatch"><span class="std std-ref">GKTurnBasedMatch</span></a>, did_become_active: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a>) <a class="reference internal" href="#class-gklocalplayer-signal-turn-event-received"><span class="std std-ref">🔗</span></a></p>
 <div class="contribute docutils container">
 <p>There is currently no description for this signal. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
@@ -221,78 +232,78 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="property-descriptions">
 <h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
-<p class="classref-property" id="class-gklocalplayer-property-is-authenticated"><span class="xref std std-ref">bool</span> <strong>is_authenticated</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-authenticated"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gklocalplayer-property-is-authenticated"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_authenticated</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-authenticated"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">bool</span> <strong>get_is_authenticated</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_authenticated</strong>()</p></li>
 </ul>
 <p>Reflects <code class="docutils literal notranslate"><span class="pre">GKLocalPlayer.local.isAuthenticated</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gklocalplayer-property-is-multiplayer-gaming-restricted"><span class="xref std std-ref">bool</span> <strong>is_multiplayer_gaming_restricted</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-multiplayer-gaming-restricted"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gklocalplayer-property-is-multiplayer-gaming-restricted"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_multiplayer_gaming_restricted</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-multiplayer-gaming-restricted"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">bool</span> <strong>get_is_multiplayer_gaming_restricted</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_multiplayer_gaming_restricted</strong>()</p></li>
 </ul>
 <p>True when multiplayer is disabled by parental controls.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gklocalplayer-property-is-personalized-communication-restricted"><span class="xref std std-ref">bool</span> <strong>is_personalized_communication_restricted</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-personalized-communication-restricted"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gklocalplayer-property-is-personalized-communication-restricted"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_personalized_communication_restricted</strong> = <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-personalized-communication-restricted"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">bool</span> <strong>get_is_personalized_communication_restricted</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_personalized_communication_restricted</strong>()</p></li>
 </ul>
 <p>Indicates whether personalized communication is blocked for this account.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gklocalplayer-property-is-underage"><span class="xref std std-ref">bool</span> <strong>is_underage</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-underage"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gklocalplayer-property-is-underage"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_underage</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-gklocalplayer-property-is-underage"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
-<li><p><span class="xref std std-ref">bool</span> <strong>get_is_underage</strong>()</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_underage</strong>()</p></li>
 </ul>
 <p>Apple’s <code class="docutils literal notranslate"><span class="pre">isUnderage</span></code> flag for COPPA-compliant flows.</p>
 </section>
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="method-descriptions">
 <h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
-<p class="classref-method" id="class-gklocalplayer-method-delete-saved-games"><abbr title="No return value.">void</abbr> <strong>delete_saved_games</strong>(named: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-delete-saved-games"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-delete-saved-games"><abbr title="No return value.">void</abbr> <strong>delete_saved_games</strong>(named: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-delete-saved-games"><span class="std std-ref">🔗</span></a></p>
 <div class="contribute docutils container">
 <p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
 </div>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><abbr title="No return value.">void</abbr> <strong>fetch_items_for_identity_verification_signature</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><abbr title="No return value.">void</abbr> <strong>fetch_items_for_identity_verification_signature</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><span class="std std-ref">🔗</span></a></p>
 <p>Calls Apple’s <code class="docutils literal notranslate"><span class="pre">fetchItems</span></code> helper for server-side authentication. The callback receives <code class="docutils literal notranslate"><span class="pre">(Dictionary</span> <span class="pre">data,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>. The dictionary contains the <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">salt</span></code>, and <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> keys described in the inline Swift documentation, letting your backend verify the player’s identity. If not null, <code class="docutils literal notranslate"><span class="pre">error</span></code> contains a <code class="docutils literal notranslate"><span class="pre">GKError</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-fetch-saved-games"><abbr title="No return value.">void</abbr> <strong>fetch_saved_games</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-fetch-saved-games"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-fetch-saved-games"><abbr title="No return value.">void</abbr> <strong>fetch_saved_games</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-fetch-saved-games"><span class="std std-ref">🔗</span></a></p>
 <p>Use this API to retrieve the list of saved games, upon completion, this</p>
 <blockquote>
 <div><p>method invokes the provided callback with both an array of GKSavedGame objects</p>
 <p>and a variant error, if not nil it contains a <code class="docutils literal notranslate"><span class="pre">GKError</span></code> describing the problem.</p>
 </div></blockquote>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-load-challengeable-friends"><abbr title="No return value.">void</abbr> <strong>load_challengeable_friends</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-load-challengeable-friends"><abbr title="No return value.">void</abbr> <strong>load_challengeable_friends</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">🔗</span></a></p>
 <p>Loads players whom the local user can challenge. The callback receives <code class="docutils literal notranslate"><span class="pre">(Array[GKPlayer]</span> <span class="pre">friends,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code> where either argument can be <code class="docutils literal notranslate"><span class="pre">null</span></code>. If error is present, it is a <code class="docutils literal notranslate"><span class="pre">GKError</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-load-default-leaderboard-identifier"><abbr title="No return value.">void</abbr> <strong>load_default_leaderboard_identifier</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-default-leaderboard-identifier"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-load-default-leaderboard-identifier"><abbr title="No return value.">void</abbr> <strong>load_default_leaderboard_identifier</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-load-default-leaderboard-identifier"><span class="std std-ref">🔗</span></a></p>
 <p>Loads the local player’s current default leaderboard identifier.</p>
 <p>The callback receives <code class="docutils literal notranslate"><span class="pre">(Variant</span> <span class="pre">identifier,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>, where <code class="docutils literal notranslate"><span class="pre">identifier</span></code> is a <code class="docutils literal notranslate"><span class="pre">String</span></code> or <code class="docutils literal notranslate"><span class="pre">null</span></code>, and <code class="docutils literal notranslate"><span class="pre">error</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code> or a <code class="docutils literal notranslate"><span class="pre">GKError</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-load-friends"><abbr title="No return value.">void</abbr> <strong>load_friends</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-friends"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-load-friends"><abbr title="No return value.">void</abbr> <strong>load_friends</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-load-friends"><span class="std std-ref">🔗</span></a></p>
 <p>Fetches the friends list. The callback receives <code class="docutils literal notranslate"><span class="pre">(Array[GKPlayer]</span> <span class="pre">friends,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>; a non-null error <code class="docutils literal notranslate"><span class="pre">Variant</span></code> holds the <code class="docutils literal notranslate"><span class="pre">GKError</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-load-friends-authorization-status"><abbr title="No return value.">void</abbr> <strong>load_friends_authorization_status</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-friends-authorization-status"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-load-friends-authorization-status"><abbr title="No return value.">void</abbr> <strong>load_friends_authorization_status</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-load-friends-authorization-status"><span class="std std-ref">🔗</span></a></p>
 <p>Loads the authorization status for friend access.</p>
 <p>The callback receives <code class="docutils literal notranslate"><span class="pre">(int</span> <span class="pre">status,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>, where <code class="docutils literal notranslate"><span class="pre">status</span></code> is Apple’s raw <code class="docutils literal notranslate"><span class="pre">GKFriendsAuthorizationStatus</span></code> value.</p>
 <p>Requires iOS 14.5, macOS 11.3, tvOS 14.5, or visionOS 1.0. Older versions return <code class="docutils literal notranslate"><span class="pre">0</span></code> plus an <code class="docutils literal notranslate"><span class="pre">apiNotAvailable</span></code> error.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-load-friends-with-identifiers"><abbr title="No return value.">void</abbr> <strong>load_friends_with_identifiers</strong>(identifiers: <span class="xref std std-ref">PackedStringArray</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-friends-with-identifiers"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-load-friends-with-identifiers"><abbr title="No return value.">void</abbr> <strong>load_friends_with_identifiers</strong>(identifiers: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedstringarray.html#class-packedstringarray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedStringArray</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-load-friends-with-identifiers"><span class="std std-ref">🔗</span></a></p>
 <p>Loads friends that match the provided scoped player <code class="docutils literal notranslate"><span class="pre">identifiers</span></code>. Pass them as <code class="docutils literal notranslate"><span class="pre">PackedStringArray([&quot;player_id_1&quot;,</span> <span class="pre">&quot;player_id_2&quot;])</span></code>.</p>
 <p>The callback receives <code class="docutils literal notranslate"><span class="pre">(Array[GKPlayer]</span> <span class="pre">friends,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>, where <code class="docutils literal notranslate"><span class="pre">error</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code> on success or a <code class="docutils literal notranslate"><span class="pre">GKError</span></code>.</p>
 <p>Requires iOS 14.5, macOS 11.3, tvOS 14.5, or visionOS 1.0. Older versions return an empty array plus an <code class="docutils literal notranslate"><span class="pre">apiNotAvailable</span></code> error.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-load-recent-friends"><abbr title="No return value.">void</abbr> <strong>load_recent_friends</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-recent-friends"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-load-recent-friends"><abbr title="No return value.">void</abbr> <strong>load_recent_friends</strong>(callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-load-recent-friends"><span class="std std-ref">🔗</span></a></p>
 <p>Loads friends that recently played together with the local player. The callback signature matches <a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">load_challengeable_friends()</span></a>.</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-gklocalplayer-method-register-listener"><abbr title="No return value.">void</abbr> <strong>register_listener</strong>() <a class="reference internal" href="#class-gklocalplayer-method-register-listener"><span class="std std-ref">🔗</span></a></p>
 <p>Registers the local player listener to receive events like saved game conflicts. You typically call this in your <code class="docutils literal notranslate"><span class="pre">_ready()</span></code> function.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-resolve-conflicting-saved-games"><abbr title="No return value.">void</abbr> <strong>resolve_conflicting_saved_games</strong>(conflicts: <span class="xref std std-ref">Array</span>, data: <span class="xref std std-ref">PackedByteArray</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-resolve-conflicting-saved-games"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-resolve-conflicting-saved-games"><abbr title="No return value.">void</abbr> <strong>resolve_conflicting_saved_games</strong>(conflicts: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_array.html#class-array" title="(in Godot Engine vstable)"><span class="xref std std-ref">Array</span></a>, data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-resolve-conflicting-saved-games"><span class="std std-ref">🔗</span></a></p>
 <p>Resolves conflicting saved games using the provided data. The <code class="docutils literal notranslate"><span class="pre">conflicts</span></code> array should contain the <a class="reference internal" href="class_gksavedgame.html#class-gksavedgame"><span class="std std-ref">GKSavedGame</span></a> objects that are in conflict (received from the <a class="reference internal" href="#class-gklocalplayer-signal-conflicting-saved-games"><span class="std std-ref">conflicting_saved_games</span></a>). The <code class="docutils literal notranslate"><span class="pre">data</span></code> is the correct game data to save. The callback receives <code class="docutils literal notranslate"><span class="pre">(Array[GKSavedGame]</span> <span class="pre">saved_games,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>. <code class="docutils literal notranslate"><span class="pre">error</span></code> is a <code class="docutils literal notranslate"><span class="pre">GKError</span></code> if not null.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-save-game-data"><abbr title="No return value.">void</abbr> <strong>save_game_data</strong>(data: <span class="xref std std-ref">PackedByteArray</span>, withName: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-save-game-data"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-save-game-data"><abbr title="No return value.">void</abbr> <strong>save_game_data</strong>(data: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_packedbytearray.html#class-packedbytearray" title="(in Godot Engine vstable)"><span class="xref std std-ref">PackedByteArray</span></a>, withName: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-save-game-data"><span class="std std-ref">🔗</span></a></p>
 <p>Saves the packed byte array as the game data with the specified name, upon</p>
 <blockquote>
 <div><p>completion the callback is invoked with both a GKSavedObject parameter and</p>
@@ -300,7 +311,7 @@
 <p>and on error, the second parameter is not-nil and contains the <code class="docutils literal notranslate"><span class="pre">GKError</span></code>.</p>
 </div></blockquote>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gklocalplayer-method-set-default-leaderboard-identifier"><abbr title="No return value.">void</abbr> <strong>set_default_leaderboard_identifier</strong>(identifier: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-set-default-leaderboard-identifier"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gklocalplayer-method-set-default-leaderboard-identifier"><abbr title="No return value.">void</abbr> <strong>set_default_leaderboard_identifier</strong>(identifier: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-gklocalplayer-method-set-default-leaderboard-identifier"><span class="std std-ref">🔗</span></a></p>
 <p>Sets the local player’s default leaderboard identifier to <code class="docutils literal notranslate"><span class="pre">identifier</span></code>.</p>
 <p>The callback receives one argument: <code class="docutils literal notranslate"><span class="pre">error</span></code>, which is <code class="docutils literal notranslate"><span class="pre">null</span></code> on success or a <code class="docutils literal notranslate"><span class="pre">GKError</span></code> on failure.</p>
 <hr class="classref-item-separator docutils" />
@@ -310,185 +321,68 @@
 </section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">GodotApplePlugins</a></h1>
-
-
-
-
-
-
-
-
-
 <search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </search>
-<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html">Using Apple’s ARKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html">Using Apple’s AuthenticationServices APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#entitlements">Entitlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#quick-start">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html">Using Apple’s CoreMotion APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#info-plist-and-permissions">Info.plist and Permissions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#choosing-between-raw-sensors-and-device-motion">Choosing Between Raw Sensors and Device Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#examples">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html">Using Apple’s GameKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#authentication">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#players">Players</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#saved-games">Saved Games</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#achievements">Achievements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#realtime-matchmaking">Realtime Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#turn-based-matchmaking">Turn-Based Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#challenges">Challenges</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#leaderboards">Leaderboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html">Using Apple’s StoreKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#start-storekit">Start StoreKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-transactions">Handle transactions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#redeem-offer-codes">Redeem offer codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-external-offer-code-redemptions">Handle external offer-code redemptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#test-offer-codes">Test offer codes</a></li>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">GKLocalPlayer</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_entitlements.html">Adding the Entitlement to the Godot Mac Editor.</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="class_applefilepicker.html">AppleFilePicker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_appleurl.html">AppleURL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aranchor.html">ARAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyanchor.html">ARBodyAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyskeleton.html">ARBodySkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodytrackingconfiguration.html">ARBodyTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcamera.html">ARCamera</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcoachingoverlay.html">ARCoachingOverlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcollaborationdata.html">ARCollaborationData</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arenvironmentprobeanchor.html">AREnvironmentProbeAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arfaceanchor.html">ARFaceAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arframe.html">ARFrame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeoanchor.html">ARGeoAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeotrackingconfiguration.html">ARGeoTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandanchor.html">ARHandAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandskeleton.html">ARHandSkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arimageanchor.html">ARImageAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arlightestimate.html">ARLightEstimate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_armeshanchor.html">ARMeshAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arplaneanchor.html">ARPlaneAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arpointcloud.html">ARPointCloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastquery.html">ARRaycastQuery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastresult.html">ARRaycastResult</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arsession.html">ARSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_artrackedraycast.html">ARTrackedRaycast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldmap.html">ARWorldMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldtrackingconfiguration.html">ARWorldTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aswebauthenticationsession.html">ASWebAuthenticationSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_foundation.html">Foundation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkaccesspoint.html">GKAccessPoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementchallenge.html">GKAchievementChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementdescription.html">GKAchievementDescription</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallenge.html">GKChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallengedefinition.html">GKChallengeDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkerror.html">GKError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivity.html">GKGameActivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivitydefinition.html">GKGameActivityDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgamecenterviewcontroller.html">GKGameCenterViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkinvite.html">GKInvite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboard.html">GKLeaderboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardentry.html">GKLeaderboardEntry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardscore.html">GKLeaderboardScore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardset.html">GKLeaderboardSet</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">GKLocalPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatch.html">GKMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmaker.html">GKMatchmaker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmakerviewcontroller.html">GKMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchrequest.html">GKMatchRequest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gknotificationbanner.html">GKNotificationBanner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkplayer.html">GKPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gksavedgame.html">GKSavedGame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkscorechallenge.html">GKScoreChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchange.html">GKTurnBasedExchange</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchangereply.html">GKTurnBasedExchangeReply</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatch.html">GKTurnBasedMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatchmakerviewcontroller.html">GKTurnBasedMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedparticipant.html">GKTurnBasedParticipant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkvoicechat.html">GKVoiceChat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_productview.html">ProductView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_signalproxy.html">SignalProxy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storekitmanager.html">StoreKitManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproduct.html">StoreProduct</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpaymentmode.html">StoreProductPaymentMode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpurchaseoption.html">StoreProductPurchaseOption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionoffer.html">StoreProductSubscriptionOffer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionperiod.html">StoreProductSubscriptionPeriod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfo.html">StoreSubscriptionInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninforenewalinfo.html">StoreSubscriptionInfoRenewalInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfostatus.html">StoreSubscriptionInfoStatus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storetransaction.html">StoreTransaction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeview.html">StoreView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionofferview.html">SubscriptionOfferView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionstoreview.html">SubscriptionStoreView</a></li>
+</li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="class_gkleaderboardset.html" title="previous chapter">GKLeaderboardSet</a></li>
-      <li>Next: <a href="class_gkmatch.html" title="next chapter">GKMatch</a></li>
-  </ul></li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_gkleaderboardset.html"
+                          title="previous chapter">GKLeaderboardSet</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_gkmatch.html"
+                          title="next chapter">GKMatch</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &#169;.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
-      
-      |
-      <a href="_sources/class_gklocalplayer.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_gkmatch.html" title="GKMatch"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_gkleaderboardset.html" title="GKLeaderboardSet"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GKLocalPlayer</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+    </div>
   </body>
 </html>

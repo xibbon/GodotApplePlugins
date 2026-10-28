@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMHeadphoneMotionManager &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmheadphonemotionmanager.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMMagnetometerData" href="class_cmmagnetometerdata.html" />
+    <link rel="prev" title="CMGyroData" href="class_cmgyrodata.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_cmmagnetometerdata.html" title="CMMagnetometerData"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmgyrodata.html" title="CMGyroData"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMHeadphoneMotionManager</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmheadphonemotionmanager">
+<span id="class-cmheadphonemotionmanager"></span><h1>CMHeadphoneMotionManager<a class="headerlink" href="#cmheadphonemotionmanager" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>Streams fused head motion data from AirPods Pro / AirPods Max / AirPods 3rd gen and later.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMHeadphoneMotionManager</span></code>. Provides <a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a> samples representing head pose when compatible headphones are connected. Useful for head-tracked audio, spatial UI, or letting the user look around with their head while their hands are free.</p>
+<p><strong>Requires the ``NSMotionUsageDescription`` Info.plist key (and on macOS, the matching entitlement).</strong></p>
+<p><strong>Platform availability:</strong> Real implementation on <strong>iOS 14+</strong> and <strong>macOS 14+</strong>. On other platforms <a class="reference internal" href="#class-cmheadphonemotionmanager-property-is-device-motion-available"><span class="std std-ref">is_device_motion_available</span></a> is <code class="docutils literal notranslate"><span class="pre">false</span></code> and <a class="reference internal" href="#class-cmheadphonemotionmanager-method-start-device-motion-updates"><span class="std std-ref">start_device_motion_updates()</span></a> emits <a class="reference internal" href="#class-cmheadphonemotionmanager-signal-update-failed"><span class="std std-ref">update_failed</span></a>.</p>
+<p>See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmheadphonemotionmanager">CMHeadphoneMotionManager reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmheadphonemotionmanager-property-device-motion"><span class="std std-ref">device_motion</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmheadphonemotionmanager-property-is-device-motion-active"><span class="std std-ref">is_device_motion_active</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmheadphonemotionmanager-property-is-device-motion-available"><span class="std std-ref">is_device_motion_available</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmheadphonemotionmanager-method-authorization-status"><span class="std std-ref">authorization_status</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmheadphonemotionmanager-method-start-device-motion-updates"><span class="std std-ref">start_device_motion_updates</span></a>()</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmheadphonemotionmanager-method-stop-device-motion-updates"><span class="std std-ref">stop_device_motion_updates</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
+<p class="classref-signal" id="class-cmheadphonemotionmanager-signal-connected"><strong>connected</strong>() <a class="reference internal" href="#class-cmheadphonemotionmanager-signal-connected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when compatible headphones connect and begin providing motion data.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmheadphonemotionmanager-signal-device-motion-updated"><strong>device_motion_updated</strong>(deviceMotion: <a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a>) <a class="reference internal" href="#class-cmheadphonemotionmanager-signal-device-motion-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread when a new headphone motion sample is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmheadphonemotionmanager-signal-disconnected"><strong>disconnected</strong>() <a class="reference internal" href="#class-cmheadphonemotionmanager-signal-disconnected"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the previously connected headphones disconnect.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmheadphonemotionmanager-signal-update-failed"><strong>update_failed</strong>(message: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-cmheadphonemotionmanager-signal-update-failed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when CoreMotion reports an error or when the API is unavailable on the current platform.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-cmheadphonemotionmanager-property-device-motion"><a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a> <strong>device_motion</strong> <a class="reference internal" href="#class-cmheadphonemotionmanager-property-device-motion"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a> <strong>get_device_motion</strong>()</p></li>
+</ul>
+<p>The most recent headphone motion sample, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if none is available.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmheadphonemotionmanager-property-is-device-motion-active"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_device_motion_active</strong> <a class="reference internal" href="#class-cmheadphonemotionmanager-property-is-device-motion-active"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_device_motion_active</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when updates are currently being delivered.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmheadphonemotionmanager-property-is-device-motion-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_device_motion_available</strong> <a class="reference internal" href="#class-cmheadphonemotionmanager-property-is-device-motion-available"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>get_is_device_motion_available</strong>()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> when compatible headphones are currently connected and providing motion data.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-cmheadphonemotionmanager-method-authorization-status"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>authorization_status</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmheadphonemotionmanager-method-authorization-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns Apple’s <code class="docutils literal notranslate"><span class="pre">CMAuthorizationStatus</span></code> integer (0 = notDetermined, 1 = restricted, 2 = denied, 3 = authorized). Available on iOS 17.4 / macOS 14.4 and later; returns 0 on earlier versions.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmheadphonemotionmanager-method-start-device-motion-updates"><abbr title="No return value.">void</abbr> <strong>start_device_motion_updates</strong>() <a class="reference internal" href="#class-cmheadphonemotionmanager-method-start-device-motion-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins delivering <a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion"><span class="std std-ref">CMDeviceMotion</span></a> samples for the connected headphones via <a class="reference internal" href="#class-cmheadphonemotionmanager-signal-device-motion-updated"><span class="std std-ref">device_motion_updated</span></a>. If no compatible headphones are connected, samples will begin to arrive once a pair connects.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmheadphonemotionmanager-method-stop-device-motion-updates"><abbr title="No return value.">void</abbr> <strong>stop_device_motion_updates</strong>() <a class="reference internal" href="#class-cmheadphonemotionmanager-method-stop-device-motion-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops headphone motion updates.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMHeadphoneMotionManager</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmgyrodata.html"
+                          title="previous chapter">CMGyroData</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_cmmagnetometerdata.html"
+                          title="next chapter">CMMagnetometerData</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_cmmagnetometerdata.html" title="CMMagnetometerData"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmgyrodata.html" title="CMGyroData"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMHeadphoneMotionManager</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

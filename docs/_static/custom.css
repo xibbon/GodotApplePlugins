@@ -1,1 +1,59 @@
-/* This file intentionally left blank. */
+/* Keep long API names and tables inside the available content width. */
+div.documentwrapper {
+    min-width: 0;
+}
+
+div.body {
+    min-width: 0;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+div.sphinxsidebar {
+    overflow-wrap: anywhere;
+}
+
+div.body p, div.body dd, div.body li, div.body blockquote {
+    text-align: left;
+}
+
+div.body pre {
+    overflow-x: auto;
+    overflow-wrap: normal;
+}
+
+div.body table.docutils {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+hr.classref-item-separator {
+    margin: 2rem 0;
+}
+
+/* Classic's desktop sidebar otherwise leaves too little room on phones. */
+@media (max-width: 760px) {
+    div.document {
+        display: block;
+    }
+
+    div.documentwrapper,
+    div.sphinxsidebar {
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    div.bodywrapper {
+        margin: 0;
+    }
+
+    div.body {
+        padding: 1px 20px 24px;
+    }
+
+    div.related li.right {
+        display: none;
+    }
+}

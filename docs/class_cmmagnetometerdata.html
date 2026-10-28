@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMMagnetometerData &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmmagnetometerdata.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMMotionActivity" href="class_cmmotionactivity.html" />
+    <link rel="prev" title="CMHeadphoneMotionManager" href="class_cmheadphonemotionmanager.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_cmmotionactivity.html" title="CMMotionActivity"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmheadphonemotionmanager.html" title="CMHeadphoneMotionManager"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMagnetometerData</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmmagnetometerdata">
+<span id="class-cmmagnetometerdata"></span><h1>CMMagnetometerData<a class="headerlink" href="#cmmagnetometerdata" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>A single magnetometer sample produced by <a class="reference internal" href="class_cmmotionmanager.html#class-cmmotionmanager"><span class="std std-ref">CMMotionManager</span></a>.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMMagnetometerData</span></code>. Provides the raw magnetic field reading in microteslas along each device axis. Includes bias from device magnetic interference. For a bias-corrected value, use device-motion updates and read <a class="reference internal" href="class_cmdevicemotion.html#class-cmdevicemotion-property-magnetic-field"><span class="std std-ref">CMDeviceMotion.magnetic_field</span></a> instead. See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmmagnetometerdata">CMMagnetometerData reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_vector3.html#class-vector3" title="(in Godot Engine vstable)"><span class="xref std std-ref">Vector3</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmagnetometerdata-property-magnetic-field"><span class="std std-ref">magnetic_field</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmmagnetometerdata-property-timestamp"><span class="std std-ref">timestamp</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-cmmagnetometerdata-property-magnetic-field"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_vector3.html#class-vector3" title="(in Godot Engine vstable)"><span class="xref std std-ref">Vector3</span></a> <strong>magnetic_field</strong> <a class="reference internal" href="#class-cmmagnetometerdata-property-magnetic-field"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_magnetic_field</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_vector3.html#class-vector3" title="(in Godot Engine vstable)"><span class="xref std std-ref">Vector3</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_vector3.html#class-vector3" title="(in Godot Engine vstable)"><span class="xref std std-ref">Vector3</span></a> <strong>get_magnetic_field</strong>()</p></li>
+</ul>
+<p>Magnetic field strength along each axis in microteslas (µT).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-cmmagnetometerdata-property-timestamp"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>timestamp</strong> <a class="reference internal" href="#class-cmmagnetometerdata-property-timestamp"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><abbr title="No return value.">void</abbr> <strong>set_timestamp</strong>(value: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></li>
+<li><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a> <strong>get_timestamp</strong>()</p></li>
+</ul>
+<p>The time at which the sample was taken, in seconds since device boot.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMMagnetometerData</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmheadphonemotionmanager.html"
+                          title="previous chapter">CMHeadphoneMotionManager</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_cmmotionactivity.html"
+                          title="next chapter">CMMotionActivity</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_cmmotionactivity.html" title="CMMotionActivity"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmheadphonemotionmanager.html" title="CMHeadphoneMotionManager"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMMagnetometerData</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

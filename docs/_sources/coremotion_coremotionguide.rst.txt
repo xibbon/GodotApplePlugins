@@ -6,6 +6,7 @@
 
 .. _coremotion_coremotionguide__using-apple-s-coremotion-apis-with-godot:
 
+========================================
 Using Apple's CoreMotion APIs with Godot
 ========================================
 

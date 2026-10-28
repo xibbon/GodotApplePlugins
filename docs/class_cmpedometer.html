@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMPedometer &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/class_cmpedometer.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CMPedometerData" href="class_cmpedometerdata.html" />
+    <link rel="prev" title="CMMotionManager" href="class_cmmotionmanager.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_cmpedometerdata.html" title="CMPedometerData"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmotionmanager.html" title="CMMotionManager"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMPedometer</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cmpedometer">
+<span id="class-cmpedometer"></span><h1>CMPedometer<a class="headerlink" href="#cmpedometer" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_refcounted.html#class-refcounted" title="(in Godot Engine vstable)"><span class="xref std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_object.html#class-object" title="(in Godot Engine vstable)"><span class="xref std std-ref">Object</span></a></p>
+<p>Step, distance, and floor counts from the system pedometer.</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Wraps Apple’s <code class="docutils literal notranslate"><span class="pre">CMPedometer</span></code>. Supports both historical queries (already-recorded data from the system) and live updates.</p>
+<p><strong>Requires the ``NSMotionUsageDescription`` Info.plist key.</strong> On iOS the system records pedometer data continuously while motion permission is granted, so <a class="reference internal" href="#class-cmpedometer-method-query-pedometer-data"><span class="std std-ref">query_pedometer_data()</span></a> can return data even from before your app launched.</p>
+<p><strong>Platform availability:</strong> Real implementation on <strong>iOS</strong>. On other platforms the <code class="docutils literal notranslate"><span class="pre">is_*_available</span></code> static methods return <code class="docutils literal notranslate"><span class="pre">false</span></code> and calls report unavailability through their callback or <a class="reference internal" href="#class-cmpedometer-signal-pedometer-failed"><span class="std std-ref">pedometer_failed</span></a>.</p>
+<p>See Apple’s <a class="reference external" href="https://developer.apple.com/documentation/coremotion/cmpedometer">CMPedometer reference</a>.</p>
+</section>
+<section class="classref-introduction-group" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="coremotion_coremotionguide.html"><span class="doc">CoreMotion Integration Guide</span></a></p></li>
+</ul>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-authorization-status"><span class="std std-ref">authorization_status</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-is-cadence-available"><span class="std std-ref">is_cadence_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-is-distance-available"><span class="std std-ref">is_distance_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-is-floor-counting-available"><span class="std std-ref">is_floor_counting_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-is-pace-available"><span class="std std-ref">is_pace_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-is-step-counting-available"><span class="std std-ref">is_step_counting_available</span></a>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-query-pedometer-data"><span class="std std-ref">query_pedometer_data</span></a>(fromUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, toUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-start-updates"><span class="std std-ref">start_updates</span></a>(fromUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-cmpedometer-method-stop-updates"><span class="std std-ref">stop_updates</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
+<p class="classref-signal" id="class-cmpedometer-signal-pedometer-failed"><strong>pedometer_failed</strong>(message: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_string.html#class-string" title="(in Godot Engine vstable)"><span class="xref std std-ref">String</span></a>) <a class="reference internal" href="#class-cmpedometer-signal-pedometer-failed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when CoreMotion reports an error on a live updates stream, or when the API is unavailable on the current platform.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-cmpedometer-signal-pedometer-updated"><strong>pedometer_updated</strong>(data: <a class="reference internal" href="class_cmpedometerdata.html#class-cmpedometerdata"><span class="std std-ref">CMPedometerData</span></a>) <a class="reference internal" href="#class-cmpedometer-signal-pedometer-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted on the main thread with the latest cumulative pedometer reading since <a class="reference internal" href="#class-cmpedometer-method-start-updates"><span class="std std-ref">start_updates()</span></a> was called.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-cmpedometer-method-authorization-status"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_int.html#class-int" title="(in Godot Engine vstable)"><span class="xref std std-ref">int</span></a> <strong>authorization_status</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmpedometer-method-authorization-status"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the current authorization status using Apple’s <code class="docutils literal notranslate"><span class="pre">CMAuthorizationStatus</span></code> integer (0 = notDetermined, 1 = restricted, 2 = denied, 3 = authorized).</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-is-cadence-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_cadence_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmpedometer-method-is-cadence-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device can report cadence.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-is-distance-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_distance_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmpedometer-method-is-distance-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device can estimate walked/run distance.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-is-floor-counting-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_floor_counting_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmpedometer-method-is-floor-counting-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device can count floors ascended/descended.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-is-pace-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_pace_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmpedometer-method-is-pace-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device can report pace.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-is-step-counting-available"><a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_bool.html#class-bool" title="(in Godot Engine vstable)"><span class="xref std std-ref">bool</span></a> <strong>is_step_counting_available</strong>() <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-cmpedometer-method-is-step-counting-available"><span class="std std-ref">🔗</span></a></p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the device can count steps. Step counting is the minimum requirement for any pedometer functionality.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-query-pedometer-data"><abbr title="No return value.">void</abbr> <strong>query_pedometer_data</strong>(fromUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, toUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>, callback: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_callable.html#class-callable" title="(in Godot Engine vstable)"><span class="xref std std-ref">Callable</span></a>) <a class="reference internal" href="#class-cmpedometer-method-query-pedometer-data"><span class="std std-ref">🔗</span></a></p>
+<p>Queries pedometer data recorded between two Unix-time stamps. <code class="docutils literal notranslate"><span class="pre">callback</span></code> is invoked on the main thread with <code class="docutils literal notranslate"><span class="pre">callback(data:</span> <span class="pre">CMPedometerData,</span> <span class="pre">error:</span> <span class="pre">String)</span></code>; <code class="docutils literal notranslate"><span class="pre">data</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code> when <code class="docutils literal notranslate"><span class="pre">error</span></code> is set.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-start-updates"><abbr title="No return value.">void</abbr> <strong>start_updates</strong>(fromUnixTime: <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_float.html#class-float" title="(in Godot Engine vstable)"><span class="xref std std-ref">float</span></a>) <a class="reference internal" href="#class-cmpedometer-method-start-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Begins live pedometer updates accumulating from <code class="docutils literal notranslate"><span class="pre">fromUnixTime</span></code> (Unix seconds). Subsequent samples arrive via <a class="reference internal" href="#class-cmpedometer-signal-pedometer-updated"><span class="std std-ref">pedometer_updated</span></a>. Use <a class="reference external" href="https://docs.godotengine.org/en/stable/classes/class_time.html#class-time-method-get-unix-time-from-system" title="(in Godot Engine vstable)"><span class="xref std std-ref">Time.get_unix_time_from_system()</span></a> for “now”.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-cmpedometer-method-stop-updates"><abbr title="No return value.">void</abbr> <strong>stop_updates</strong>() <a class="reference internal" href="#class-cmpedometer-method-stop-updates"><span class="std std-ref">🔗</span></a></p>
+<p>Stops live pedometer updates.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CMPedometer</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#signals">Signals</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_cmmotionmanager.html"
+                          title="previous chapter">CMMotionManager</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_cmpedometerdata.html"
+                          title="next chapter">CMPedometerData</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_cmpedometerdata.html" title="CMPedometerData"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_cmmotionmanager.html" title="CMMotionManager"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMPedometer</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

@@ -5,51 +5,60 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using Apple’s StoreKit APIs with Godot &#8212; GodotApplePlugins  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <title>Using Apple’s StoreKit APIs with Godot &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/storekit_storekitguide.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Adding the Entitlement to the Godot Mac Editor." href="gamecenter_entitlements.html" />
-    <link rel="prev" title="Using Apple’s GameKit APIs with Godot" href="gamecenter_gamecenterguide.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-
-  
-  
-
+    <link rel="prev" title="Using Apple’s GameKit APIs with Godot" href="gamecenter_gamecenterguide.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gamecenter_entitlements.html" title="Adding the Entitlement to the Godot Mac Editor."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gamecenter_gamecenterguide.html" title="Using Apple’s GameKit APIs with Godot"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using Apple’s StoreKit APIs with Godot</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <section id="using-apple-s-storekit-apis-with-godot">
 <span id="storekit-storekitguide-using-apple-s-storekit-apis-with-godot"></span><h1>Using Apple’s StoreKit APIs with Godot<a class="headerlink" href="#using-apple-s-storekit-apis-with-godot" title="Link to this heading">¶</a></h1>
 <p>This guide explains the StoreKit workflow in this addon. For Apple platform
 rules and App Store Connect setup, see <a class="reference external" href="https://developer.apple.com/documentation/storekit">Apple’s StoreKit documentation</a>.</p>
-</section>
 <section id="table-of-contents">
-<span id="storekit-storekitguide-table-of-contents"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
+<span id="storekit-storekitguide-table-of-contents"></span><h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#storekit_storekitguide__start-storekit">Start StoreKit</a></p></li>
 <li><p><a class="reference external" href="#storekit_storekitguide__handle-transactions">Handle transactions</a></p></li>
+<li><p><a class="reference external" href="#storekit_storekitguide__check-current-entitlements-at-startup">Check current entitlements at startup</a></p></li>
 <li><p><a class="reference external" href="#storekit_storekitguide__redeem-offer-codes">Redeem offer codes</a></p></li>
 <li><p><a class="reference external" href="#storekit_storekitguide__handle-external-offer-code-redemptions">Handle external offer-code redemptions</a></p></li>
 <li><p><a class="reference external" href="#storekit_storekitguide__test-offer-codes">Test offer codes</a></p></li>
 </ul>
 </section>
 <section id="start-storekit">
-<span id="storekit-storekitguide-start-storekit"></span><h1>Start StoreKit<a class="headerlink" href="#start-storekit" title="Link to this heading">¶</a></h1>
+<span id="storekit-storekitguide-start-storekit"></span><h2>Start StoreKit<a class="headerlink" href="#start-storekit" title="Link to this heading">¶</a></h2>
 <p>Create one <code class="docutils literal notranslate"><span class="pre">StoreKitManager</span></code> when your app starts. Keep it alive for the life
 of the app. Connect signals before you call <code class="docutils literal notranslate"><span class="pre">start()</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">start()</span></code> begins the StoreKit transaction listener. It also checks for
@@ -69,14 +78,14 @@ while it was not running.</p>
 <span class="w">    </span><span class="n">verification_error</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span>
 <span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 
-<span class="w">    </span><span class="n">push_warning</span><span class="p">(</span><span class="s2">&quot;StoreKit could not verify transaction </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">transaction</span><span class="o">.</span><span class="n">transaction_id</span><span class="p">)</span>
+<span class="w">    </span><span class="n">push_warning</span><span class="p">(</span><span class="s2">"StoreKit could not verify transaction </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">transaction</span><span class="o">.</span><span class="n">transaction_id</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Do not create a manager only when a user opens a store screen. StoreKit can
 send transactions at any time.</p>
 </section>
 <section id="handle-transactions">
-<span id="storekit-storekitguide-handle-transactions"></span><h1>Handle transactions<a class="headerlink" href="#handle-transactions" title="Link to this heading">¶</a></h1>
+<span id="storekit-storekitguide-handle-transactions"></span><h2>Handle transactions<a class="headerlink" href="#handle-transactions" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">transaction_updated</span></code> contains verified transactions from purchases, offer
 codes, subscriptions, and purchases that happen outside your app. Deliver the
 product first. Then call <code class="docutils literal notranslate"><span class="pre">finish()</span></code>.</p>
@@ -86,12 +95,14 @@ the same operation.</p>
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">func</span><span class="w"> </span><span class="n">_on_transaction_updated</span><span class="p">(</span><span class="n">transaction</span><span class="p">:</span><span class="w"> </span><span class="n">StoreTransaction</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 
 <span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">transaction</span><span class="o">.</span><span class="n">product_id</span><span class="p">:</span>
-<span class="w">            </span><span class="s2">&quot;com.example.game.coins.100&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="s2">"com.example.game.coins.100"</span><span class="p">:</span>
 <span class="w">                    </span><span class="n">add_coins</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="w">            </span><span class="s2">&quot;com.example.game.remove_ads&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="s2">"com.example.game.remove_ads"</span><span class="p">:</span>
 <span class="w">                    </span><span class="n">unlock_remove_ads</span><span class="p">()</span>
+<span class="w">            </span><span class="s2">"com.example.game.full_version"</span><span class="p">:</span>
+<span class="w">                    </span><span class="n">unlock_full_version</span><span class="p">()</span>
 <span class="w">            </span><span class="n">_</span><span class="p">:</span>
-<span class="w">                    </span><span class="n">push_warning</span><span class="p">(</span><span class="s2">&quot;Unknown product: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">transaction</span><span class="o">.</span><span class="n">product_id</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">push_warning</span><span class="p">(</span><span class="s2">"Unknown product: </span><span class="si">%s</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">transaction</span><span class="o">.</span><span class="n">product_id</span><span class="p">)</span>
 <span class="w">                    </span><span class="k">return</span>
 
 <span class="w">    </span><span class="n">transaction</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
@@ -102,8 +113,46 @@ It does not return consumables. Use unfinished transactions to recover a
 consumable purchase that the app did not finish. <code class="docutils literal notranslate"><span class="pre">start()</span></code> does this
 automatically. You can call <code class="docutils literal notranslate"><span class="pre">fetch_unfinished_transactions()</span></code> again to retry.</p>
 </section>
+<section id="check-current-entitlements-at-startup">
+<span id="storekit-storekitguide-check-current-entitlements-at-startup"></span><h2>Check current entitlements at startup<a class="headerlink" href="#check-current-entitlements-at-startup" title="Link to this heading">¶</a></h2>
+<p>Connect <code class="docutils literal notranslate"><span class="pre">current_entitlements_fetch_completed</span></code> before you call
+<code class="docutils literal notranslate"><span class="pre">fetch_current_entitlements()</span></code>. The method sends each verified entitlement
+through <code class="docutils literal notranslate"><span class="pre">transaction_updated</span></code> and each unverified entitlement through
+<code class="docutils literal notranslate"><span class="pre">unverified_transaction_updated</span></code>. It then sends
+<code class="docutils literal notranslate"><span class="pre">current_entitlements_fetch_completed</span></code> with an array of verified current
+entitlements. The array is empty when StoreKit finds no verified current
+entitlements. The completion signal also fires for this empty result.</p>
+<p>Use the array to select the first screen. It contains only entitlements from
+this check, so other transaction updates cannot change the result. In this
+example, <code class="docutils literal notranslate"><span class="pre">com.example.game.full_version</span></code> is a non-consumable purchase:</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">FULL_VERSION_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"com.example.game.full_version"</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">store_kit</span><span class="p">:</span><span class="w"> </span><span class="n">StoreKitManager</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="n">store_kit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StoreKitManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">    </span><span class="n">store_kit</span><span class="o">.</span><span class="n">transaction_updated</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_transaction_updated</span><span class="p">)</span>
+<span class="w">    </span><span class="n">store_kit</span><span class="o">.</span><span class="n">unverified_transaction_updated</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_unverified_transaction_updated</span><span class="p">)</span>
+<span class="w">    </span><span class="n">store_kit</span><span class="o">.</span><span class="n">current_entitlements_fetch_completed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_current_entitlements_fetch_completed</span><span class="p">)</span>
+<span class="w">    </span><span class="n">store_kit</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="w">    </span><span class="n">store_kit</span><span class="o">.</span><span class="n">fetch_current_entitlements</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_current_entitlements_fetch_completed</span><span class="p">(</span>
+<span class="w">    </span><span class="n">entitlements</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">StoreTransaction</span><span class="p">]</span>
+<span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">entitlement</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">entitlements</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">entitlement</span><span class="o">.</span><span class="n">product_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">FULL_VERSION_ID</span><span class="p">:</span>
+<span class="w">                    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene_to_file</span><span class="p">(</span><span class="s2">"res://full_menu.tscn"</span><span class="p">)</span>
+<span class="w">                    </span><span class="k">return</span>
+<span class="w">    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">change_scene_to_file</span><span class="p">(</span><span class="s2">"res://demo_menu.tscn"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use the transaction handlers in the earlier examples to deliver and finish
+transactions. Do not grant access for an unverified transaction. StoreKit does
+not include consumables in current entitlements.</p>
+</section>
 <section id="redeem-offer-codes">
-<span id="storekit-storekitguide-redeem-offer-codes"></span><h1>Redeem offer codes<a class="headerlink" href="#redeem-offer-codes" title="Link to this heading">¶</a></h1>
+<span id="storekit-storekitguide-redeem-offer-codes"></span><h2>Redeem offer codes<a class="headerlink" href="#redeem-offer-codes" title="Link to this heading">¶</a></h2>
 <p>Offer codes can apply to consumables, non-consumables, non-renewing
 subscriptions, and auto-renewable subscriptions. Configure the offer for the
 exact product in App Store Connect before you show the redemption sheet.</p>
@@ -117,7 +166,7 @@ redemption flow completed. The resulting product transaction arrives through
 
 <span class="w">    </span><span class="n">offer_view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SubscriptionOfferView</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 <span class="w">    </span><span class="n">offer_view</span><span class="o">.</span><span class="n">success</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
-<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Offer code redeemed. Waiting for its transaction.&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Offer code redeemed. Waiting for its transaction."</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="w">    </span><span class="n">offer_view</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
 <span class="w">            </span><span class="n">push_warning</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
@@ -130,7 +179,7 @@ subscriptions requires iOS or iPadOS 16.3 or later. It requires macOS 15 or
 later on Mac. No extra app entitlement is required.</p>
 </section>
 <section id="handle-external-offer-code-redemptions">
-<span id="storekit-storekitguide-handle-external-offer-code-redemptions"></span><h1>Handle external offer-code redemptions<a class="headerlink" href="#handle-external-offer-code-redemptions" title="Link to this heading">¶</a></h1>
+<span id="storekit-storekitguide-handle-external-offer-code-redemptions"></span><h2>Handle external offer-code redemptions<a class="headerlink" href="#handle-external-offer-code-redemptions" title="Link to this heading">¶</a></h2>
 <p>Users can redeem codes in the App Store or from a redemption URL. If your app
 is running, StoreKit sends the resulting transaction through
 <code class="docutils literal notranslate"><span class="pre">transaction_updated</span></code>. If it is not running, <code class="docutils literal notranslate"><span class="pre">start()</span></code> reads the unfinished
@@ -144,7 +193,7 @@ server notification as a second record of the event, but still handle the
 device transaction to grant the item without delay.</p>
 </section>
 <section id="test-offer-codes">
-<span id="storekit-storekitguide-test-offer-codes"></span><h1>Test offer codes<a class="headerlink" href="#test-offer-codes" title="Link to this heading">¶</a></h1>
+<span id="storekit-storekitguide-test-offer-codes"></span><h2>Test offer codes<a class="headerlink" href="#test-offer-codes" title="Link to this heading">¶</a></h2>
 <p>For Sandbox testing, create sandbox offer codes for the product in App Store
 Connect. Sign in with a Sandbox Apple Account on the test device. Then use the
 offer-code sheet in your app, or start an offer-code transaction from Sandbox
@@ -156,187 +205,72 @@ redemption that happens outside the app.</p>
 an app that is Ready for Distribution. A new code batch can take up to one hour
 before customers can redeem it.</p>
 </section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">GodotApplePlugins</a></h1>
-
-
-
-
-
-
-
-
-
 <search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </search>
-<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html">Using Apple’s ARKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html">Using Apple’s AuthenticationServices APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#entitlements">Entitlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authenticationservices_authenticationservicesguide.html#quick-start">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html">Using Apple’s CoreMotion APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#info-plist-and-permissions">Info.plist and Permissions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#choosing-between-raw-sensors-and-device-motion">Choosing Between Raw Sensors and Device Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#examples">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html">Using Apple’s GameKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#authentication">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#players">Players</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#saved-games">Saved Games</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#achievements">Achievements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#realtime-matchmaking">Realtime Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#turn-based-matchmaking">Turn-Based Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#challenges">Challenges</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#leaderboards">Leaderboards</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Apple’s StoreKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#start-storekit">Start StoreKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#handle-transactions">Handle transactions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#redeem-offer-codes">Redeem offer codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#handle-external-offer-code-redemptions">Handle external offer-code redemptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#test-offer-codes">Test offer codes</a></li>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Using Apple’s StoreKit APIs with Godot</a><ul>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li><a class="reference internal" href="#start-storekit">Start StoreKit</a></li>
+<li><a class="reference internal" href="#handle-transactions">Handle transactions</a></li>
+<li><a class="reference internal" href="#check-current-entitlements-at-startup">Check current entitlements at startup</a></li>
+<li><a class="reference internal" href="#redeem-offer-codes">Redeem offer codes</a></li>
+<li><a class="reference internal" href="#handle-external-offer-code-redemptions">Handle external offer-code redemptions</a></li>
+<li><a class="reference internal" href="#test-offer-codes">Test offer codes</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_entitlements.html">Adding the Entitlement to the Godot Mac Editor.</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="class_applefilepicker.html">AppleFilePicker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_appleurl.html">AppleURL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aranchor.html">ARAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyanchor.html">ARBodyAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyskeleton.html">ARBodySkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodytrackingconfiguration.html">ARBodyTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcamera.html">ARCamera</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcoachingoverlay.html">ARCoachingOverlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcollaborationdata.html">ARCollaborationData</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arenvironmentprobeanchor.html">AREnvironmentProbeAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arfaceanchor.html">ARFaceAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arframe.html">ARFrame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeoanchor.html">ARGeoAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeotrackingconfiguration.html">ARGeoTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandanchor.html">ARHandAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandskeleton.html">ARHandSkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arimageanchor.html">ARImageAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arlightestimate.html">ARLightEstimate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_armeshanchor.html">ARMeshAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arplaneanchor.html">ARPlaneAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arpointcloud.html">ARPointCloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastquery.html">ARRaycastQuery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastresult.html">ARRaycastResult</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arsession.html">ARSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_artrackedraycast.html">ARTrackedRaycast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldmap.html">ARWorldMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldtrackingconfiguration.html">ARWorldTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aswebauthenticationsession.html">ASWebAuthenticationSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_foundation.html">Foundation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkaccesspoint.html">GKAccessPoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementchallenge.html">GKAchievementChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementdescription.html">GKAchievementDescription</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallenge.html">GKChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallengedefinition.html">GKChallengeDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkerror.html">GKError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivity.html">GKGameActivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivitydefinition.html">GKGameActivityDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgamecenterviewcontroller.html">GKGameCenterViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkinvite.html">GKInvite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboard.html">GKLeaderboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardentry.html">GKLeaderboardEntry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardscore.html">GKLeaderboardScore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardset.html">GKLeaderboardSet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gklocalplayer.html">GKLocalPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatch.html">GKMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmaker.html">GKMatchmaker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmakerviewcontroller.html">GKMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchrequest.html">GKMatchRequest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gknotificationbanner.html">GKNotificationBanner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkplayer.html">GKPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gksavedgame.html">GKSavedGame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkscorechallenge.html">GKScoreChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchange.html">GKTurnBasedExchange</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchangereply.html">GKTurnBasedExchangeReply</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatch.html">GKTurnBasedMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatchmakerviewcontroller.html">GKTurnBasedMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedparticipant.html">GKTurnBasedParticipant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkvoicechat.html">GKVoiceChat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_productview.html">ProductView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_signalproxy.html">SignalProxy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storekitmanager.html">StoreKitManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproduct.html">StoreProduct</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpaymentmode.html">StoreProductPaymentMode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpurchaseoption.html">StoreProductPurchaseOption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionoffer.html">StoreProductSubscriptionOffer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionperiod.html">StoreProductSubscriptionPeriod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfo.html">StoreSubscriptionInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninforenewalinfo.html">StoreSubscriptionInfoRenewalInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfostatus.html">StoreSubscriptionInfoStatus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storetransaction.html">StoreTransaction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeview.html">StoreView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionofferview.html">SubscriptionOfferView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionstoreview.html">SubscriptionStoreView</a></li>
+</li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="gamecenter_gamecenterguide.html" title="previous chapter">Using Apple’s GameKit APIs with Godot</a></li>
-      <li>Next: <a href="gamecenter_entitlements.html" title="next chapter">Adding the Entitlement to the Godot Mac Editor.</a></li>
-  </ul></li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="gamecenter_gamecenterguide.html"
+                          title="previous chapter">Using Apple’s GameKit APIs with Godot</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="gamecenter_entitlements.html"
+                          title="next chapter">Adding the Entitlement to the Godot Mac Editor.</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &#169;.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
-      
-      |
-      <a href="_sources/storekit_storekitguide.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gamecenter_entitlements.html" title="Adding the Entitlement to the Godot Mac Editor."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gamecenter_gamecenterguide.html" title="Using Apple’s GameKit APIs with Godot"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using Apple’s StoreKit APIs with Godot</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+    </div>
   </body>
 </html>

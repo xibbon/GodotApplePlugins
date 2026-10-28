@@ -5,32 +5,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using Apple’s AuthenticationServices APIs with Godot &#8212; GodotApplePlugins  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <title>Using Apple’s AuthenticationServices APIs with Godot &#8212; Godot Apple Plugins</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=f243f532" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=af4f27dd" />
+    
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="canonical" href="https://xibbon.github.io/GodotApplePlugins/authenticationservices_authenticationservicesguide.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Using Apple’s CoreMotion APIs with Godot" href="coremotion_coremotionguide.html" />
-    <link rel="prev" title="Using Apple’s ARKit APIs with Godot" href="arkit_arkitguide.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-
-  
-  
-
+    <link rel="prev" title="Using Apple’s ARKit APIs with Godot" href="arkit_arkitguide.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="coremotion_coremotionguide.html" title="Using Apple’s CoreMotion APIs with Godot"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arkit_arkitguide.html" title="Using Apple’s ARKit APIs with Godot"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using Apple’s AuthenticationServices APIs with Godot</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <section id="using-apple-s-authenticationservices-apis-with-godot">
@@ -43,15 +52,14 @@ Documentation](<a class="reference external" href="https://developer.apple.com/d
 class names that Apple uses (prefixed with <code class="docutils literal notranslate"><span class="pre">AS</span></code>) to simplify looking
 things up and finding resources online. Method names follow the Godot
 naming scheme (snake_case instead of camelCase).</p>
-</section>
 <section id="entitlements">
-<span id="authenticationservices-authenticationservicesguide-entitlements"></span><h1>Entitlements<a class="headerlink" href="#entitlements" title="Link to this heading">¶</a></h1>
+<span id="authenticationservices-authenticationservicesguide-entitlements"></span><h2>Entitlements<a class="headerlink" href="#entitlements" title="Link to this heading">¶</a></h2>
 <p>Make sure that your iOS or Mac app have the <code class="docutils literal notranslate"><span class="pre">com.apple.developer.applesignin</span></code> entitlement.
 When debugging on macOS, you need to resign the official
 Godot download with this entitlement (you must download a provisioning profile that
 contains the entitlement, or the APIs will fail).</p>
 <section id="ios">
-<span id="authenticationservices-authenticationservicesguide-ios"></span><h2>iOS<a class="headerlink" href="#ios" title="Link to this heading">¶</a></h2>
+<span id="authenticationservices-authenticationservicesguide-ios"></span><h3>iOS<a class="headerlink" href="#ios" title="Link to this heading">¶</a></h3>
 <p>Set at Project -&gt; Export -&gt; iOS -&gt; <code class="docutils literal notranslate"><span class="pre">entitlements/additional</span></code>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;key&gt;</span>com.apple.developer.applesignin<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;array&gt;</span>
@@ -61,11 +69,11 @@ contains the entitlement, or the APIs will fail).</p>
 </div>
 </section>
 <section id="macos">
-<span id="authenticationservices-authenticationservicesguide-macos"></span><h2>macOS<a class="headerlink" href="#macos" title="Link to this heading">¶</a></h2>
+<span id="authenticationservices-authenticationservicesguide-macos"></span><h3>macOS<a class="headerlink" href="#macos" title="Link to this heading">¶</a></h3>
 <p>Set the same entitlements as above (eg. when running codesign):</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>codesign<span class="w"> </span>--force<span class="w"> </span>--options<span class="o">=</span>runtime<span class="w"> </span>--verbose<span class="w"> </span>--timestamp<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--entitlements<span class="w"> </span>entitlements.plist<span class="w"> </span>--sign<span class="w"> </span><span class="s2">&quot;&lt;SIGN_ENTITY&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;MyApp.app/Contents/MacOS/MyApp&quot;</span>
+<span class="w">  </span>--entitlements<span class="w"> </span>entitlements.plist<span class="w"> </span>--sign<span class="w"> </span><span class="s2">"&lt;SIGN_ENTITY&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"MyApp.app/Contents/MacOS/MyApp"</span>
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">entitlements.plist</span></code> contains again:</p>
@@ -78,7 +86,7 @@ contains the entitlement, or the APIs will fail).</p>
 </section>
 </section>
 <section id="quick-start">
-<span id="authenticationservices-authenticationservicesguide-quick-start"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h1>
+<span id="authenticationservices-authenticationservicesguide-quick-start"></span><h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
 <p>For very simple uses, you can use:</p>
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">auth_controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASAuthorizationController</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
@@ -88,202 +96,86 @@ contains the entitlement, or the APIs will fail).</p>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_sign_in_button_pressed</span><span class="p">():</span>
 <span class="w">    </span><span class="c1"># Request full name and email</span>
-<span class="w">    </span><span class="n">auth_controller</span><span class="o">.</span><span class="n">signin_with_scopes</span><span class="p">([</span><span class="s2">&quot;full_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="n">auth_controller</span><span class="o">.</span><span class="n">signin_with_scopes</span><span class="p">([</span><span class="s2">"full_name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"email"</span><span class="p">])</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_authorization_completed</span><span class="p">(</span><span class="n">credential</span><span class="p">):</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">ASAuthorizationAppleIDCredential</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;User ID: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Email: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Full Name: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">fullName</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"User ID: "</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Email: "</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Full Name: "</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">fullName</span><span class="p">)</span>
 <span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">ASPasswordCredential</span><span class="p">:</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;User: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Password: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"User: "</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Password: "</span><span class="p">,</span><span class="w"> </span><span class="n">credential</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For more advanced users, you will find that the API replicates Apple’s API, and
 it surfaces the various features that you expect from it.</p>
 </section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">GodotApplePlugins</a></h1>
-
-
-
-
-
-
-
-
-
 <search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </search>
-<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html">Using Apple’s ARKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arkit_arkitguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Apple’s AuthenticationServices APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#entitlements">Entitlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#quick-start">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html">Using Apple’s CoreMotion APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#available-types">Available Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#info-plist-and-permissions">Info.plist and Permissions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#choosing-between-raw-sensors-and-device-motion">Choosing Between Raw Sensors and Device Motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#platform-notes">Platform Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coremotion_coremotionguide.html#examples">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html">Using Apple’s GameKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#authentication">Authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#players">Players</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#saved-games">Saved Games</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#achievements">Achievements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#realtime-matchmaking">Realtime Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#turn-based-matchmaking">Turn-Based Matchmaking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#challenges">Challenges</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_gamecenterguide.html#leaderboards">Leaderboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html">Using Apple’s StoreKit APIs with Godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#start-storekit">Start StoreKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-transactions">Handle transactions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#redeem-offer-codes">Redeem offer codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#handle-external-offer-code-redemptions">Handle external offer-code redemptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storekit_storekitguide.html#test-offer-codes">Test offer codes</a></li>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Using Apple’s AuthenticationServices APIs with Godot</a><ul>
+<li><a class="reference internal" href="#entitlements">Entitlements</a><ul>
+<li><a class="reference internal" href="#ios">iOS</a></li>
+<li><a class="reference internal" href="#macos">macOS</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gamecenter_entitlements.html">Adding the Entitlement to the Godot Mac Editor.</a></li>
+</li>
+<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="class_applefilepicker.html">AppleFilePicker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_appleurl.html">AppleURL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aranchor.html">ARAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyanchor.html">ARBodyAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodyskeleton.html">ARBodySkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arbodytrackingconfiguration.html">ARBodyTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcamera.html">ARCamera</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcoachingoverlay.html">ARCoachingOverlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arcollaborationdata.html">ARCollaborationData</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arenvironmentprobeanchor.html">AREnvironmentProbeAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arfaceanchor.html">ARFaceAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arframe.html">ARFrame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeoanchor.html">ARGeoAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_argeotrackingconfiguration.html">ARGeoTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandanchor.html">ARHandAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arhandskeleton.html">ARHandSkeleton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arimageanchor.html">ARImageAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arlightestimate.html">ARLightEstimate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_armeshanchor.html">ARMeshAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arplaneanchor.html">ARPlaneAnchor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arpointcloud.html">ARPointCloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastquery.html">ARRaycastQuery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arraycastresult.html">ARRaycastResult</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arsession.html">ARSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_artrackedraycast.html">ARTrackedRaycast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldmap.html">ARWorldMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_arworldtrackingconfiguration.html">ARWorldTrackingConfiguration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_aswebauthenticationsession.html">ASWebAuthenticationSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_foundation.html">Foundation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkaccesspoint.html">GKAccessPoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementchallenge.html">GKAchievementChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkachievementdescription.html">GKAchievementDescription</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallenge.html">GKChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkchallengedefinition.html">GKChallengeDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkerror.html">GKError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivity.html">GKGameActivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgameactivitydefinition.html">GKGameActivityDefinition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkgamecenterviewcontroller.html">GKGameCenterViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkinvite.html">GKInvite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboard.html">GKLeaderboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardentry.html">GKLeaderboardEntry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardscore.html">GKLeaderboardScore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardset.html">GKLeaderboardSet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gklocalplayer.html">GKLocalPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatch.html">GKMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmaker.html">GKMatchmaker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmakerviewcontroller.html">GKMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkmatchrequest.html">GKMatchRequest</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gknotificationbanner.html">GKNotificationBanner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkplayer.html">GKPlayer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gksavedgame.html">GKSavedGame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkscorechallenge.html">GKScoreChallenge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchange.html">GKTurnBasedExchange</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedexchangereply.html">GKTurnBasedExchangeReply</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatch.html">GKTurnBasedMatch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedmatchmakerviewcontroller.html">GKTurnBasedMatchmakerViewController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkturnbasedparticipant.html">GKTurnBasedParticipant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_gkvoicechat.html">GKVoiceChat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_productview.html">ProductView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_signalproxy.html">SignalProxy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storekitmanager.html">StoreKitManager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproduct.html">StoreProduct</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpaymentmode.html">StoreProductPaymentMode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductpurchaseoption.html">StoreProductPurchaseOption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionoffer.html">StoreProductSubscriptionOffer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeproductsubscriptionperiod.html">StoreProductSubscriptionPeriod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfo.html">StoreSubscriptionInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninforenewalinfo.html">StoreSubscriptionInfoRenewalInfo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storesubscriptioninfostatus.html">StoreSubscriptionInfoStatus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storetransaction.html">StoreTransaction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_storeview.html">StoreView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionofferview.html">SubscriptionOfferView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="class_subscriptionstoreview.html">SubscriptionStoreView</a></li>
+</li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="arkit_arkitguide.html" title="previous chapter">Using Apple’s ARKit APIs with Godot</a></li>
-      <li>Next: <a href="coremotion_coremotionguide.html" title="next chapter">Using Apple’s CoreMotion APIs with Godot</a></li>
-  </ul></li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="arkit_arkitguide.html"
+                          title="previous chapter">Using Apple’s ARKit APIs with Godot</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="coremotion_coremotionguide.html"
+                          title="next chapter">Using Apple’s CoreMotion APIs with Godot</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &#169;.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
-      
-      |
-      <a href="_sources/authenticationservices_authenticationservicesguide.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="coremotion_coremotionguide.html" title="Using Apple’s CoreMotion APIs with Godot"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arkit_arkitguide.html" title="Using Apple’s ARKit APIs with Godot"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using Apple’s AuthenticationServices APIs with Godot</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+    </div>
   </body>
 </html>

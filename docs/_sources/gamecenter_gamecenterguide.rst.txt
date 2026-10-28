@@ -6,6 +6,7 @@
 
 .. _gamecenter_gamecenterguide__using-apple-s-gamekit-apis-with-godot:
 
+=====================================
 Using Apple's GameKit APIs with Godot
 =====================================
 
@@ -32,6 +33,7 @@ Table of Contents
 
 * `Installation <#gamecenter_gamecenterguide__installation>`__
 * `Authentication <#gamecenter_gamecenterguide__authentication>`__
+* `Game Center Dashboard <#gamecenter_gamecenterguide__game-center-dashboard>`__
 * `Players <#gamecenter_gamecenterguide__players>`__
 * `Achievements <#gamecenter_gamecenterguide__achievements>`__
 * `Realtime Matchmaking <#gamecenter_gamecenterguide__realtime-matchmaking>`__
@@ -98,6 +100,27 @@ Then call the ``authenticate()`` method to trigger the authentication:
     	)
     
     	game_center.authenticate()
+
+
+.. _gamecenter_gamecenterguide__game-center-dashboard:
+
+Game Center Dashboard
+=====================
+
+
+Use a static ``show_*`` method to open Game Center UI. Call ``dismiss()`` when
+your game needs to close it:
+
+.. code-block:: gdscript
+
+    GKGameCenterViewController.show_type(GKGameCenterViewController.DASHBOARD)
+
+
+Later, from your own event handler, call:
+
+.. code-block:: gdscript
+
+    GKGameCenterViewController.dismiss()
 
 
 .. _gamecenter_gamecenterguide__players:
@@ -479,6 +502,30 @@ like this:
     )
 
 
+To close the realtime matchmaking UI from your game, keep the controller
+returned by ``create_controller()``:
+
+.. code-block:: gdscript
+
+    var request := GKMatchRequest.new()
+    request.min_players = 2
+    request.max_players = 2
+    
+    var controller := GKMatchmakerViewController.create_controller(request)
+    if controller:
+        controller.present()
+
+
+Later, from your own event handler, call:
+
+.. code-block:: gdscript
+
+    if controller:
+        controller.dismiss()
+
+
+Calling ``dismiss()`` does not emit ``cancelled``.
+
 .. _gamecenter_gamecenterguide__disconnect:
 
 Disconnect
@@ -668,6 +715,15 @@ delegate callbacks through signals.
     )
     controller.present()
 
+
+Keep ``controller`` while the UI is open. To close it from your game, call:
+
+.. code-block:: gdscript
+
+    controller.dismiss()
+
+
+Calling ``dismiss()`` does not emit ``cancelled``.
 
 .. _gamecenter_gamecenterguide__challenges:
 
