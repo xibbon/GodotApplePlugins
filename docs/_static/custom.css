@@ -103,6 +103,9 @@ h1 { font-size: 40px; margin: 0 0 18px; }
 .platforms span { margin: 0 8px; }
 .page-context { max-width: 1008px; margin: 0 auto; padding: 32px 64px 12px; color: var(--secondary); font-size: 13px; }
 .page-context a { color: var(--secondary); }
+.search-controls { max-width: 1008px; margin: 0 auto; padding: 8px 64px 0; font-size: 13px; }
+.search-controls:empty { display: none; }
+.search-controls p { margin: 0; }
 div.body, article.body { min-width: 0; max-width: 1008px; margin: 0 auto; padding: 28px 64px 64px; overflow-wrap: anywhere; }
 .body h1 { margin-bottom: 24px; }
 .body h2 { font-size: 28px; margin: 46px 0 18px; }
@@ -156,6 +159,7 @@ div.body, article.body { min-width: 0; max-width: 1008px; margin: 0 auto; paddin
     .framework-introduction { padding: 36px; }
     div.body, article.body { padding: 28px 36px 56px; }
     .page-context { padding: 28px 36px 8px; }
+    .search-controls { padding: 8px 36px 0; }
     .documentation-footer { padding: 24px 36px; }
 }
 @media (max-width: 900px) {
@@ -171,6 +175,7 @@ div.body, article.body { min-width: 0; max-width: 1008px; margin: 0 auto; paddin
     .introduction-summary { font-size: 20px; }
     div.body, article.body { padding: 24px 24px 48px; }
     .page-context { padding: 24px 24px 0; }
+    .search-controls { padding: 8px 24px 0; }
     .documentation-footer { padding: 24px; flex-wrap: wrap; }
     .body h2 { font-size: 26px; }
     .body table.docutils td, .body table.docutils th { padding: 10px; }
