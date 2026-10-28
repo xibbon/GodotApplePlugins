@@ -48,8 +48,11 @@
     <span>{% if pagename.startswith('class_') %}Class{% elif pagename == 'search' %}Search{% elif pagename == 'genindex' %}Index{% else %}Guide{% endif %}</span>
   </div>
   {% endif %}
-  <article class="body">
-    {% block body %}{% endblock %}
+  <div id="searchbox" class="search-controls"></div>
+  <article>
+    <div class="body">
+      {% block body %}{% endblock %}
+    </div>
   </article>
   <footer class="documentation-footer">
     <span>Godot Apple Plugins</span>
