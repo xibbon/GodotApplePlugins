@@ -20,7 +20,7 @@
 	</description>
 	<tutorials>
 		<link title="Foundation Integration Guide">
-			https://github.com/migueldeicaza/GodotApplePlugins/blob/main/Sources/GodotFoundation/FoundationGuide.md
+			https://github.com/xibbon/GodotApplePlugins/blob/main/Sources/GodotFoundation/FoundationGuide.md
 		</link>
 		<link title="Apple: Synchronizing App Preferences with iCloud">
 			https://developer.apple.com/documentation/foundation/synchronizing-app-preferences-with-icloud

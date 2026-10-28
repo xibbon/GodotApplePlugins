@@ -5,5 +5,5 @@ minor = 0
 patch = 0
 status = "dev"
 module_config = ""
-website = "https://migueldeicaza.github.io/GodotApplePlugins/"
+website = "https://xibbon.github.io/GodotApplePlugins/"
 docs = "latest"

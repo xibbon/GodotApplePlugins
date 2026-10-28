@@ -12,7 +12,7 @@
 
 		StoreKit sends transactions for purchases, subscriptions, and offer-code redemptions that happen in or outside your app. If a consumable offer code is redeemed while your app is not running, [method start] finds it through unfinished transactions when the app next starts. Do not use [method fetch_current_entitlements] to recover consumables because it excludes them.
 
-		For the full setup, redemption, and test workflow, see [url=https://migueldeicaza.github.io/GodotApplePlugins/storekit_storekitguide.html]Using Apple's StoreKit APIs with Godot[/url].
+		For the full setup, redemption, and test workflow, see [url=https://xibbon.github.io/GodotApplePlugins/storekit_storekitguide.html]Using Apple's StoreKit APIs with Godot[/url].
 	</description>
 	<tutorials>
 	</tutorials>

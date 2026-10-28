@@ -8,7 +8,7 @@
 
 		Create the offer in App Store Connect for the exact product before you call [method present]. No extra app entitlement is required. The [signal success] signal only confirms that the redemption flow completed. Deliver the purchased product when [StoreKitManager] emits [signal StoreKitManager.transaction_updated], then call [method StoreTransaction.finish].
 
-		In-app redemption for consumables, non-consumables, and non-renewing subscriptions requires iOS or iPadOS 16.3 or later. It requires macOS 15 or later on Mac. For the complete workflow, see [url=https://migueldeicaza.github.io/GodotApplePlugins/storekit_storekitguide.html]Using Apple's StoreKit APIs with Godot[/url].
+		In-app redemption for consumables, non-consumables, and non-renewing subscriptions requires iOS or iPadOS 16.3 or later. It requires macOS 15 or later on Mac. For the complete workflow, see [url=https://xibbon.github.io/GodotApplePlugins/storekit_storekitguide.html]Using Apple's StoreKit APIs with Godot[/url].
 	</description>
 	<tutorials>
 	</tutorials>
