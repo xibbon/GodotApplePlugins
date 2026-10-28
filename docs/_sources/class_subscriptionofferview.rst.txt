@@ -27,7 +27,7 @@ Create the offer in App Store Connect for the exact product before you call :ref
 
 
 
-In-app redemption for consumables, non-consumables, and non-renewing subscriptions requires iOS or iPadOS 16.3 or later. It requires macOS 15 or later on Mac. For the complete workflow, see `Using Apple's StoreKit APIs with Godot <https://migueldeicaza.github.io/GodotApplePlugins/storekit_storekitguide.html>`__.
+In-app redemption for consumables, non-consumables, and non-renewing subscriptions requires iOS or iPadOS 16.3 or later. It requires macOS 15 or later on Mac. For the complete workflow, see `Using Apple's StoreKit APIs with Godot <https://xibbon.github.io/GodotApplePlugins/storekit_storekitguide.html>`__.
 
 .. rst-class:: classref-reftable-group
 
