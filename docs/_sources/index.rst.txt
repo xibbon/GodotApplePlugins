@@ -5,39 +5,36 @@
 .. Generated automatically from Godot engine sources.
 .. Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py.
 
-Guides
-======
+Godot Apple Plugins
+===================
 
-.. toctree::
-    :maxdepth: 1
-    :name: toc-guides
+Overview
+--------
 
-    arkit_arkitguide
-    authenticationservices_authenticationservicesguide
-    coremotion_coremotionguide
-    foundation_foundationguide
-    gamecenter_gamecenterguide
-    storekit_storekitguide
+Integrate Apple frameworks into your Godot games with GDScript. Add Game Center achievements and multiplayer, manage in-app purchases with StoreKit, build augmented reality experiences with ARKit, and connect to native authentication, motion, audio, and storage APIs.
 
-.. toctree::
-    :hidden:
-
-    gamecenter_entitlements
+Start with an integration guide, then explore the classes in each framework.
 
 .. _doc_class_reference:
 
-All classes
-===========
-
-Other objects
-=============
+Topics
+------
 
 .. toctree::
     :maxdepth: 1
-    :name: toc-class-ref-objects
+    :caption: Essentials
 
-    class_applefilepicker
-    class_appleurl
+    ARKit integration <arkit_arkitguide>
+    Authentication Services integration <authenticationservices_authenticationservicesguide>
+    Core Motion integration <coremotion_coremotionguide>
+    Foundation integration <foundation_foundationguide>
+    Game Center integration <gamecenter_gamecenterguide>
+    StoreKit integration <storekit_storekitguide>
+
+.. toctree::
+    :maxdepth: 1
+    :caption: ARKit
+
     class_aranchor
     class_arbodyanchor
     class_arbodyskeleton
@@ -63,11 +60,26 @@ Other objects
     class_artrackedraycast
     class_arworldmap
     class_arworldtrackingconfiguration
+
+.. toctree::
+    :maxdepth: 1
+    :caption: AVFoundation
+
+    class_avaudiosession
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Authentication Services
+
     class_asauthorizationappleidcredential
     class_asauthorizationcontroller
     class_aspasswordcredential
     class_aswebauthenticationsession
-    class_avaudiosession
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Core Motion
+
     class_cmabsolutealtitudedata
     class_cmaccelerometerdata
     class_cmaltimeter
@@ -81,8 +93,20 @@ Other objects
     class_cmmotionmanager
     class_cmpedometer
     class_cmpedometerdata
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Foundation
+
+    class_applefilepicker
+    class_appleurl
     class_foundation
-    class_gamecentermanager
+    class_nsubiquitouskeyvaluestore
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Game Center
+
     class_gkaccesspoint
     class_gkachievement
     class_gkachievementchallenge
@@ -100,9 +124,9 @@ Other objects
     class_gkleaderboardset
     class_gklocalplayer
     class_gkmatch
+    class_gkmatchrequest
     class_gkmatchmaker
     class_gkmatchmakerviewcontroller
-    class_gkmatchrequest
     class_gknotificationbanner
     class_gkplayer
     class_gksavedgame
@@ -113,9 +137,13 @@ Other objects
     class_gkturnbasedmatchmakerviewcontroller
     class_gkturnbasedparticipant
     class_gkvoicechat
-    class_nsubiquitouskeyvaluestore
+    class_gamecentermanager
+
+.. toctree::
+    :maxdepth: 1
+    :caption: StoreKit
+
     class_productview
-    class_signalproxy
     class_storekitmanager
     class_storeproduct
     class_storeproductpaymentmode
@@ -129,4 +157,16 @@ Other objects
     class_storeview
     class_subscriptionofferview
     class_subscriptionstoreview
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Shared types
+
+    class_signalproxy
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    gamecenter_entitlements
 
