@@ -1,4 +1,4 @@
-.PHONY: run build build2 package dist xcframework check_swiftsyntax generate-stubs split-generate-stubs gendocs docs-html deploy-docs split-build split-dist split-package split-smoke split-validate split-validate-built split-validate-matrix o o-runtime o-fix-rpaths o-sync
+.PHONY: run build build2 package dist xcframework check_swiftsyntax generate-stubs split-generate-stubs gendocs docs-html deploy-docs split-build split-dist split-package split-smoke split-validate split-validate-built split-validate-matrix o o-runtime o-fix-rpaths o-sync clean-build clean
 
 # Allow overriding common build knobs.
 CONFIG ?= Release
@@ -590,4 +590,10 @@ make oo:
 	$(XCODEBUILD) -create-xcframework \
 		-framework ~/DerivedData/GodotApplePlugins-*/Build/Products/Debug-iphoneos/PackageFrameworks/GodotApplePlugins.framework/ \
 		-framework ~/DerivedData/GodotApplePlugins-*/Build/Products/Debug/PackageFrameworks/GodotApplePlugins.framework/ \
-		-output '$(XCFRAMEWORK_EXPORT_PATH)'	
+		-output '$(XCFRAMEWORK_EXPORT_PATH)'
+
+clean-build:
+	rm -rf $(DERIVED_DATA)* .build apple/.build Generated/GodotApplePluginsStub/*.dylib Generated/GodotApplePluginsStub/*.so
+
+clean: clean-build
+	rm -rf $(CURDIR)/addons/*/bin dist *.zip	

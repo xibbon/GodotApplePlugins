@@ -564,3 +564,8 @@ jobs:
           fi
 
           security delete-keychain "$KEYCHAIN_PATH" || true
+
+      - name: Clean up temporary build folders
+        if: always()
+        run: |
+          rm -rf .xcodebuild* .build apple/.build dist *.zip
