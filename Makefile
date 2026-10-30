@@ -1,4 +1,4 @@
-.PHONY: run build build2 package dist xcframework check_swiftsyntax generate-stubs split-generate-stubs gendocs docs-html deploy-docs split-build split-dist split-package split-smoke split-validate split-validate-built split-validate-matrix o o-runtime o-fix-rpaths o-sync
+.PHONY: run build build2 package dist xcframework check_swiftsyntax generate-stubs split-generate-stubs gendocs docs-html deploy-docs split-build split-dist split-package split-smoke split-validate split-validate-built split-validate-matrix o o-runtime o-fix-rpaths o-sync clean-build clean
 
 # Allow overriding common build knobs.
 CONFIG ?= Release
@@ -8,7 +8,7 @@ DERIVED_DATA ?= $(CURDIR)/.xcodebuild
 WORKSPACE ?= .swiftpm/xcode/package.xcworkspace
 SCHEME ?= GodotApplePlugins
 FRAMEWORK_NAMES ?= GodotApplePlugins
-SPLIT_FRAMEWORK_NAMES ?= GodotApplePluginsAVFoundation GodotApplePluginsFoundation GodotApplePluginsGameCenter GodotApplePluginsStoreKit GodotApplePluginsAuthenticationServices GodotApplePluginsARKit GodotApplePluginsCoreMotion
+SPLIT_FRAMEWORK_NAMES ?= GodotApplePluginsAVFoundation GodotApplePluginsFoundation GodotApplePluginsGameCenter GodotApplePluginsStoreKit GodotApplePluginsAuthenticationServices GodotApplePluginsARKit GodotApplePluginsCoreMotion GodotApplePluginsKeychain
 SPLIT_RUNTIME_FRAMEWORK ?= SwiftGodotRuntime
 SPLIT_RUNTIME_RPATH ?= @loader_path/../../../../../GodotApplePluginsRuntime/bin
 SPLIT_RUNTIME_FRAMEWORK_RPATH ?= @loader_path/../../../GodotApplePluginsRuntime/bin
@@ -221,6 +221,11 @@ split-generate-stubs:
 				library_name="godot_apple_plugins_core_motion_stub"; \
 				files="CMAccelerometerData CMDeviceMotion CMMotionManager CMPedometer CMAltimeter CMMotionActivity CMHeadphoneMotionManager"; \
 				;; \
+			GodotApplePluginsKeychain) \
+				entry_symbol="godot_apple_plugins_keychain_start"; \
+				library_name="godot_apple_plugins_keychain_stub"; \
+				files="Keychain"; \
+				;; \
 			*) \
 				echo "Unknown split framework $$framework" >&2; \
 				exit 1; \
@@ -384,6 +389,7 @@ split-validate-matrix: split-package
 	$(MAKE) split-validate-built SPLIT_SELECTED_FRAMEWORK_NAMES="GodotApplePluginsAuthenticationServices"
 	$(MAKE) split-validate-built SPLIT_SELECTED_FRAMEWORK_NAMES="GodotApplePluginsARKit"
 	$(MAKE) split-validate-built SPLIT_SELECTED_FRAMEWORK_NAMES="GodotApplePluginsCoreMotion"
+	$(MAKE) split-validate-built SPLIT_SELECTED_FRAMEWORK_NAMES="GodotApplePluginsKeychain"
 	$(MAKE) split-validate-built SPLIT_SELECTED_FRAMEWORK_NAMES="$(SPLIT_FRAMEWORK_NAMES)"
 
 split-smoke: split-validate
@@ -414,6 +420,9 @@ dist:
 				;; \
 			GodotApplePluginsCoreMotion) \
 				registration_source="Sources/GodotCoreMotion/GodotCoreMotion.swift"; \
+				;; \
+			GodotApplePluginsKeychain) \
+				registration_source="Sources/GodotKeychain/GodotKeychain.swift"; \
 				;; \
 			*) \
 				registration_source=""; \
@@ -600,4 +609,10 @@ make oo:
 	$(XCODEBUILD) -create-xcframework \
 		-framework ~/DerivedData/GodotApplePlugins-*/Build/Products/Debug-iphoneos/PackageFrameworks/GodotApplePlugins.framework/ \
 		-framework ~/DerivedData/GodotApplePlugins-*/Build/Products/Debug/PackageFrameworks/GodotApplePlugins.framework/ \
-		-output '$(XCFRAMEWORK_EXPORT_PATH)'	
+		-output '$(XCFRAMEWORK_EXPORT_PATH)'
+
+clean-build:
+	rm -rf $(DERIVED_DATA)* .build apple/.build Generated/GodotApplePluginsStub/*.dylib Generated/GodotApplePluginsStub/*.so
+
+clean: clean-build
+	rm -rf $(CURDIR)/addons/*/bin dist *.zip	

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Keychain" inherits="RefCounted" api_type="extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Reads and writes small secrets to the platform Keychain.
+	</brief_description>
+	<description>
+		Stores values in Apple's Keychain Services as generic passwords, scoped to your app's bundle identifier. Unlike files written to the app's sandbox container, Keychain entries survive a full delete and reinstall of the app, making this the right place for auth tokens and account identifiers that must not be lost across reinstalls.
+
+		[codeblocks]
+		[gdscript]
+		var keychain = Keychain.new()
+
+		func _save_token(token):
+		    if not keychain.set_value("auth_token", token):
+		        print("Failed to write to keychain")
+
+		func _load_token():
+		    return keychain.get_value("auth_token")
+
+		func _clear_token():
+		    keychain.delete_value("auth_token")
+		[/gdscript]
+		[/codeblocks]
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_value">
+			<return type="String" />
+			<param index="0" name="key" type="String" />
+			<description>
+				Returns the value stored under [param key], or an empty string if no value exists for that key.
+			</description>
+		</method>
+		<method name="set_value">
+			<return type="bool" />
+			<param index="0" name="key" type="String" />
+			<param index="1" name="value" type="String" />
+			<description>
+				Stores [param value] under [param key], overwriting any existing value. Returns [code]true[/code] on success.
+			</description>
+		</method>
+		<method name="delete_value">
+			<return type="bool" />
+			<param index="0" name="key" type="String" />
+			<description>
+				Removes the value stored under [param key]. Returns [code]true[/code] if the value was removed or did not exist.
+			</description>
+		</method>
+	</methods>
+</class>
