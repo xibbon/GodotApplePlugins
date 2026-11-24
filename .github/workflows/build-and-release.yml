@@ -540,6 +540,15 @@ jobs:
             test -d "addons/$addon"
             ditto "addons/$addon" "dist/addons/$addon"
           done
+
+          # The Godot Asset Library requires every addon directory to carry
+          # its own license, even though this release is distributed as one ZIP.
+          for addon_dir in dist/addons/*; do
+            test -d "$addon_dir"
+            cp LICENSE "$addon_dir/LICENSE"
+            cmp --silent LICENSE "$addon_dir/LICENSE"
+          done
+
           ditto -c -k --sequesterRsrc --keepParent dist "$PACKAGE_NAME"
           echo "PACKAGE_NAME=$PACKAGE_NAME" >> "$GITHUB_ENV"
 
